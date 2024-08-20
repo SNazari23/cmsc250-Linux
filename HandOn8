@@ -1,0 +1,2563 @@
+# Assignment:Hands-On Project8
+# Course: CMSC250
+# Student:  Summer Nazari
+# Professor: Dr. Koorosh Azhandeh
+# Due Date: 04-15-2024
+[cmsc250109@tpaclinux1v ~]$ vi datafile
+[cmsc250109@tpaclinux1v ~]$ dd if=datafile of=datafile.bak conv=lcase
+0+1 records in
+0+1 records out
+25 bytes (25 B) copied, 0.000666325 s, 37.5 kB/s
+[cmsc250109@tpaclinux1v ~]$ cat datafile.bak
+ this is my data file.
+
+[cmsc250109@tpaclinux1v ~]$ df
+Filesystem                                 1K-blocks     Used Available Use% Mounted on
+devtmpfs                                     3028248        0   3028248   0% /dev
+tmpfs                                        3045160       40   3045120   1% /dev/shm
+tmpfs                                        3045160   241648   2803512   8% /run
+tmpfs                                        3045160        0   3045160   0% /sys/fs/cgroup
+/dev/mapper/vg_root-root                    20961280 14722900   6238380  71% /
+/dev/mapper/vg_tmp-tmp                       5232640    33240   5199400   1% /tmp
+/dev/mapper/vg_var-var                      15718400  2330032  13388368  15% /var
+/dev/sda1                                    1038336   224844    813492  22% /boot
+/dev/mapper/vg_var_tmp-var_tmp               5232640    33276   5199364   1% /var/tmp
+/dev/mapper/vg_home-home                   171939328 24349508 147589820  15% /home
+/dev/mapper/vg_var_log-var_log              15718400   250736  15467664   2% /var/log
+/dev/mapper/vg_var_log_audit-var_log_audit  10475520   114976  10360544   2% /var/log/audit
+tmpfs                                         609032       40    608992   1% /run/user/1346
+tmpfs                                         609032        0    609032   0% /run/user/0
+tmpfs                                         609032       12    609020   1% /run/user/42
+tmpfs                                         609032        0    609032   0% /run/user/1570
+tmpfs                                         609032        0    609032   0% /run/user/1154
+[cmsc250109@tpaclinux1v ~]$ df/dev/hda1
+-bash: df/dev/hda1: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ df / dev /hda1
+df: ‘dev’: No such file or directory
+df: ‘/hda1’: No such file or directory
+Filesystem               1K-blocks     Used Available Use% Mounted on
+/dev/mapper/vg_root-root  20961280 14722880   6238400  71% /
+[cmsc250109@tpaclinux1v ~]$ du | more
+0       ./.mozilla/extensions
+0       ./.mozilla/plugins
+0       ./.mozilla
+4       ./.cache/abrt
+4       ./.cache
+0       ./.config/abrt
+0       ./.config
+0       ./.local/share
+0       ./.local
+0       ./newdir
+0       ./dept
+0       ./_4540
+0       ./.emacs.d/auto-save-list
+0       ./.emacs.d
+40      ./source
+0       ./destination_directory
+0       ./test_directory
+0       ./datafiles
+4       ./.vim
+540     .
+[cmsc250109@tpaclinux1v ~]$ du -b | more
+6       ./.mozilla/extensions
+6       ./.mozilla/plugins
+51      ./.mozilla
+41      ./.cache/abrt
+59      ./.cache
+6       ./.config/abrt
+24      ./.config
+6       ./.local/share
+25      ./.local
+6       ./newdir
+6       ./dept
+6       ./_4540
+6       ./.emacs.d/auto-save-list
+34      ./.emacs.d
+27743   ./source
+25      ./destination_directory
+6       ./test_directory
+32      ./datafiles
+284     ./.vim
+262002  .
+[cmsc250109@tpaclinux1v ~]$ du -h | more
+0       ./.mozilla/extensions
+0       ./.mozilla/plugins
+0       ./.mozilla
+4.0K    ./.cache/abrt
+4.0K    ./.cache
+0       ./.config/abrt
+0       ./.config
+0       ./.local/share
+0       ./.local
+0       ./newdir
+0       ./dept
+0       ./_4540
+0       ./.emacs.d/auto-save-list
+0       ./.emacs.d
+40K     ./source
+0       ./destination_directory
+0       ./test_directory
+0       ./datafiles
+4.0K    ./.vim
+540K    .
+[cmsc250109@tpaclinux1v ~]$ touch ~/core; touch ~/a.out
+[cmsc250109@tpaclinux1v ~]$ touch ~/source/core ; touch ~/ source/a.out
+[cmsc250109@tpaclinux1v ~]$ find . "(" -name a.out -o -name core ")"
+./source/core
+./source/a.out
+./a.out
+./core
+[cmsc250109@tpaclinux1v ~]$ find . "(" -name a.out -o -name core ")" -exec rm {}\;
+find: missing argument to `-exec'
+[cmsc250109@tpaclinux1v ~]$ top
+top - 03:40:49 up 12 days,  1:34,  1 user,  load average: 0.00, 0.01, 0.05
+Tasks: 360 total,   1 running, 358 sleeping,   0 stopped,   1 zombie
+%Cpu(s):  0.3 us,  0.3 sy,  0.0 ni, 99.4 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  6090320 total,   892328 free,  2183208 used,  3014784 buff/cache
+KiB Swap:  4190204 total,  3948284 free,   241920 used.  3370900 avail Mem
+
+   PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 31946 root      20   0  906284 187752   8040 S   0.7  3.1   6:04.73 nessus-ag+
+  2318 root      20   0  967080  18356   3676 S   0.3  0.3  44:36.26 python2.7
+  3906 gdm       20   0  555808   2116   2008 S   0.3  0.0   4:41.15 gsd-smart+
+ 14497 root      20   0 1943556 305208  18240 S   0.3  5.0  13:26.39 ds_agent
+119897 cmsc250+  20   0  161136   2552   1168 S   0.3  0.0   0:00.12 sshd
+127911 cmsc250+  20   0  162236   2500   1584 R   0.3  0.0   0:00.09 top
+     1 root      20   0  194344   6004   3408 S   0.0  0.1   1:18.83 systemd
+     2 root      20   0       0      0      0 S   0.0  0.0   0:03.80 kthreadd
+     4 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0+
+     6 root      20   0       0      0      0 S   0.0  0.0   0:03.22 ksoftirqd+
+     7 root      rt   0       0      0      0 S   0.0  0.0   0:03.47 migration+
+     8 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcu_bh
+     9 root      20   0       0      0      0 S   0.0  0.0   2:26.40 rcu_sched
+    10 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 lru-add-d+
+    11 root      rt   0       0      0      0 S   0.0  0.0   0:03.11 watchdog/0
+    12 root      rt   0       0      0      0 S   0.0  0.0   0:02.58 watchdog/1
+Fields Management for window 1:Def, whose current sort field is %CPU
+   Navigate with Up/Dn, Right selects for move then <Enter> or Left commits,
+   'd' or <Space> toggles display, 's' sets sort.  Use 'q' or <Esc> to end!
+
+* PID     = Process Id      GROUP   = Group Name      TGID    = Thread Group
+* USER    = Effective Use   PGRP    = Process Group   ENVIRON = Environment v
+* PR      = Priority        TTY     = Controlling T   vMj     = Major Faults
+* NI      = Nice Value      TPGID   = Tty Process G   vMn     = Minor Faults
+* VIRT    = Virtual Image   SID     = Session Id      USED    = Res+Swap Size
+* RES     = Resident Size   nTH     = Number of Thr   nsIPC   = IPC namespace
+* SHR     = Shared Memory   P       = Last Used Cpu   nsMNT   = MNT namespace
+* S       = Process Statu   TIME    = CPU Time        nsNET   = NET namespace
+  %CPU    = CPU Usage       SWAP    = Swapped Size    nsPID   = PID namespace
+* %MEM    = Memory Usage    CODE    = Code Size (Ki   nsUSER  = USER namespac
+* TIME+   = CPU Time, hun   DATA    = Data+Stack (K   nsUTS   = UTS namespace
+* COMMAND = Command Name/   nMaj    = Major Page Fa
+  PPID    = Parent Proces   nMin    = Minor Page Fa
+  UID     = Effective Use   nDRT    = Dirty Pages C
+  RUID    = Real User Id    WCHAN   = Sleeping in F
+  RUSER   = Real User Nam   Flags   = Task Flags <s
+  SUID    = Saved User Id   CGROUPS = Control Group
+  SUSER   = Saved User Na   SUPGIDS = Supp Groups I
+  GID     = Group Id        SUPGRPS = Supp Groups N
+[cmsc250109@tpaclinux1v ~]$ free
+              total        used        free      shared  buff/cache   available
+Mem:        6090320     2160760      914736      238436     3014824     3393348
+Swap:       4190204      241920     3948284
+[cmsc250109@tpaclinux1v ~]$ free -m
+              total        used        free      shared  buff/cache   available
+Mem:           5947        2109         893         232        2944        3314
+Swap:          4091         236        3855
+[cmsc250109@tpaclinux1v ~]$ free -t
+              total        used        free      shared  buff/cache   available
+Mem:        6090320     2159976      915508      238436     3014836     3394128
+Swap:       4190204      241920     3948284
+Total:     10280524     2401896     4863792
+[cmsc250109@tpaclinux1v ~]$ top > topdata
+[cmsc250109@tpaclinux1v ~]$
+[cmsc250109@tpaclinux1v ~]$ free > freedata
+[cmsc250109@tpaclinux1v ~]$ more freedata
+              total        used        free      shared  buff/cache   available
+Mem:        6090320     2159968      915508      238436     3014844     3394140
+Swap:       4190204      241920     3948284
+[cmsc250109@tpaclinux1v ~]$ lpr topdata
+lpr: Error - no default destination available.
+[cmsc250109@tpaclinux1v ~]$ lpr freedata
+lpr: Error - no default destination available.
+[cmsc250109@tpaclinux1v ~]$ top%
+bash: top%: command not found...
+Similar command is: 'top'
+[cmsc250109@tpaclinux1v ~]$ ps
+   PID TTY          TIME CMD
+119904 pts/0    00:00:00 bash
+128309 pts/0    00:00:00 ps
+[cmsc250109@tpaclinux1v ~]$ ps -A | more
+   PID TTY          TIME CMD
+     1 ?        00:01:18 systemd
+     2 ?        00:00:03 kthreadd
+     4 ?        00:00:00 kworker/0:0H
+     6 ?        00:00:03 ksoftirqd/0
+     7 ?        00:00:03 migration/0
+     8 ?        00:00:00 rcu_bh
+     9 ?        00:02:26 rcu_sched
+    10 ?        00:00:00 lru-add-drain
+    11 ?        00:00:03 watchdog/0
+    12 ?        00:00:02 watchdog/1
+    13 ?        00:00:04 migration/1
+    14 ?        00:00:03 ksoftirqd/1
+    16 ?        00:00:00 kworker/1:0H
+    17 ?        00:00:02 watchdog/2
+    18 ?        00:00:03 migration/2
+    19 ?        00:00:04 ksoftirqd/2
+    21 ?        00:00:00 kworker/2:0H
+    22 ?        00:00:02 watchdog/3
+    23 ?        00:00:03 migration/3
+    24 ?        00:00:03 ksoftirqd/3
+    26 ?        00:00:00 kworker/3:0H
+    27 ?        00:00:02 watchdog/4
+    28 ?        00:00:03 migration/4
+    29 ?        00:00:07 ksoftirqd/4
+    31 ?        00:00:00 kworker/4:0H
+    32 ?        00:00:02 watchdog/5
+    33 ?        00:00:03 migration/5
+    34 ?        00:00:05 ksoftirqd/5
+    36 ?        00:00:00 kworker/5:0H
+    38 ?        00:00:00 kdevtmpfs
+    39 ?        00:00:00 netns
+    40 ?        00:00:00 khungtaskd
+    41 ?        00:00:00 writeback
+    42 ?        00:00:00 kintegrityd
+    43 ?        00:00:00 bioset
+    44 ?        00:00:00 bioset
+    45 ?        00:00:00 bioset
+    46 ?        00:00:00 kblockd
+    47 ?        00:00:00 md
+    48 ?        00:00:00 edac-poller
+    49 ?        00:00:00 watchdogd
+    56 ?        00:00:12 kswapd0
+    57 ?        00:00:00 ksmd
+    58 ?        00:00:04 khugepaged
+    59 ?        00:00:00 crypto
+    67 ?        00:00:00 kthrotld
+    69 ?        00:00:00 kmpath_rdacd
+    70 ?        00:00:00 kaluad
+    72 ?        00:00:00 kpsmoused
+    74 ?        00:00:00 ipv6_addrconf
+    88 ?        00:00:00 deferwq
+   131 ?        00:00:06 kauditd
+   300 ?        00:00:00 scsi_eh_0
+   301 ?        00:00:00 scsi_tmf_0
+   302 ?        00:00:00 vmw_pvscsi_wq_0
+   305 ?        00:00:00 ata_sff
+   306 ?        00:00:00 scsi_eh_1
+   307 ?        00:00:00 scsi_tmf_1
+   308 ?        00:00:00 scsi_eh_2
+   309 ?        00:00:00 scsi_tmf_2
+   311 ?        00:00:00 nfit
+   358 ?        00:00:00 irq/16-vmwgfx
+   359 ?        00:00:00 ttm_swap
+   496 ?        00:00:02 kworker/3:1H
+   592 ?        00:00:00 kdmflush
+   593 ?        00:00:00 bioset
+   600 ?        00:00:00 kdmflush
+   601 ?        00:00:00 bioset
+   608 ?        00:00:00 kdmflush
+   609 ?        00:00:00 bioset
+   614 ?        00:00:00 kdmflush
+   615 ?        00:00:00 bioset
+   620 ?        00:00:00 kdmflush
+   621 ?        00:00:00 bioset
+   626 ?        00:00:00 kdmflush
+   627 ?        00:00:00 bioset
+   632 ?        00:00:00 kdmflush
+   633 ?        00:00:00 bioset
+   638 ?        00:00:00 kdmflush
+   639 ?        00:00:00 bioset
+   651 ?        00:00:00 bioset
+   652 ?        00:00:00 xfsalloc
+   653 ?        00:00:00 xfs_mru_cache
+   654 ?        00:00:00 xfs-buf/dm-0
+   655 ?        00:00:00 xfs-data/dm-0
+   656 ?        00:00:00 xfs-conv/dm-0
+   657 ?        00:00:00 xfs-cil/dm-0
+   658 ?        00:00:00 xfs-reclaim/dm-
+   659 ?        00:00:00 xfs-log/dm-0
+   660 ?        00:00:00 xfs-eofblocks/d
+   661 ?        00:00:52 xfsaild/dm-0
+   662 ?        00:00:02 kworker/1:1H
+   742 ?        00:00:02 kworker/0:1H
+   747 ?        00:02:20 systemd-journal
+   773 ?        00:00:00 lvmetad
+   786 ?        00:00:01 systemd-udevd
+   962 ?        00:00:00 xfs-buf/dm-4
+   963 ?        00:00:00 xfs-buf/dm-7
+   964 ?        00:00:00 xfs-buf/sda1
+   965 ?        00:00:00 xfs-data/dm-7
+   966 ?        00:00:00 xfs-data/dm-4
+   967 ?        00:00:00 xfs-data/sda1
+   968 ?        00:00:00 xfs-conv/dm-7
+   969 ?        00:00:00 xfs-buf/dm-5
+   970 ?        00:00:00 xfs-conv/dm-4
+   971 ?        00:00:00 xfs-conv/sda1
+   973 ?        00:00:00 xfs-cil/dm-7
+   974 ?        00:00:00 xfs-data/dm-5
+   975 ?        00:00:00 xfs-cil/sda1
+   976 ?        00:00:00 xfs-reclaim/dm-
+   977 ?        00:00:00 xfs-cil/dm-4
+   978 ?        00:00:00 xfs-conv/dm-5
+   979 ?        00:00:00 xfs-reclaim/sda
+   980 ?        00:00:00 xfs-log/dm-7
+   981 ?        00:00:00 xfs-reclaim/dm-
+   982 ?        00:00:00 xfs-cil/dm-5
+   983 ?        00:00:00 xfs-log/dm-4
+   984 ?        00:00:00 xfs-log/sda1
+   985 ?        00:00:00 xfs-eofblocks/d
+   986 ?        00:00:00 xfs-reclaim/dm-
+   987 ?        00:00:00 xfs-eofblocks/d
+   988 ?        00:00:00 xfs-eofblocks/s
+   989 ?        00:00:00 xfs-log/dm-5
+   990 ?        00:00:00 xfs-eofblocks/d
+   991 ?        00:02:35 xfsaild/dm-4
+   993 ?        00:00:00 xfsaild/sda1
+   994 ?        00:00:23 xfsaild/dm-5
+   995 ?        00:02:12 xfsaild/dm-7
+   996 ?        00:00:01 kworker/4:1H
+  1001 ?        00:00:00 xfs-buf/dm-1
+  1002 ?        00:00:00 xfs-data/dm-1
+  1003 ?        00:00:00 xfs-conv/dm-1
+  1004 ?        00:00:00 xfs-cil/dm-1
+  1005 ?        00:00:00 xfs-reclaim/dm-
+  1006 ?        00:00:00 xfs-log/dm-1
+  1007 ?        00:00:00 xfs-eofblocks/d
+  1009 ?        00:00:00 xfs-buf/dm-3
+  1010 ?        00:00:00 xfs-data/dm-3
+  1011 ?        00:00:00 xfs-conv/dm-3
+  1012 ?        00:00:00 xfs-cil/dm-3
+  1013 ?        00:00:00 xfs-reclaim/dm-
+  1014 ?        00:00:00 xfs-log/dm-3
+  1015 ?        00:00:00 xfs-eofblocks/d
+  1016 ?        00:00:00 xfsaild/dm-1
+  1017 ?        00:02:20 xfsaild/dm-3
+  1030 ?        00:00:01 kworker/5:1H
+  1034 ?        00:00:03 kworker/2:1H
+  1038 ?        00:00:00 xfs-buf/dm-2
+  1039 ?        00:00:00 xfs-data/dm-2
+  1040 ?        00:00:00 xfs-conv/dm-2
+  1041 ?        00:00:00 xfs-cil/dm-2
+  1042 ?        00:00:00 xfs-reclaim/dm-
+  1043 ?        00:00:00 xfs-log/dm-2
+  1044 ?        00:00:00 xfs-eofblocks/d
+  1045 ?        00:02:05 xfsaild/dm-2
+  1073 ?        00:00:00 rpciod
+  1074 ?        00:00:00 xprtiod
+  1075 ?        00:00:52 auditd
+  1078 ?        00:00:45 audispd
+  1080 ?        00:00:34 sedispatch
+  1113 ?        00:02:18 polkitd
+  1114 ?        00:00:06 udisksd
+  1116 ?        00:00:10 rtkit-daemon
+  1117 ?        00:00:40 accounts-daemon
+  1118 ?        00:00:02 avahi-daemon
+  1119 ?        00:00:02 lsmd
+  1121 ?        00:00:01 ModemManager
+  1125 ?        00:00:00 VGAuthService
+  1126 ?        00:19:31 vmtoolsd
+  1129 ?        00:00:44 dbus-daemon
+  1144 ?        00:00:02 chronyd
+  1146 ?        00:00:00 avahi-daemon
+  1246 ?        00:00:22 systemd-logind
+  1247 ?        00:00:58 irqbalance
+  1249 ?        00:00:00 smartd
+  1251 ?        00:00:01 abrtd
+  1253 ?        00:00:20 abrt-watch-log
+  1260 ?        00:00:00 abrt-watch-log
+  1261 ?        00:00:50 rngd
+  1273 ?        00:00:00 mcelog
+  1276 ?        00:00:35 ksmtuned
+  1279 ?        00:00:05 firewalld
+  1280 ?        00:00:01 rpcbind
+  1281 ?        00:00:01 gssproxy
+  2093 ?        00:00:14 NetworkManager
+  2318 ?        00:44:36 python2.7
+  2325 ?        00:01:25 tuned
+  2326 ?        00:00:01 sshd
+  2327 ?        00:00:01 cupsd
+  2331 ?        00:00:00 xinetd
+  2332 ?        00:10:19 snmpd
+  2337 ?        00:01:32 rsyslogd
+  2338 ?        00:00:00 rhsmcertd
+  2359 ?        00:00:00 gdm
+  2361 ?        00:00:16 crond
+  2363 ?        00:00:00 atd
+  2427 tty1     00:00:18 X
+  2639 ?        00:00:04 Xvnc
+  2641 ?        00:00:13 master
+  2652 ?        00:00:04 qmgr
+  2682 ?        00:00:00 crond
+  2683 ?        00:00:35 cvlaunchd
+  2692 ?        00:02:33 cvd
+  2693 ?        00:05:01 EvMgrC
+  2695 ?        00:00:00 sh <defunct>
+  2698 ?        00:00:00 nc
+  2699 ?        00:00:00 nc
+  2707 ?        00:01:08 cvfwd
+  2729 ?        00:00:00 gdm-session-wor
+  2733 ?        00:00:04 gnome-session-b
+  2749 ?        00:00:00 dbus-launch
+  2819 ?        00:00:00 dbus-daemon
+  2829 ?        00:00:00 at-spi-bus-laun
+  2836 ?        00:00:00 dbus-daemon
+  2840 ?        00:00:00 at-spi2-registr
+  2902 ?        00:00:03 gnome-session-b
+  2912 ?        00:11:48 gnome-shell
+  2923 ?        00:00:00 dbus-launch
+  2938 ?        00:00:00 dbus-daemon
+  3178 ?        00:00:00 imsettings-daem
+  3184 ?        00:00:00 gvfsd
+  3189 ?        00:00:00 gvfsd-fuse
+  3236 ?        00:00:02 upowerd
+  3253 ?        00:00:03 ssh-agent
+  3271 ?        00:00:00 at-spi-bus-laun
+  3276 ?        00:00:00 dbus-daemon
+  3279 ?        00:00:00 at-spi2-registr
+  3306 ?        00:00:00 gnome-keyring-d
+  3316 ?        00:08:24 gnome-shell
+  3335 ?        00:00:00 pulseaudio
+  3336 ?        00:00:03 pulseaudio
+  3540 ?        00:00:16 ibus-daemon
+  3549 ?        00:00:00 ibus-dconf
+  3552 ?        00:00:00 ibus-x11
+  3556 ?        00:00:00 ibus-portal
+  3690 ?        00:00:15 ibus-daemon
+  3702 ?        00:00:00 ibus-dconf
+  3706 ?        00:00:00 ibus-x11
+  3710 ?        00:00:00 ibus-portal
+  3720 ?        00:00:00 xdg-permission-
+  3739 ?        00:00:00 xdg-permission-
+  3743 ?        00:00:00 gnome-shell-cal
+  3769 ?        00:00:02 boltd
+  3771 ?        00:00:04 geoclue
+  3810 ?        00:00:00 evolution-sourc
+  3816 ?        00:00:03 wpa_supplicant
+  3821 ?        00:00:12 packagekitd
+  3834 ?        00:00:00 gsd-xsettings
+  3835 ?        00:00:00 gsd-a11y-settin
+  3837 ?        00:00:00 gsd-clipboard
+  3838 ?        00:09:45 gsd-color
+  3839 ?        00:00:00 gsd-datetime
+  3842 ?        00:00:00 gsd-housekeepin
+  3845 ?        00:00:02 mission-control
+  3850 ?        00:00:00 gsd-keyboard
+  3859 ?        00:00:01 gsd-media-keys
+  3860 ?        00:00:00 gsd-mouse
+  3862 ?        00:00:05 gvfs-udisks2-vo
+  3868 ?        00:00:02 gsd-power
+  3877 ?        00:00:00 gsd-print-notif
+  3882 ?        00:00:00 goa-daemon
+  3883 ?        00:00:00 gsd-rfkill
+  3890 ?        00:00:00 gsd-screensaver
+  3899 ?        00:00:00 gsd-sharing
+  3903 ?        00:00:00 gvfs-afc-volume
+  3906 ?        00:04:41 gsd-smartcard
+  3918 ?        00:00:00 gvfs-goa-volume
+  3920 ?        00:00:00 gsd-sound
+  3926 ?        00:00:00 gsd-wacom
+  3948 ?        00:00:00 colord
+  3962 ?        00:08:56 pcscd
+  4009 ?        00:00:39 goa-identity-se
+  4015 ?        00:00:00 ibus-engine-sim
+  4077 ?        00:00:00 gvfs-mtp-volume
+  4084 ?        00:00:00 gvfs-gphoto2-vo
+  4091 ?        00:00:02 gsd-power
+  4092 ?        00:00:00 gsd-print-notif
+  4095 ?        00:00:00 gsd-rfkill
+  4097 ?        00:00:00 gsd-screensaver
+  4099 ?        00:00:00 gsd-sharing
+  4107 ?        00:00:00 gsd-sound
+  4108 ?        00:00:00 gsd-xsettings
+  4109 ?        00:00:00 gsd-wacom
+  4115 ?        00:04:31 gsd-smartcard
+  4118 ?        00:00:00 gsd-account
+  4132 ?        00:00:00 gsd-a11y-settin
+  4134 ?        00:00:00 gsd-clipboard
+  4137 ?        00:09:30 gsd-color
+  4139 ?        00:00:00 gsd-datetime
+  4141 ?        00:01:16 gsd-housekeepin
+  4143 ?        00:00:00 gsd-keyboard
+  4147 ?        00:00:01 gsd-media-keys
+  4151 ?        00:00:00 gsd-mouse
+  4175 ?        00:00:00 gsd-printer
+  4188 ?        00:00:00 dconf-service
+  4203 ?        00:00:00 nautilus-deskto
+  4220 ?        00:00:00 gvfsd-trash
+  4240 ?        00:00:00 tracker-miner-f
+  4244 ?        00:00:37 gnome-software
+  4247 ?        00:00:00 abrt-applet
+  4251 ?        00:00:00 tracker-miner-a
+  4256 ?        00:00:00 tracker-miner-u
+  4276 ?        00:00:00 tracker-store
+  4279 ?        00:00:00 seapplet
+  4285 ?        00:00:00 rhsm-icon
+  4292 ?        00:00:00 tracker-extract
+  4396 ?        00:00:01 evolution-alarm
+  4432 ?        00:24:27 vmtoolsd
+  4446 ?        00:00:01 gconfd-2
+  4457 ?        00:00:00 gsd-disk-utilit
+  4803 ?        00:04:30 escd
+  4959 ?        00:00:00 evolution-calen
+  4966 ?        00:00:00 ibus-engine-sim
+  5029 ?        00:00:00 gvfsd-burn
+  5049 ?        00:00:00 evolution-calen
+  5051 ?        00:00:00 gvfsd-metadata
+  5065 ?        00:00:00 evolution-addre
+  5097 ?        00:00:00 evolution-addre
+  5127 ?        00:00:25 fwupd
+ 14386 ?        00:00:00 ds_agent
+ 14497 ?        00:13:27 ds_agent
+ 14765 ?        00:00:03 tm_netagent
+ 14774 ?        00:00:24 tm_netagent
+ 14876 ?        00:00:00 ds_am
+ 14891 ?        00:07:00 ds_am
+ 31945 ?        00:00:00 nessusd
+ 31946 ?        00:06:05 nessus-agent-mo
+ 35197 ?        00:00:07 kworker/0:2
+ 41821 ?        00:02:47 bomblab.pl
+ 41829 ?        00:00:00 bomblab-request
+ 41833 ?        00:00:00 bomblab-resultd
+ 41837 ?        00:00:12 bomblab-reportd
+ 56136 ?        00:00:00 kworker/4:1
+ 56235 ?        00:00:01 kworker/5:0
+ 71446 ?        00:00:00 kworker/0:1
+ 72252 ?        00:00:01 kworker/0:0
+ 97430 ?        00:00:00 kworker/2:1
+109875 ?        00:00:00 kworker/2:2
+113896 ?        00:00:00 kworker/4:2
+119854 ?        00:00:00 sshd
+119897 ?        00:00:00 sshd
+119904 pts/0    00:00:00 bash
+122186 ?        00:00:00 kworker/1:4
+123517 ?        00:00:00 kworker/1:3
+124090 ?        00:00:00 kworker/5:1
+124760 ?        00:00:00 kworker/3:0
+125028 ?        00:00:00 kworker/1:1
+125427 ?        00:00:00 kworker/u256:2
+126390 ?        00:00:00 kworker/1:5
+127003 ?        00:00:00 kworker/1:6
+127618 ?        00:00:00 kworker/1:0
+127678 ?        00:00:00 kworker/u256:1
+127796 ?        00:00:00 pickup
+127813 ?        00:00:00 kworker/4:0
+128240 ?        00:00:00 kworker/1:2
+128255 ?        00:00:00 sleep
+128364 pts/0    00:00:00 ps
+128365 pts/0    00:00:00 more
+128695 ?        00:00:00 nessus-service
+130531 ?        00:00:01 kworker/3:2
+[cmsc250109@tpaclinux1v ~]$ ps 1
+   PID TTY      STAT   TIME COMMAND
+     1 ?        Ss     1:18 /usr/lib/systemd/systemd --switched-root --system --
+[cmsc250109@tpaclinux1v ~]$ ps -A u | more
+USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root          1  0.0  0.0 194344  6004 ?        Ss   Apr03   1:18 /usr/lib/syste
+md/systemd --switched-root --system --deserialize 22
+root          2  0.0  0.0      0     0 ?        S    Apr03   0:03 [kthreadd]
+root          4  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kworker/0:0H]
+root          6  0.0  0.0      0     0 ?        S    Apr03   0:03 [ksoftirqd/0]
+root          7  0.0  0.0      0     0 ?        S    Apr03   0:03 [migration/0]
+root          8  0.0  0.0      0     0 ?        S    Apr03   0:00 [rcu_bh]
+root          9  0.0  0.0      0     0 ?        S    Apr03   2:26 [rcu_sched]
+root         10  0.0  0.0      0     0 ?        S<   Apr03   0:00 [lru-add-drain
+]
+root         11  0.0  0.0      0     0 ?        S    Apr03   0:03 [watchdog/0]
+root         12  0.0  0.0      0     0 ?        S    Apr03   0:02 [watchdog/1]
+root         13  0.0  0.0      0     0 ?        S    Apr03   0:04 [migration/1]
+root         14  0.0  0.0      0     0 ?        S    Apr03   0:03 [ksoftirqd/1]
+root         16  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kworker/1:0H]
+root         17  0.0  0.0      0     0 ?        S    Apr03   0:02 [watchdog/2]
+root         18  0.0  0.0      0     0 ?        S    Apr03   0:03 [migration/2]
+root         19  0.0  0.0      0     0 ?        S    Apr03   0:04 [ksoftirqd/2]
+root         21  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kworker/2:0H]
+root         22  0.0  0.0      0     0 ?        S    Apr03   0:02 [watchdog/3]
+root         23  0.0  0.0      0     0 ?        S    Apr03   0:03 [migration/3]
+root         24  0.0  0.0      0     0 ?        S    Apr03   0:03 [ksoftirqd/3]
+root         26  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kworker/3:0H]
+root         27  0.0  0.0      0     0 ?        S    Apr03   0:02 [watchdog/4]
+root         28  0.0  0.0      0     0 ?        S    Apr03   0:03 [migration/4]
+root         29  0.0  0.0      0     0 ?        S    Apr03   0:07 [ksoftirqd/4]
+root         31  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kworker/4:0H]
+root         32  0.0  0.0      0     0 ?        S    Apr03   0:02 [watchdog/5]
+root         33  0.0  0.0      0     0 ?        S    Apr03   0:03 [migration/5]
+root         34  0.0  0.0      0     0 ?        S    Apr03   0:05 [ksoftirqd/5]
+root         36  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kworker/5:0H]
+root         38  0.0  0.0      0     0 ?        S    Apr03   0:00 [kdevtmpfs]
+root         39  0.0  0.0      0     0 ?        S<   Apr03   0:00 [netns]
+root         40  0.0  0.0      0     0 ?        S    Apr03   0:00 [khungtaskd]
+root         41  0.0  0.0      0     0 ?        S<   Apr03   0:00 [writeback]
+root         42  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kintegrityd]
+root         43  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root         44  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root         45  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root         46  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kblockd]
+root         47  0.0  0.0      0     0 ?        S<   Apr03   0:00 [md]
+root         48  0.0  0.0      0     0 ?        S<   Apr03   0:00 [edac-poller]
+root         49  0.0  0.0      0     0 ?        S<   Apr03   0:00 [watchdogd]
+root         56  0.0  0.0      0     0 ?        S    Apr03   0:12 [kswapd0]
+root         57  0.0  0.0      0     0 ?        SN   Apr03   0:00 [ksmd]
+root         58  0.0  0.0      0     0 ?        SN   Apr03   0:04 [khugepaged]
+root         59  0.0  0.0      0     0 ?        S<   Apr03   0:00 [crypto]
+root         67  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kthrotld]
+root         69  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kmpath_rdacd]
+root         70  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kaluad]
+root         72  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kpsmoused]
+root         74  0.0  0.0      0     0 ?        S<   Apr03   0:00 [ipv6_addrconf
+]
+root         88  0.0  0.0      0     0 ?        S<   Apr03   0:00 [deferwq]
+root        131  0.0  0.0      0     0 ?        S    Apr03   0:06 [kauditd]
+root        300  0.0  0.0      0     0 ?        S    Apr03   0:00 [scsi_eh_0]
+root        301  0.0  0.0      0     0 ?        S<   Apr03   0:00 [scsi_tmf_0]
+root        302  0.0  0.0      0     0 ?        S<   Apr03   0:00 [vmw_pvscsi_wq
+_0]
+root        305  0.0  0.0      0     0 ?        S<   Apr03   0:00 [ata_sff]
+root        306  0.0  0.0      0     0 ?        S    Apr03   0:00 [scsi_eh_1]
+root        307  0.0  0.0      0     0 ?        S<   Apr03   0:00 [scsi_tmf_1]
+root        308  0.0  0.0      0     0 ?        S    Apr03   0:00 [scsi_eh_2]
+root        309  0.0  0.0      0     0 ?        S<   Apr03   0:00 [scsi_tmf_2]
+root        311  0.0  0.0      0     0 ?        S<   Apr03   0:00 [nfit]
+root        358  0.0  0.0      0     0 ?        S    Apr03   0:00 [irq/16-vmwgfx
+]
+root        359  0.0  0.0      0     0 ?        S<   Apr03   0:00 [ttm_swap]
+root        496  0.0  0.0      0     0 ?        S<   Apr03   0:02 [kworker/3:1H]
+root        592  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kdmflush]
+root        593  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root        600  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kdmflush]
+root        601  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root        608  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kdmflush]
+root        609  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root        614  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kdmflush]
+root        615  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root        620  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kdmflush]
+root        621  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root        626  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kdmflush]
+root        627  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root        632  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kdmflush]
+root        633  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root        638  0.0  0.0      0     0 ?        S<   Apr03   0:00 [kdmflush]
+root        639  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root        651  0.0  0.0      0     0 ?        S<   Apr03   0:00 [bioset]
+root        652  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfsalloc]
+root        653  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs_mru_cache
+]
+root        654  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-buf/dm-0]
+root        655  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-data/dm-0
+]
+root        656  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-conv/dm-0
+]
+root        657  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-cil/dm-0]
+root        658  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-reclaim/d
+m-]
+root        659  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-log/dm-0]
+root        660  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-eofblocks
+/d]
+root        661  0.0  0.0      0     0 ?        S    Apr03   0:52 [xfsaild/dm-0]
+root        662  0.0  0.0      0     0 ?        S<   Apr03   0:02 [kworker/1:1H]
+root        742  0.0  0.0      0     0 ?        S<   Apr03   0:02 [kworker/0:1H]
+root        747  0.0  0.1  40680  7288 ?        Ss   Apr03   2:20 /usr/lib/syste
+md/systemd-journald
+root        773  0.0  0.0 782764   920 ?        Ss   Apr03   0:00 /usr/sbin/lvme
+tad -f
+root        786  0.0  0.0  50976  1440 ?        Ss   Apr03   0:01 /usr/lib/syste
+md/systemd-udevd
+root        962  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-buf/dm-4]
+root        963  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-buf/dm-7]
+root        964  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-buf/sda1]
+root        965  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-data/dm-7
+]
+root        966  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-data/dm-4
+]
+root        967  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-data/sda1
+]
+root        968  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-conv/dm-7
+]
+root        969  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-buf/dm-5]
+root        970  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-conv/dm-4
+]
+root        971  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-conv/sda1
+]
+root        973  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-cil/dm-7]
+root        974  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-data/dm-5
+]
+root        975  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-cil/sda1]
+root        976  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-reclaim/d
+m-]
+root        977  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-cil/dm-4]
+root        978  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-conv/dm-5
+]
+root        979  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-reclaim/s
+da]
+root        980  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-log/dm-7]
+root        981  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-reclaim/d
+m-]
+root        982  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-cil/dm-5]
+root        983  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-log/dm-4]
+root        984  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-log/sda1]
+root        985  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-eofblocks
+/d]
+root        986  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-reclaim/d
+m-]
+root        987  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-eofblocks
+/d]
+root        988  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-eofblocks
+/s]
+root        989  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-log/dm-5]
+root        990  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-eofblocks
+/d]
+root        991  0.0  0.0      0     0 ?        S    Apr03   2:35 [xfsaild/dm-4]
+root        993  0.0  0.0      0     0 ?        S    Apr03   0:00 [xfsaild/sda1]
+root        994  0.0  0.0      0     0 ?        S    Apr03   0:23 [xfsaild/dm-5]
+root        995  0.0  0.0      0     0 ?        S    Apr03   2:12 [xfsaild/dm-7]
+root        996  0.0  0.0      0     0 ?        S<   Apr03   0:01 [kworker/4:1H]
+root       1001  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-buf/dm-1]
+root       1002  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-data/dm-1
+]
+root       1003  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-conv/dm-1
+]
+root       1004  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-cil/dm-1]
+root       1005  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-reclaim/d
+m-]
+root       1006  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-log/dm-1]
+root       1007  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-eofblocks
+/d]
+root       1009  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-buf/dm-3]
+root       1010  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-data/dm-3
+]
+root       1011  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-conv/dm-3
+]
+root       1012  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-cil/dm-3]
+root       1013  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-reclaim/d
+m-]
+root       1014  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-log/dm-3]
+root       1015  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-eofblocks
+/d]
+root       1016  0.0  0.0      0     0 ?        S    Apr03   0:00 [xfsaild/dm-1]
+root       1017  0.0  0.0      0     0 ?        S    Apr03   2:20 [xfsaild/dm-3]
+root       1030  0.0  0.0      0     0 ?        S<   Apr03   0:01 [kworker/5:1H]
+root       1034  0.0  0.0      0     0 ?        S<   Apr03   0:03 [kworker/2:1H]
+root       1038  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-buf/dm-2]
+root       1039  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-data/dm-2
+]
+root       1040  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-conv/dm-2
+]
+root       1041  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-cil/dm-2]
+root       1042  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-reclaim/d
+m-]
+root       1043  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-log/dm-2]
+root       1044  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xfs-eofblocks
+/d]
+root       1045  0.0  0.0      0     0 ?        S    Apr03   2:05 [xfsaild/dm-2]
+root       1073  0.0  0.0      0     0 ?        S<   Apr03   0:00 [rpciod]
+root       1074  0.0  0.0      0     0 ?        S<   Apr03   0:00 [xprtiod]
+root       1075  0.0  0.0  55532   704 ?        S<sl Apr03   0:52 /sbin/auditd
+root       1078  0.0  0.0  84556   792 ?        S<sl Apr03   0:45 /sbin/audispd
+root       1080  0.0  0.0  56152  1488 ?        S<   Apr03   0:34 /usr/sbin/sedi
+spatch
+polkitd    1113  0.0  0.2 620428 13600 ?        Ssl  Apr03   2:18 /usr/lib/polki
+t-1/polkitd --no-debug
+root       1114  0.0  0.0 452100  3304 ?        Ssl  Apr03   0:06 /usr/libexec/u
+disks2/udisksd
+rtkit      1116  0.0  0.0 198784  1452 ?        SNsl Apr03   0:10 /usr/libexec/r
+tkit-daemon
+root       1117  0.0  0.0 397284  3980 ?        Ssl  Apr03   0:40 /usr/libexec/a
+ccounts-daemon
+avahi      1118  0.0  0.0  62144  1552 ?        Ss   Apr03   0:02 avahi-daemon:
+running [tpaclinux1v.local]
+libstor+   1119  0.0  0.0   8580   668 ?        Ss   Apr03   0:02 /usr/bin/lsmd
+-d
+root       1121  0.0  0.0 430620  2296 ?        Ssl  Apr03   0:01 /usr/sbin/Mode
+mManager
+root       1125  0.0  0.0 168156  1436 ?        Ss   Apr03   0:00 /usr/bin/VGAut
+hService -s
+root       1126  0.1  0.0 297448  3536 ?        Ssl  Apr03  19:31 /usr/bin/vmtoo
+lsd
+dbus       1129  0.0  0.0  71156  4040 ?        Ssl  Apr03   0:44 /usr/bin/dbus-
+daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+chrony     1144  0.0  0.0 120568  1476 ?        S    Apr03   0:02 /usr/sbin/chro
+nyd
+avahi      1146  0.0  0.0  62144    40 ?        S    Apr03   0:00 avahi-daemon:
+chroot helper
+root       1246  0.0  0.0  27212  2468 ?        Ss   Apr03   0:22 /usr/lib/syste
+md/systemd-logind
+root       1247  0.0  0.0  21688  1012 ?        Ss   Apr03   0:58 /usr/sbin/irqb
+alance --foreground
+root       1249  0.0  0.0  52880  1380 ?        Ss   Apr03   0:00 /usr/sbin/smar
+td -n -q never
+root       1251  0.0  0.0 228512  2712 ?        Ss   Apr03   0:01 /usr/sbin/abrt
+d -d -s
+root       1253  0.0  0.0 225908  1460 ?        Ss   Apr03   0:20 /usr/bin/abrt-
+watch-log -F BUG: WARNING: at WARNING: CPU: INFO: possible recursive locking det
+ected ernel BUG at list_del corruption list_add corruption do_IRQ: stack overflo
+w: ear stack overflow (cur: eneral protection fault nable to handle kernel ouble
+ fault: RTNL: assertion failed eek! page_mapcount(page) went negative! adness at
+ NETDEV WATCHDOG ysctl table check failed : nobody cared IRQ handler type mismat
+ch Kernel panic - not syncing: Machine Check Exception: Machine check events log
+ged divide error: bounds: coprocessor segment overrun: invalid TSS: segment not
+present: invalid opcode: alignment check: stack segment: fpu exception: simd exc
+eption: iret exception: /var/log/messages -- /usr/bin/abrt-dump-oops -xtD
+root       1260  0.0  0.0 225908  1424 ?        Ss   Apr03   0:00 /usr/bin/abrt-
+watch-log -F Backtrace /var/log/Xorg.0.log -- /usr/bin/abrt-dump-xorg -xD
+root       1261  0.0  0.0  90672   892 ?        Ss   Apr03   0:50 /sbin/rngd -f
+root       1273  0.0  0.0   6612   124 ?        Ss   Apr03   0:00 /usr/sbin/mcel
+og --ignorenodev --daemon --syslog
+root       1276  0.0  0.0 115932  1332 ?        S    Apr03   0:35 /bin/bash /usr
+/sbin/ksmtuned
+root       1279  0.0  0.4 362924 28004 ?        Ssl  Apr03   0:05 /usr/bin/pytho
+n2 -Es /usr/sbin/firewalld --nofork --nopid
+rpc        1280  0.0  0.0  69256   460 ?        Ss   Apr03   0:01 /sbin/rpcbind
+-w
+root       1281  0.0  0.0 201432   600 ?        Ssl  Apr03   0:01 /usr/sbin/gssp
+roxy -D
+root       2093  0.0  0.0 563716  3484 ?        Ssl  Apr03   0:14 /usr/sbin/Netw
+orkManager --no-daemon
+root       2318  0.2  0.3 967080 18356 ?        Ssl  Apr03  44:37 /usr/bin/pytho
+n2.7 /usr/bin/goferd --foreground
+root       2325  0.0  0.0 586440  3812 ?        Ssl  Apr03   1:25 /usr/bin/pytho
+n2 -Es /usr/sbin/tuned -l -P
+root       2326  0.0  0.0 113004  2024 ?        Ss   Apr03   0:01 /usr/sbin/sshd
+ -D
+root       2327  0.0  0.0 198060  2472 ?        Ss   Apr03   0:01 /usr/sbin/cups
+d -f
+root       2331  0.0  0.0  27168   792 ?        Ss   Apr03   0:00 /usr/sbin/xine
+td -stayalive -pidfile /var/run/xinetd.pid
+root       2332  0.0  0.0 228808  5172 ?        Ss   Apr03  10:19 /usr/sbin/snmp
+d -LS0-6d -f
+root       2337  0.0  0.1 360444  7564 ?        Ssl  Apr03   1:32 /usr/sbin/rsys
+logd -n
+root       2338  0.0  0.0 115812   572 ?        Ss   Apr03   0:00 /usr/bin/rhsmc
+ertd
+root       2359  0.0  0.0 481424  2544 ?        Ssl  Apr03   0:00 /usr/sbin/gdm
+root       2361  0.0  0.0 126424  1428 ?        Ss   Apr03   0:16 /usr/sbin/cron
+d -n
+root       2363  0.0  0.0  25908   716 ?        Ss   Apr03   0:00 /usr/sbin/atd
+-f
+root       2427  0.0  0.0 329832  4372 tty1     Ssl+ Apr03   0:18 /usr/bin/X :0
+-background none -noreset -audit 4 -verbose -auth /run/gdm/auth-for-gdm-bSESXu/d
+atabase -seat seat0 vt1
+ggrinber   2639  0.0  0.4 252896 26356 ?        Sl   Apr03   0:04 /usr/bin/Xvnc
+:1 -auth /home/faculty/ggrinber/.Xauthority -desktop tpaclinux1v.montgomerycolle
+ge.edu:1 (ggrinber) -fp catalogue:/etc/X11/fontpath.d -geometry 1280x1024 -pn -r
+fbauth /home/faculty/ggrinber/.vnc/passwd -rfbport 5901 -rfbwait 30000
+root       2641  0.0  0.0  91888  1024 ?        Ss   Apr03   0:13 /usr/libexec/p
+ostfix/master -w
+postfix    2652  0.0  0.0  92172  1468 ?        S    Apr03   0:04 qmgr -l -t uni
+x -u
+root       2682  0.0  0.0 184564  1420 ?        S    Apr03   0:00 /usr/sbin/CRON
+D -n
+root       2683  0.0  0.0 287020  2452 ?        Ssl  Apr03   0:35 /opt/simpana/B
+ase/cvlaunchd
+root       2692  0.0  0.2 1820996 17760 ?       Ssl  Apr03   2:33 /opt/simpana/B
+ase/cvd
+root       2693  0.0  0.0 828612  3648 ?        Ssl  Apr03   5:01 /opt/simpana/B
+ase/EvMgrC
+root       2695  0.0  0.0      0     0 ?        Zs   Apr03   0:00 [sh] <defunct>
+root       2698  0.0  0.0  46216   860 ?        S    Apr03   0:00 nc -k -l local
+host 15213
+root       2699  0.0  0.0  46216   868 ?        S    Apr03   0:00 nc -k -l local
+host 15214
+root       2707  0.0  0.0  16644  1064 ?        Ss   Apr03   1:08 /opt/simpana/B
+ase/cvfwd
+root       2729  0.0  0.0 363128  2936 ?        Sl   Apr03   0:00 gdm-session-wo
+rker [pam/gdm-launch-environment]
+gdm        2733  0.0  0.0 671440  5740 ?        Ssl  Apr03   0:04 /usr/libexec/g
+nome-session-binary --autostart /usr/share/gdm/greeter/autostart
+gdm        2749  0.0  0.0  59016   332 ?        S    Apr03   0:00 dbus-launch --
+exit-with-session /usr/libexec/gnome-session-binary --autostart /usr/share/gdm/g
+reeter/autostart
+gdm        2819  0.0  0.0  68688  1120 ?        Ssl  Apr03   0:00 /usr/bin/dbus-
+daemon --fork --print-pid 5 --print-address 7 --session
+gdm        2829  0.0  0.0 346824  2028 ?        Sl   Apr03   0:00 /usr/libexec/a
+t-spi-bus-launcher
+gdm        2836  0.0  0.0  68396  1636 ?        Sl   Apr03   0:00 /usr/bin/dbus-
+daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --p
+rint-address 3
+gdm        2840  0.0  0.0 233104  2176 ?        Sl   Apr03   0:00 /usr/libexec/a
+t-spi2-registryd --use-gnome-session
+ggrinber   2902  0.0  0.0 884576  5880 ?        Sl   Apr03   0:03 /usr/libexec/g
+nome-session-binary --session=gnome-classic
+gdm        2912  0.0  1.6 3692564 103276 ?      Sl   Apr03  11:48 /usr/bin/gnome
+-shell
+ggrinber   2923  0.0  0.0  59016   336 ?        S    Apr03   0:00 dbus-launch --
+sh-syntax --exit-with-session
+ggrinber   2938  0.0  0.0  69344  2336 ?        Ssl  Apr03   0:00 /usr/bin/dbus-
+daemon --fork --print-pid 5 --print-address 7 --session
+ggrinber   3178  0.0  0.0 389880  2340 ?        Sl   Apr03   0:00 /usr/libexec/i
+msettings-daemon
+ggrinber   3184  0.0  0.0 388764  2200 ?        Sl   Apr03   0:00 /usr/libexec/g
+vfsd
+ggrinber   3189  0.0  0.0 417828  1808 ?        Sl   Apr03   0:00 /usr/libexec/g
+vfsd-fuse /run/user/1346/gvfs -f -o big_writes
+root       3236  0.0  0.0 422180  4436 ?        Ssl  Apr03   0:02 /usr/libexec/u
+powerd
+ggrinber   3253  0.0  0.0  72572    48 ?        Ss   Apr03   0:03 /usr/bin/ssh-a
+gent /etc/X11/xinit/Xclients
+ggrinber   3271  0.0  0.0 346804  2016 ?        Sl   Apr03   0:00 /usr/libexec/a
+t-spi-bus-launcher
+ggrinber   3276  0.0  0.0  68396  1764 ?        Sl   Apr03   0:00 /usr/bin/dbus-
+daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --p
+rint-address 3
+ggrinber   3279  0.0  0.0 233204  2192 ?        Sl   Apr03   0:00 /usr/libexec/a
+t-spi2-registryd --use-gnome-session
+ggrinber   3306  0.0  0.0 317404  2084 ?        Sl   Apr03   0:00 /usr/bin/gnome
+-keyring-daemon --start --components=ssh
+ggrinber   3316  0.0  3.6 3963096 223804 ?      Sl   Apr03   8:24 /usr/bin/gnome
+-shell
+gdm        3335  0.0  0.0 1171520 1348 ?        Sl   Apr03   0:00 /usr/bin/pulse
+audio --start --log-target=syslog
+ggrinber   3336  0.0  0.0 1204960 1752 ?        Sl   Apr03   0:03 /usr/bin/pulse
+audio --start --log-target=syslog
+gdm        3540  0.0  0.0 453108  3280 ?        Sl   Apr03   0:16 ibus-daemon --
+xim --panel disable
+gdm        3549  0.0  0.0 375976  2012 ?        Sl   Apr03   0:00 /usr/libexec/i
+bus-dconf
+gdm        3552  0.0  0.0 464832  5720 ?        Sl   Apr03   0:00 /usr/libexec/i
+bus-x11 --kill-daemon
+gdm        3556  0.0  0.0 375968  1952 ?        Sl   Apr03   0:00 /usr/libexec/i
+bus-portal
+ggrinber   3690  0.0  0.0 453140  3416 ?        Sl   Apr03   0:15 ibus-daemon --
+xim --panel disable
+ggrinber   3702  0.0  0.0 375968  2060 ?        Sl   Apr03   0:00 /usr/libexec/i
+bus-dconf
+ggrinber   3706  0.0  0.0 464816  5688 ?        Sl   Apr03   0:00 /usr/libexec/i
+bus-x11 --kill-daemon
+ggrinber   3710  0.0  0.0 375968  1948 ?        Sl   Apr03   0:00 /usr/libexec/i
+bus-portal
+gdm        3720  0.0  0.0 364708  1552 ?        Sl   Apr03   0:00 /usr/libexec/x
+dg-permission-store
+ggrinber   3739  0.0  0.0 364712  1548 ?        Sl   Apr03   0:00 /usr/libexec/x
+dg-permission-store
+ggrinber   3743  0.0  0.1 1219412 10056 ?       Sl   Apr03   0:00 /usr/libexec/g
+nome-shell-calendar-server
+root       3769  0.0  0.0 398680  2820 ?        Ssl  Apr03   0:02 /usr/libexec/b
+oltd
+geoclue    3771  0.0  0.1 458528 10712 ?        Ssl  Apr03   0:04 /usr/libexec/g
+eoclue -t 5
+ggrinber   3810  0.0  0.1 1822404 9812 ?        Sl   Apr03   0:00 /usr/libexec/e
+volution-source-registry
+root       3816  0.0  0.0  78660  1284 ?        Ss   Apr03   0:03 /usr/sbin/wpa_
+supplicant -u -f /var/log/wpa_supplicant.log -c /etc/wpa_supplicant/wpa_supplica
+nt.conf -P /var/run/wpa_supplicant.pid
+root       3821  0.0  0.2 419968 13860 ?        Ssl  Apr03   0:12 /usr/libexec/p
+ackagekitd
+gdm        3834  0.0  0.1 615256  6432 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-xsettings
+gdm        3835  0.0  0.0 376496  1992 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-a11y-settings
+gdm        3837  0.0  0.1 464448  6140 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-clipboard
+gdm        3838  0.0  0.1 716608  8408 ?        Sl   Apr03   9:45 /usr/libexec/g
+sd-color
+gdm        3839  0.0  0.0 465492  2124 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-datetime
+gdm        3842  0.0  0.0 380720  1616 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-housekeeping
+ggrinber   3845  0.0  0.0 485712  2812 ?        Sl   Apr03   0:02 /usr/libexec/m
+ission-control-5
+gdm        3850  0.0  0.1 614264  7908 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-keyboard
+gdm        3859  0.0  0.1 1012080 8988 ?        Sl   Apr03   0:01 /usr/libexec/g
+sd-media-keys
+gdm        3860  0.0  0.0 300452  1760 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-mouse
+ggrinber   3862  0.0  0.0 415912  3724 ?        Sl   Apr03   0:05 /usr/libexec/g
+vfs-udisks2-volume-monitor
+gdm        3868  0.0  0.1 631772  6488 ?        Sl   Apr03   0:02 /usr/libexec/g
+sd-power
+gdm        3877  0.0  0.0 363180  2032 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-print-notifications
+ggrinber   3882  0.0  0.1 902840  8972 ?        Sl   Apr03   0:00 /usr/libexec/g
+oa-daemon
+gdm        3883  0.0  0.0 317680  1872 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-rfkill
+gdm        3890  0.0  0.0 374188  1788 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-screensaver-proxy
+gdm        3899  0.0  0.0 411604  2012 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-sharing
+ggrinber   3903  0.0  0.0 478516  1908 ?        Sl   Apr03   0:00 /usr/libexec/g
+vfs-afc-volume-monitor
+gdm        3906  0.0  0.0 555808  2116 ?        Sl   Apr03   4:41 /usr/libexec/g
+sd-smartcard
+ggrinber   3918  0.0  0.0 371560  1736 ?        Sl   Apr03   0:00 /usr/libexec/g
+vfs-goa-volume-monitor
+gdm        3920  0.0  0.0 454996  2416 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-sound
+gdm        3926  0.0  0.1 549256  6752 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-wacom
+colord     3948  0.0  0.0 419496  4192 ?        Ssl  Apr03   0:00 /usr/libexec/c
+olord
+root       3962  0.0  0.0 410232  1404 ?        Ssl  Apr03   8:56 /usr/sbin/pcsc
+d --foreground --auto-exit
+ggrinber   4009  0.0  0.0 527700  4088 ?        Sl   Apr03   0:39 /usr/libexec/g
+oa-identity-service
+gdm        4015  0.0  0.0 302172  2476 ?        Sl   Apr03   0:00 /usr/libexec/i
+bus-engine-simple
+ggrinber   4077  0.0  0.0 391572  2620 ?        Sl   Apr03   0:00 /usr/libexec/g
+vfs-mtp-volume-monitor
+ggrinber   4084  0.0  0.0 400664  4768 ?        Sl   Apr03   0:00 /usr/libexec/g
+vfs-gphoto2-volume-monitor
+ggrinber   4091  0.0  0.1 631664 10540 ?        Sl   Apr03   0:02 /usr/libexec/g
+sd-power
+ggrinber   4092  0.0  0.0 439172  3836 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-print-notifications
+ggrinber   4095  0.0  0.0 538876  4820 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-rfkill
+ggrinber   4097  0.0  0.0 374188  4376 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-screensaver-proxy
+ggrinber   4099  0.0  0.0 559204  3328 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-sharing
+ggrinber   4107  0.0  0.0 455000  3368 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-sound
+ggrinber   4108  0.0  0.1 615236  8584 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-xsettings
+ggrinber   4109  0.0  0.1 549264 10244 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-wacom
+ggrinber   4115  0.0  0.0 555812  2976 ?        Sl   Apr03   4:31 /usr/libexec/g
+sd-smartcard
+ggrinber   4118  0.0  0.0 456828  2552 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-account
+ggrinber   4132  0.0  0.0 376500  2548 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-a11y-settings
+ggrinber   4134  0.0  0.1 464428  7864 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-clipboard
+ggrinber   4137  0.0  0.1 634528 10620 ?        Sl   Apr03   9:30 /usr/libexec/g
+sd-color
+ggrinber   4139  0.0  0.0 541544  4400 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-datetime
+ggrinber   4141  0.0  0.0 463492  3224 ?        Sl   Apr03   1:16 /usr/libexec/g
+sd-housekeeping
+ggrinber   4143  0.0  0.1 614252  7924 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-keyboard
+ggrinber   4147  0.0  0.1 1012008 10664 ?       Sl   Apr03   0:01 /usr/libexec/g
+sd-media-keys
+ggrinber   4151  0.0  0.0 376504  2500 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-mouse
+ggrinber   4175  0.0  0.0 608612  4168 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-printer
+ggrinber   4188  0.0  0.0 187400  2256 ?        Sl   Apr03   0:00 /usr/libexec/d
+conf-service
+ggrinber   4203  0.0  0.2 958344 17276 ?        Sl   Apr03   0:00 nautilus-deskt
+op --force
+ggrinber   4220  0.0  0.0 464776  3292 ?        Sl   Apr03   0:00 /usr/libexec/g
+vfsd-trash --spawner :1.4 /org/gtk/gvfs/exec_spaw/0
+ggrinber   4240  0.0  0.1 649364  8480 ?        SNl  Apr03   0:00 /usr/libexec/t
+racker-miner-fs
+ggrinber   4244  0.0  3.0 1369960 187468 ?      Sl   Apr03   0:37 /usr/bin/gnome
+-software --gapplication-service
+ggrinber   4247  0.0  0.1 530124  8988 ?        Sl   Apr03   0:00 abrt-applet
+ggrinber   4251  0.0  0.0 632556  6072 ?        SNl  Apr03   0:00 /usr/libexec/t
+racker-miner-apps
+ggrinber   4256  0.0  0.1 562072  7444 ?        SNl  Apr03   0:00 /usr/libexec/t
+racker-miner-user-guides
+ggrinber   4276  0.0  0.1 525400 11468 ?        Sl   Apr03   0:00 /usr/libexec/t
+racker-store
+ggrinber   4279  0.0  0.0 457856  5308 ?        Sl   Apr03   0:00 /usr/bin/seapp
+let
+ggrinber   4285  0.0  0.1 468556  7748 ?        Sl   Apr03   0:00 rhsm-icon
+ggrinber   4292  0.0  0.1 734644  7752 ?        SNl  Apr03   0:00 /usr/libexec/t
+racker-extract
+ggrinber   4396  0.0  0.2 1410592 16292 ?       Sl   Apr03   0:01 /usr/libexec/e
+volution/evolution-alarm-notify
+ggrinber   4432  0.1  0.2 538864 12580 ?        Sl   Apr03  24:27 /usr/bin/vmtoo
+lsd -n vmusr
+ggrinber   4446  0.0  0.0 181892  2616 ?        S    Apr03   0:01 /usr/libexec/g
+confd-2
+ggrinber   4457  0.0  0.0 273068  2692 ?        Sl   Apr03   0:00 /usr/libexec/g
+sd-disk-utility-notify
+ggrinber   4803  0.0  0.0 151920  1652 ?        Sl   Apr03   4:30 ./escd --key_I
+nserted="/usr/bin/esc" --on_Signal="/usr/bin/esc"
+ggrinber   4959  0.0  0.2 1359280 12624 ?       Sl   Apr03   0:00 /usr/libexec/e
+volution-calendar-factory
+ggrinber   4966  0.0  0.0 302304  2596 ?        Sl   Apr03   0:00 /usr/libexec/i
+bus-engine-simple
+ggrinber   5029  0.0  0.0 462364  4712 ?        Sl   Apr03   0:00 /usr/libexec/g
+vfsd-burn --spawner :1.4 /org/gtk/gvfs/exec_spaw/1
+ggrinber   5049  0.0  0.2 1769764 16600 ?       Sl   Apr03   0:00 /usr/libexec/e
+volution-calendar-factory-subprocess --factory all --bus-name org.gnome.evolutio
+n.dataserver.Subprocess.Backend.Calendarx4959x2 --own-path /org/gnome/evolution/
+dataserver/Subprocess/Backend/Calendar/4959/2
+ggrinber   5051  0.0  0.0 317864  2608 ?        Sl   Apr03   0:00 /usr/libexec/g
+vfsd-metadata
+ggrinber   5065  0.0  0.2 1344696 14400 ?       Sl   Apr03   0:00 /usr/libexec/e
+volution-addressbook-factory
+ggrinber   5097  0.0  0.2 1620188 16500 ?       Sl   Apr03   0:00 /usr/libexec/e
+volution-addressbook-factory-subprocess --factory all --bus-name org.gnome.evolu
+tion.dataserver.Subprocess.Backend.AddressBookx5065x2 --own-path /org/gnome/evol
+ution/dataserver/Subprocess/Backend/AddressBook/5065/2
+root       5127  0.0  0.0 586348  4864 ?        Ssl  Apr03   0:25 /usr/libexec/f
+wupd/fwupd
+root      14386  0.0  0.2 226456 13724 ?        S    Apr13   0:00 /opt/ds_agent/
+ds_agent -w /var/opt/ds_agent -b -i -e /opt/ds_agent/ext
+root      14497  0.7  4.5 1943556 277760 ?      Sl   Apr13  13:27 /opt/ds_agent/
+ds_agent -w /var/opt/ds_agent -b -i -e /opt/ds_agent/ext
+root      14765  0.0  0.2 725312 13792 ?        Sl   Apr13   0:03 /opt/ds_agent/
+netagent/tm_netagent --metrics-file /var/opt/ds_agent/netagent/metrics.json --lo
+g-folder /var/opt/ds_agent/netagent/logs --ptn-folder /opt/ds_agent/netagent/pat
+tern --km-policy eyJ1cmkiOiIiLCJwYXRoIjoiIiwiYXBpUGF0aCI6IiIsIm1vZGUiOjF9 --log-
+console=false --log-level 1
+root      14774  0.0  0.2 728420 14244 ?        Sl   Apr13   0:24 /opt/ds_agent/
+netagent/tm_netagent --metrics-file /var/opt/ds_agent/netagent/metrics.json --lo
+g-folder /var/opt/ds_agent/netagent/logs --ptn-folder /opt/ds_agent/netagent/pat
+tern --km-policy eyJ1cmkiOiIiLCJwYXRoIjoiIiwiYXBpUGF0aCI6IiIsIm1vZGUiOjF9 --log-
+console=false --log-level 1
+root      14876  0.0  0.0 151708  1588 ?        S    Apr13   0:00 /opt/ds_agent/
+ds_am -g ../diag -v 5 -d /var/opt/ds_agent/am -P 1 -R
+root      14891  0.3  3.0 3811280 183168 ?      Sl   Apr13   7:00 /opt/ds_agent/
+ds_am -g ../diag -v 5 -d /var/opt/ds_agent/am -P 1 -R
+root      31945  0.0  0.0  20200  2252 ?        S    Apr14   0:00 nessusd -q
+root      31946  0.8  3.0 906284 187752 ?       Sl   Apr14   6:06 /opt/nessus_ag
+ent/sbin/nessus-agent-module -q
+root      35197  0.0  0.0      0     0 ?        S    Apr14   0:07 [kworker/0:2]
+sfouche   41821  0.0  0.0 132936  3676 ?        S    Apr03   2:47 bomblab.pl
+sfouche   41829  0.0  0.0 137540  4200 ?        S    Apr03   0:00 bomblab-reques
+td.pl
+sfouche   41833  0.0  0.0 137284  4012 ?        S    Apr03   0:00 bomblab-result
+d.pl
+sfouche   41837  0.0  0.0 130748  3456 ?        S    Apr03   0:12 bomblab-report
+d.pl
+root      56136  0.0  0.0      0     0 ?        S    Apr14   0:00 [kworker/4:1]
+root      56235  0.0  0.0      0     0 ?        S    Apr14   0:01 [kworker/5:0]
+root      71446  0.0  0.0      0     0 ?        S    Apr14   0:00 [kworker/0:1]
+root      72252  0.0  0.0      0     0 ?        S    Apr14   0:01 [kworker/0:0]
+root      97430  0.0  0.0      0     0 ?        S    00:00   0:00 [kworker/2:1]
+root     109875  0.0  0.0      0     0 ?        S    01:30   0:00 [kworker/2:2]
+root     119854  0.0  0.0 161136  5704 ?        Ss   02:38   0:00 sshd: cmsc2501
+09 [priv]
+cmsc250+ 119897  0.0  0.0 161136  2552 ?        S    02:38   0:00 sshd: cmsc2501
+09@pts/0
+cmsc250+ 119904  0.0  0.0 116984  3516 pts/0    Ss   02:38   0:00 -bash
+root     122186  0.0  0.0      0     0 ?        S    02:56   0:00 [kworker/1:4]
+root     123517  0.0  0.0      0     0 ?        S    03:07   0:00 [kworker/1:3]
+root     124090  0.0  0.0      0     0 ?        S    03:10   0:00 [kworker/5:1]
+root     124760  0.0  0.0      0     0 ?        S    03:15   0:00 [kworker/3:0]
+root     125028  0.0  0.0      0     0 ?        S    03:17   0:00 [kworker/1:1]
+root     125427  0.0  0.0      0     0 ?        S    03:20   0:00 [kworker/u256:
+2]
+root     126390  0.0  0.0      0     0 ?        S    03:28   0:00 [kworker/1:5]
+root     127003  0.0  0.0      0     0 ?        S    03:33   0:00 [kworker/1:6]
+root     127618  0.0  0.0      0     0 ?        S    03:38   0:00 [kworker/1:0]
+root     127678  0.0  0.0      0     0 ?        S    03:38   0:00 [kworker/u256:
+1]
+postfix  127796  0.0  0.0  91992  4112 ?        S    03:39   0:00 pickup -l -t u
+nix -u
+root     127813  0.0  0.0      0     0 ?        S    03:40   0:00 [kworker/4:0]
+root     128240  0.0  0.0      0     0 ?        S    03:43   0:00 [kworker/1:2]
+root     128378  0.0  0.0 108056   360 ?        S    03:44   0:00 sleep 60
+cmsc250+ 128445  0.0  0.0 155452  1876 pts/0    R+   03:45   0:00 ps -A u
+cmsc250+ 128446  0.0  0.0 110320   984 pts/0    S+   03:45   0:00 more
+root     128695  0.0  0.0  21080   556 ?        S    Apr05   0:00 /opt/nessus_ag
+ent/sbin/nessus-service -q -D
+root     130531  0.0  0.0      0     0 ?        S    Apr14   0:01 [kworker/3:2]
+[cmsc250109@tpaclinux1v ~]$    ps
+   PID TTY          TIME CMD
+119904 pts/0    00:00:00 bash
+128738 pts/0    00:00:00 ps
+[cmsc250109@tpaclinux1v ~]$ kill <proessc id>
+-bash: syntax error near unexpected token `newline'
+[cmsc250109@tpaclinux1v ~]$ kill%top
+bash: kill%top: command not found...
+[cmsc250109@tpaclinux1v ~]$ ps 1
+   PID TTY      STAT   TIME COMMAND
+     1 ?        Ss     1:18 /usr/lib/systemd/systemd --switched-root --system --
+[cmsc250109@tpaclinux1v ~]$ vi document1
+[cmsc250109@tpaclinux1v ~]$ ispell document1
+bash: ispell: command not found...
+[cmsc250109@tpaclinux1v ~]$ cat document1
+ This is a doucment that describes our newest
+ and fastest machinerry.Take the tomes to lern
+how to use each piece of equiment.
+`
+[cmsc250109@tpaclinux1v ~]$ vi file1
+[cmsc250109@tpaclinux1v ~]$ i file2
+bash: i: command not found...
+[cmsc250109@tpaclinux1v ~]$ vi file2
+[cmsc250109@tpaclinux1v ~]$ vi phmenu.1.
+[cmsc250109@tpaclinux1v ~]$ groff -Tascii -man phmenu.1. | more
+ .TH PHMENU 1 "November 2008" "phmenu Version 1.01" phmenu - Menu
+for Dominion Employee Telephone Listings
+ phmenu
+ Menu for maintaining employees' phones and job titles.
+ Record includes phone number, name, dept, and date-hired.
+ -v View Phone List Display unformatted phone record
+s.
+ -p Print Phone List Corporate Phones report sorted
+ by  Employee
+Name.
+ -a Add Phone to List Add new phone record.
+ -s  Search for Employee Phones Enter Name to
+ search and retrieve
+phone record.
+ -d Delete Phone Remove phone record.  /home/source/corp_ph
+ones
+[cmsc250109@tpaclinux1v ~]$ man ./phemnu.1.
+man: ./phemnu.1.: No such file or directory
+No manual entry for ./phemnu.1.
+[cmsc250109@tpaclinux1v ~]$ man ./phemnu.1
+man: ./phemnu.1: No such file or directory
+No manual entry for ./phemnu.1
+[cmsc250109@tpaclinux1v ~]$ su
+Password:
+su: Permission denied
+[cmsc250109@tpaclinux1v ~]$ su
+Password:
+su: Permission denied
+[cmsc250109@tpaclinux1v ~]$ cp phemun.1 /usr/share/man/man1
+cp: cannot stat ‘phemun.1’: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ su
+Password:
+su: Permission denied
+socket
+[cmsc250109@tpaclinux1v ~]$ mail
+No mail for cmsc250109
+[cmsc250109@tpaclinux1v ~]$ mail mplamer
+Cc: Reminder
+Subject: Your report is due tommorrow by noon .
+Don't forget to spell check it before you send it in.
+[cmsc250109@tpaclinux1v ~]$ mail
+"/var/spool/mail/cmsc250109": 1 message 1 new
+>N   1 Mail Delivery Syst Mon Apr 15 05:22  74/2858  Undelivered Mail Returned
+?
+Return-Path: <>
+X-Original-To: cmsc250109@tpaclinux1v.montgomerycollege.edu
+Delivered-To: cmsc250109@tpaclinux1v.montgomerycollege.edu
+Received: by tpaclinux1v.montgomerycollege.edu (Postfix)
+        id 9095B1BE6; Mon, 15 Apr 2024 05:22:24 -0400 (EDT)
+Date: Mon, 15 Apr 2024 05:22:24 -0400 (EDT)
+From: MAILER-DAEMON@tpaclinux1v.montgomerycollege.edu (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: cmsc250109@tpaclinux1v.montgomerycollege.edu
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+        boundary="7BCE310E6.1713172944/tpaclinux1v.montgomerycollege.edu"
+Message-Id: <20240415092224.9095B1BE6@tpaclinux1v.montgomerycollege.edu>
+
+This is a MIME-encapsulated message.
+
+--7BCE310E6.1713172944/tpaclinux1v.montgomerycollege.edu
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host tpaclinux1v.montgomerycollege.edu.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<mplamer@tpaclinux1v.montgomerycollege.edu>: unknown user: "mplamer"
+
+<Reminder@tpaclinux1v.montgomerycollege.edu>: unknown user: "reminder"
+
+--7BCE310E6.1713172944/tpaclinux1v.montgomerycollege.edu
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; tpaclinux1v.montgomerycollege.edu
+X-Postfix-Queue-ID: 7BCE310E6
+X-Postfix-Sender: rfc822; cmsc250109@tpaclinux1v.montgomerycollege.edu
+Arrival-Date: Mon, 15 Apr 2024 05:22:24 -0400 (EDT)
+
+Final-Recipient: rfc822; mplamer@tpaclinux1v.montgomerycollege.edu
+Action: failed
+Status: 5.1.1
+Diagnostic-Code: X-Postfix; unknown user: "mplamer"
+
+Final-Recipient: rfc822; Reminder@tpaclinux1v.montgomerycollege.edu
+Action: failed
+Status: 5.1.1
+Diagnostic-Code: X-Postfix; unknown user: "reminder"
+
+--7BCE310E6.1713172944/tpaclinux1v.montgomerycollege.edu
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+
+Return-Path: <cmsc250109@tpaclinux1v.montgomerycollege.edu>
+Received: by tpaclinux1v.montgomerycollege.edu (Postfix, from userid 1154)
+        id 7BCE310E6; Mon, 15 Apr 2024 05:22:24 -0400 (EDT)
+To: <mplamer@tpaclinux1v.montgomerycollege.edu>
+Cc: <Reminder@tpaclinux1v.montgomerycollege.edu>
+Subject: Your report is due tommorrow by noon .
+X-Mailer: mail (GNU Mailutils 3.6)
+Message-Id: <20240415092224.7BCE310E6@tpaclinux1v.montgomerycollege.edu>
+Date: Mon, 15 Apr 2024 05:22:24 -0400 (EDT)
+From: cmsc250109@tpaclinux1v.montgomerycollege.edu (cmsc250109)
+
+Don't forget to spell check it before you send it in.
+
+--7BCE310E6.1713172944/tpaclinux1v.montgomerycollege.edu--
+?
+No applicable message
+? &
+Unknown command: &
+? d
+? h
+? q
+Held 0 messages in /var/spool/mail/cmsc250109
+            [-s packetsize] [-S sndbuf] [-t ttl] [-T timestamp_option]
+            [-w deadline] [-W timeout] [hop1 ...] destination
+Usage: ping -6 [-aAbBdDfhLnOqrRUvV] [-c count] [-i interval] [-I interface]
+             [-l preload] [-m mark] [-M pmtudisc_option]
+             [-N nodeinfo_option] [-p pattern] [-Q tclass] [-s packetsize]
+             [-S sndbuf] [-t ttl] [-T timestamp_option] [-w deadline]
+             [-W timeout] destination
+[cmsc250109@tpaclinux1v ~]$ ping -c 5 198.168.0.210
+PING 198.168.0.210 (198.168.0.210) 56(84) bytes of data.
+clear
+
+--- 198.168.0.210 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 3999ms
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ netstat -n
+unix  3      [ ]         STREAM     CONNECTED     32608    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40863
+unix  3      [ ]         STREAM     CONNECTED     34355    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     31512
+unix  3      [ ]         STREAM     CONNECTED     31499
+unix  3      [ ]         STREAM     CONNECTED     31484
+unix  3      [ ]         STREAM     CONNECTED     41855    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     39666
+unix  3      [ ]         STREAM     CONNECTED     45918
+unix  3      [ ]         STREAM     CONNECTED     39476
+unix  3      [ ]         STREAM     CONNECTED     42545
+unix  3      [ ]         STREAM     CONNECTED     40635    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     20252    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     41303    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     37023
+unix  2      [ ]         DGRAM                    48284
+unix  3      [ ]         STREAM     CONNECTED     48254
+unix  3      [ ]         STREAM     CONNECTED     38908    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     35735    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     34327    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     21236
+unix  3      [ ]         STREAM     CONNECTED     15650485
+unix  3      [ ]         STREAM     CONNECTED     43416    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41788
+unix  3      [ ]         STREAM     CONNECTED     41452    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     26663
+unix  3      [ ]         STREAM     CONNECTED     20250    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM                    13142
+unix  3      [ ]         STREAM     CONNECTED     17410470
+unix  3      [ ]         STREAM     CONNECTED     39596    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     45426
+unix  3      [ ]         STREAM     CONNECTED     41891
+unix  3      [ ]         STREAM     CONNECTED     37412    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40044
+unix  3      [ ]         STREAM     CONNECTED     38051    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     34691
+unix  3      [ ]         STREAM     CONNECTED     37982
+unix  3      [ ]         STREAM     CONNECTED     40245
+unix  3      [ ]         STREAM     CONNECTED     42002
+unix  3      [ ]         STREAM     CONNECTED     38906
+unix  3      [ ]         STREAM     CONNECTED     31446
+unix  3      [ ]         STREAM     CONNECTED     45605    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40128
+unix  3      [ ]         STREAM     CONNECTED     41285
+unix  3      [ ]         STREAM     CONNECTED     36157
+unix  3      [ ]         STREAM     CONNECTED     45705
+unix  3      [ ]         STREAM     CONNECTED     42488
+unix  3      [ ]         STREAM     CONNECTED     42051    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     41325    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     32682    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM                    24501
+unix  3      [ ]         STREAM     CONNECTED     39330
+unix  3      [ ]         STREAM     CONNECTED     39255    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     44270
+unix  3      [ ]         STREAM     CONNECTED     35740
+unix  3      [ ]         STREAM     CONNECTED     34969
+unix  3      [ ]         STREAM     CONNECTED     32664    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41351    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     37741
+[cmsc250109@tpaclinux1v ~]$ netstat -n
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 127.0.0.1:55362         127.0.0.1:38436         ESTABLISHED
+tcp        0      0 172.28.240.41:47410     10.145.0.128:5647       TIME_WAIT
+tcp        0      0 172.28.240.41:50224     10.144.4.80:514         ESTABLISHED
+tcp        0      0 172.28.240.41:47428     10.145.0.128:5647       ESTABLISHED
+tcp        0      0 127.0.0.1:45140         127.0.0.1:38409         ESTABLISHED
+tcp        0      0 127.0.0.1:33680         127.0.0.1:8402          ESTABLISHED
+tcp        0      0 127.0.0.1:38409         127.0.0.1:45140         ESTABLISHED
+tcp        0      0 172.28.240.41:37480     34.236.163.142:443      ESTABLISHED
+tcp       25      0 172.28.240.41:32868     23.50.124.59:443        CLOSE_WAIT
+tcp       25      0 172.28.240.41:34658     23.50.124.59:443        CLOSE_WAIT
+tcp        0     64 172.28.240.41:22        10.68.16.41:64833       ESTABLISHED
+tcp        0      0 127.0.0.1:38436         127.0.0.1:55362         ESTABLISHED
+tcp        0      0 127.0.0.1:8402          127.0.0.1:33680         ESTABLISHED
+tcp       25      0 172.28.240.41:34474     23.50.124.59:443        CLOSE_WAIT
+Active UNIX domain sockets (w/o servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  3      [ ]         DGRAM                    8782     /run/systemd/notify
+unix  2      [ ]         DGRAM                    8784     /run/systemd/cgroups-agent
+unix  5      [ ]         DGRAM                    8795     /run/systemd/journal/socket
+unix  27     [ ]         DGRAM                    8797     /dev/log
+unix  2      [ ]         DGRAM                    17551    /run/systemd/shutdownd
+unix  2      [ ]         DGRAM                    23225    /var/run/chrony/chronyd.sock
+unix  3      [ ]         STREAM     CONNECTED     43522    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40728    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     37420    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     25628
+unix  3      [ ]         STREAM     CONNECTED     39551    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39253
+unix  3      [ ]         STREAM     CONNECTED     37832
+unix  3      [ ]         STREAM     CONNECTED     35708
+unix  3      [ ]         STREAM     CONNECTED     35087
+unix  2      [ ]         DGRAM                    45778
+unix  3      [ ]         STREAM     CONNECTED     45704    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42039
+unix  3      [ ]         STREAM     CONNECTED     39077
+unix  3      [ ]         STREAM     CONNECTED     32304    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM                    32265
+unix  3      [ ]         STREAM     CONNECTED     24802    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     24093
+unix  3      [ ]         STREAM     CONNECTED     24660
+unix  3      [ ]         DGRAM                    13736
+unix  3      [ ]         STREAM     CONNECTED     46645    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43334    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40227
+unix  3      [ ]         STREAM     CONNECTED     41427    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42052    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37163    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     37709    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39124    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM                    31611
+unix  3      [ ]         STREAM     CONNECTED     31449
+unix  3      [ ]         STREAM     CONNECTED     42460    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM                    40275
+unix  3      [ ]         STREAM     CONNECTED     41935
+unix  3      [ ]         STREAM     CONNECTED     41875
+unix  3      [ ]         STREAM     CONNECTED     40115
+unix  3      [ ]         STREAM     CONNECTED     37967
+unix  3      [ ]         STREAM     CONNECTED     49205    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42580
+unix  3      [ ]         STREAM     CONNECTED     41418
+unix  3      [ ]         STREAM     CONNECTED     29281    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42764
+unix  3      [ ]         STREAM     CONNECTED     41919    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37841    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     36138
+unix  3      [ ]         STREAM     CONNECTED     21400
+unix  3      [ ]         STREAM     CONNECTED     41381
+unix  3      [ ]         STREAM     CONNECTED     41301    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     49223    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     46044    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     39480    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     42468
+unix  2      [ ]         DGRAM                    27891
+unix  3      [ ]         STREAM     CONNECTED     46139
+unix  3      [ ]         STREAM     CONNECTED     43321    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40547
+unix  3      [ ]         STREAM     CONNECTED     45145    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40935
+unix  3      [ ]         STREAM     CONNECTED     40883    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     31505
+unix  3      [ ]         STREAM     CONNECTED     31473
+unix  3      [ ]         STREAM     CONNECTED     41017    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     46204
+unix  3      [ ]         STREAM     CONNECTED     43355    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45337
+unix  3      [ ]         STREAM     CONNECTED     41305    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     37035    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     41783    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     45986
+unix  3      [ ]         STREAM     CONNECTED     39216
+unix  3      [ ]         STREAM     CONNECTED     35711    @/tmp/dbus-GDYf8R0k
+unix  3      [ ]         STREAM     CONNECTED     35318
+unix  3      [ ]         STREAM     CONNECTED     32663    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42996    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37771
+unix  3      [ ]         STREAM     CONNECTED     37706    @/tmp/.ICE-unix/2733
+unix  3      [ ]         STREAM     CONNECTED     39572    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     41977
+unix  3      [ ]         STREAM     CONNECTED     43313
+unix  3      [ ]         STREAM     CONNECTED     40207    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40205
+unix  3      [ ]         STREAM     CONNECTED     42049    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     36165
+unix  3      [ ]         STREAM     CONNECTED     45771
+unix  3      [ ]         STREAM     CONNECTED     46133    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     41399    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM                    32414
+unix  3      [ ]         STREAM     CONNECTED     31747    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM                    24532
+unix  2      [ ]         DGRAM                    15273
+unix  3      [ ]         STREAM     CONNECTED     40368
+unix  3      [ ]         STREAM     CONNECTED     31490
+unix  3      [ ]         STREAM     CONNECTED     38591    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     31518
+unix  3      [ ]         STREAM     CONNECTED     31466
+unix  3      [ ]         STREAM     CONNECTED     15650484
+unix  3      [ ]         STREAM     CONNECTED     42592
+unix  3      [ ]         STREAM     CONNECTED     42574
+unix  3      [ ]         STREAM     CONNECTED     41395
+unix  3      [ ]         STREAM     CONNECTED     31618    @/tmp/.X11-unix/X0
+unix  2      [ ]         DGRAM                    20226
+unix  3      [ ]         STREAM     CONNECTED     41945    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     45352    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41239
+unix  3      [ ]         STREAM     CONNECTED     39109    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41389
+unix  3      [ ]         STREAM     CONNECTED     41388
+unix  3      [ ]         STREAM     CONNECTED     42625
+unix  3      [ ]         STREAM     CONNECTED     28662
+unix  3      [ ]         STREAM     CONNECTED     24793    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39568    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40574
+unix  2      [ ]         DGRAM                    21859
+unix  2      [ ]         DGRAM                    39588
+unix  3      [ ]         STREAM     CONNECTED     41956
+unix  3      [ ]         STREAM     CONNECTED     42464
+unix  3      [ ]         STREAM     CONNECTED     36256
+unix  3      [ ]         STREAM     CONNECTED     38894
+unix  3      [ ]         STREAM     CONNECTED     47221
+unix  3      [ ]         STREAM     CONNECTED     41488    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     28827    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     48625
+unix  3      [ ]         STREAM     CONNECTED     42626    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41885    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39121    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34768
+unix  3      [ ]         STREAM     CONNECTED     37140
+unix  3      [ ]         STREAM     CONNECTED     42076    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     42012
+unix  3      [ ]         STREAM     CONNECTED     32053
+unix  3      [ ]         STREAM     CONNECTED     24296
+unix  3      [ ]         STREAM     CONNECTED     20139    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     46107
+unix  3      [ ]         STREAM     CONNECTED     43317
+unix  3      [ ]         STREAM     CONNECTED     40254    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40199
+unix  3      [ ]         STREAM     CONNECTED     41356    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     36228    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     46049    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     37798
+unix  3      [ ]         STREAM     CONNECTED     37738    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34335    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     39260
+unix  3      [ ]         STREAM     CONNECTED     37838
+unix  3      [ ]         STREAM     CONNECTED     35105
+unix  3      [ ]         STREAM     CONNECTED     35074
+unix  3      [ ]         STREAM     CONNECTED     32668    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43636
+unix  3      [ ]         STREAM     CONNECTED     43538
+unix  3      [ ]         STREAM     CONNECTED     42575    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     43453
+unix  3      [ ]         STREAM     CONNECTED     37983    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     46080
+unix  3      [ ]         STREAM     CONNECTED     39308    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42571
+unix  3      [ ]         STREAM     CONNECTED     41455
+unix  3      [ ]         STREAM     CONNECTED     31494
+unix  2      [ ]         DGRAM                    23213
+unix  3      [ ]         STREAM     CONNECTED     20200
+unix  3      [ ]         STREAM     CONNECTED     37702    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     39159    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34967    @/tmp/dbus-e5y1269ked
+unix  2      [ ]         DGRAM                    31282
+unix  2      [ ]         DGRAM                    40412
+unix  3      [ ]         STREAM     CONNECTED     43020    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     46666
+unix  3      [ ]         STREAM     CONNECTED     39787
+unix  3      [ ]         STREAM     CONNECTED     39471    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     42494
+unix  3      [ ]         STREAM     CONNECTED     39227    @/tmp/dbus-euDpWAi1
+unix  3      [ ]         STREAM     CONNECTED     46189    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39323    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40601
+unix  3      [ ]         STREAM     CONNECTED     45144
+unix  3      [ ]         STREAM     CONNECTED     48288    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     39363
+unix  3      [ ]         STREAM     CONNECTED     40301    /var/run/pcscd/pcscd.comm
+unix  3      [ ]         STREAM     CONNECTED     34328    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41345
+unix  3      [ ]         STREAM     CONNECTED     41288    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39324    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     43380    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45151
+unix  3      [ ]         STREAM     CONNECTED     38054
+unix  3      [ ]         STREAM     CONNECTED     34692
+unix  3      [ ]         STREAM     CONNECTED     37143
+unix  3      [ ]         STREAM     CONNECTED     37119
+unix  3      [ ]         STREAM     CONNECTED     45344    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     38901    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40837    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     31481
+unix  3      [ ]         STREAM     CONNECTED     36311
+unix  3      [ ]         STREAM     CONNECTED     39549
+unix  3      [ ]         STREAM     CONNECTED     46130
+unix  3      [ ]         STREAM     CONNECTED     43326
+unix  3      [ ]         STREAM     CONNECTED     40194
+unix  3      [ ]         STREAM     CONNECTED     40129
+unix  3      [ ]         STREAM     CONNECTED     43569    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     46199    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     39212
+unix  3      [ ]         STREAM     CONNECTED     39190
+unix  3      [ ]         STREAM     CONNECTED     41403    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     42007
+unix  3      [ ]         STREAM     CONNECTED     29274
+unix  3      [ ]         STREAM     CONNECTED     31965    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     27907    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     24758
+unix  3      [ ]         STREAM     CONNECTED     39257
+unix  3      [ ]         STREAM     CONNECTED     37836
+unix  3      [ ]         STREAM     CONNECTED     37354    /run/user/42/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     35734
+unix  3      [ ]         STREAM     CONNECTED     32669    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     48223    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     37763    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     24814    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     22058
+unix  2      [ ]         DGRAM                    17458987
+unix  3      [ ]         STREAM     CONNECTED     49204
+unix  3      [ ]         STREAM     CONNECTED     39304    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42569
+unix  3      [ ]         STREAM     CONNECTED     43377
+unix  3      [ ]         STREAM     CONNECTED     41449
+unix  3      [ ]         STREAM     CONNECTED     20247    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     43659    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     43457
+unix  3      [ ]         STREAM     CONNECTED     41939
+unix  3      [ ]         STREAM     CONNECTED     41913    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     38572
+unix  3      [ ]         STREAM     CONNECTED     36012    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     45316    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     44275    /run/user/42/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     37808    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39122    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     31713
+unix  2      [ ]         DGRAM                    31434
+unix  3      [ ]         STREAM     CONNECTED     43534    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40613
+unix  3      [ ]         STREAM     CONNECTED     35877
+unix  3      [ ]         STREAM     CONNECTED     39767
+unix  3      [ ]         STREAM     CONNECTED     40915    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39302    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     43329    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40229    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     36158
+unix  3      [ ]         STREAM     CONNECTED     41375
+unix  3      [ ]         STREAM     CONNECTED     41294    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     34958
+unix  3      [ ]         STREAM     CONNECTED     21293
+unix  3      [ ]         STREAM     CONNECTED     41809
+unix  3      [ ]         STREAM     CONNECTED     27828    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42586    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     43405    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45302
+unix  3      [ ]         STREAM     CONNECTED     38050
+unix  3      [ ]         STREAM     CONNECTED     36257    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     42000
+unix  3      [ ]         STREAM     CONNECTED     41261
+unix  3      [ ]         STREAM     CONNECTED     40930
+unix  3      [ ]         STREAM     CONNECTED     40864    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     31509
+unix  3      [ ]         STREAM     CONNECTED     31485
+unix  3      [ ]         STREAM     CONNECTED     23222
+unix  3      [ ]         STREAM     CONNECTED     46164    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     39188    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     38589
+unix  3      [ ]         STREAM     CONNECTED     45419
+unix  3      [ ]         STREAM     CONNECTED     40523    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39261    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     38599    /run/user/1346/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     39974    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     37994    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     36219    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     42582
+unix  3      [ ]         STREAM     CONNECTED     43379    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41830
+unix  3      [ ]         STREAM     CONNECTED     40546
+unix  3      [ ]         STREAM     CONNECTED     41422    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM                    30972
+unix  3      [ ]         STREAM     CONNECTED     23130
+unix  3      [ ]         STREAM     CONNECTED     37418
+unix  3      [ ]         STREAM     CONNECTED     39301
+unix  3      [ ]         STREAM     CONNECTED     43408    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     44095
+unix  3      [ ]         STREAM     CONNECTED     41382    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     41317    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     35816
+unix  3      [ ]         STREAM     CONNECTED     34906
+unix  3      [ ]         STREAM     CONNECTED     29078    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45703
+unix  3      [ ]         STREAM     CONNECTED     41397    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     32524
+unix  3      [ ]         STREAM     CONNECTED     29275    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39796
+unix  3      [ ]         STREAM     CONNECTED     39525    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40634
+unix  3      [ ]         STREAM     CONNECTED     40190
+unix  3      [ ]         STREAM     CONNECTED     43012
+unix  3      [ ]         STREAM     CONNECTED     38947    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     35086    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     40882
+unix  3      [ ]         STREAM     CONNECTED     31670
+unix  3      [ ]         STREAM     CONNECTED     31506
+unix  3      [ ]         STREAM     CONNECTED     31463
+unix  3      [ ]         STREAM     CONNECTED     41141
+unix  3      [ ]         STREAM     CONNECTED     39582    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     39326    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     43443
+unix  3      [ ]         STREAM     CONNECTED     40521
+unix  3      [ ]         STREAM     CONNECTED     42446    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37034
+unix  3      [ ]         STREAM     CONNECTED     49283
+unix  3      [ ]         STREAM     CONNECTED     41944
+unix  3      [ ]         STREAM     CONNECTED     48131
+unix  3      [ ]         STREAM     CONNECTED     39520    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     20251    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     21401
+unix  3      [ ]         STREAM     CONNECTED     41300
+unix  3      [ ]         STREAM     CONNECTED     46667    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     39663
+unix  3      [ ]         STREAM     CONNECTED     39567
+unix  3      [ ]         STREAM     CONNECTED     39483
+unix  3      [ ]         STREAM     CONNECTED     42466    @/tmp/.ICE-unix/2902
+unix  3      [ ]         STREAM     CONNECTED     37024
+unix  3      [ ]         STREAM     CONNECTED     32298
+unix  3      [ ]         STREAM     CONNECTED     45773    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43333
+unix  3      [ ]         STREAM     CONNECTED     40548    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41497    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34315
+unix  3      [ ]         STREAM     CONNECTED     35878    @/tmp/dbus-jkPIoUs6
+unix  3      [ ]         STREAM     CONNECTED     22059    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40366
+unix  3      [ ]         STREAM     CONNECTED     47222
+unix  3      [ ]         STREAM     CONNECTED     46202    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     38900
+unix  3      [ ]         STREAM     CONNECTED     38727
+unix  3      [ ]         STREAM     CONNECTED     45422
+unix  3      [ ]         STREAM     CONNECTED     41486
+unix  3      [ ]         STREAM     CONNECTED     41396    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     37325    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     37029
+unix  2      [ ]         DGRAM                    20221
+unix  3      [ ]         STREAM     CONNECTED     46205    @/tmp/.ICE-unix/2902
+unix  3      [ ]         STREAM     CONNECTED     41853
+unix  3      [ ]         STREAM     CONNECTED     40049
+unix  3      [ ]         STREAM     CONNECTED     39970
+unix  3      [ ]         STREAM     CONNECTED     38957    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     39292
+unix  3      [ ]         STREAM     CONNECTED     42492
+unix  3      [ ]         STREAM     CONNECTED     39217    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     41391    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37840
+unix  3      [ ]         STREAM     CONNECTED     36171    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     31884    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37705
+unix  3      [ ]         STREAM     CONNECTED     46162
+unix  3      [ ]         STREAM     CONNECTED     39332    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     43015
+unix  3      [ ]         STREAM     CONNECTED     40155
+unix  3      [ ]         STREAM     CONNECTED     34622    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45633
+unix  3      [ ]         STREAM     CONNECTED     41383    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     39967    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41219
+unix  3      [ ]         STREAM     CONNECTED     40977
+unix  3      [ ]         STREAM     CONNECTED     42587
+unix  3      [ ]         STREAM     CONNECTED     40486
+unix  3      [ ]         STREAM     CONNECTED     31517
+unix  3      [ ]         STREAM     CONNECTED     31502
+unix  3      [ ]         STREAM     CONNECTED     31493
+unix  3      [ ]         STREAM     CONNECTED     31478
+unix  3      [ ]         STREAM     CONNECTED     31467
+unix  2      [ ]         DGRAM                    48369
+unix  3      [ ]         STREAM     CONNECTED     43445
+unix  3      [ ]         STREAM     CONNECTED     45340    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41392    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     36294    /run/user/42/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     42994
+unix  3      [ ]         STREAM     CONNECTED     41946    /run/user/1346/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     25682
+unix  3      [ ]         STREAM     CONNECTED     43314    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40553    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     43014    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     20211    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     13140    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     46643
+unix  3      [ ]         STREAM     CONNECTED     39508
+unix  2      [ ]         DGRAM                    42438
+unix  3      [ ]         STREAM     CONNECTED     42104
+unix  3      [ ]         STREAM     CONNECTED     31398    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     24816    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43527    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     41924
+unix  3      [ ]         STREAM     CONNECTED     39110    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39975    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     39965    @/tmp/dbus-euDpWAi1
+unix  3      [ ]         STREAM     CONNECTED     37990    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     49153
+unix  3      [ ]         STREAM     CONNECTED     41881    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     41810
+unix  3      [ ]         STREAM     CONNECTED     41456    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     24829    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42005
+unix  3      [ ]         STREAM     CONNECTED     37807    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     31712
+unix  3      [ ]         STREAM     CONNECTED     15690238
+unix  3      [ ]         STREAM     CONNECTED     40232
+unix  3      [ ]         STREAM     CONNECTED     34617    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40122    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     39085
+unix  3      [ ]         STREAM     CONNECTED     15271
+unix  3      [ ]         STREAM     CONNECTED     15655614 /var/opt/ds_agent/event_socket_am
+unix  3      [ ]         STREAM     CONNECTED     46187
+unix  3      [ ]         STREAM     CONNECTED     45579    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40647
+unix  3      [ ]         STREAM     CONNECTED     42489
+unix  3      [ ]         STREAM     CONNECTED     43058
+unix  3      [ ]         STREAM     CONNECTED     40132
+unix  3      [ ]         STREAM     CONNECTED     36234
+unix  3      [ ]         STREAM     CONNECTED     37736
+unix  3      [ ]         STREAM     CONNECTED     42548    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     41347    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41324    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     32689    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     34923
+unix  3      [ ]         STREAM     CONNECTED     34922
+unix  3      [ ]         STREAM     CONNECTED     42584
+unix  3      [ ]         STREAM     CONNECTED     43454
+unix  3      [ ]         STREAM     CONNECTED     43402
+unix  3      [ ]         STREAM     CONNECTED     40369    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37120    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     54416
+unix  3      [ ]         STREAM     CONNECTED     45431    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40835
+unix  3      [ ]         STREAM     CONNECTED     37896
+unix  3      [ ]         STREAM     CONNECTED     31514
+unix  3      [ ]         STREAM     CONNECTED     31497
+unix  3      [ ]         STREAM     CONNECTED     31482
+unix  3      [ ]         STREAM     CONNECTED     31456
+unix  3      [ ]         STREAM     CONNECTED     37714    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34767    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     15655591
+unix  2      [ ]         DGRAM                    46665
+unix  3      [ ]         STREAM     CONNECTED     39618
+unix  3      [ ]         STREAM     CONNECTED     39511    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42395
+unix  3      [ ]         STREAM     CONNECTED     42367    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     32054    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45925
+unix  3      [ ]         STREAM     CONNECTED     43318    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40577    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40201    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37773    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34316    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     48281
+unix  3      [ ]         STREAM     CONNECTED     20142    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     20137    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41286
+unix  3      [ ]         STREAM     CONNECTED     40042    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     49176    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     45427
+unix  3      [ ]         STREAM     CONNECTED     41876    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45343    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41451    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42009    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     36143    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     20244
+unix  3      [ ]         STREAM     CONNECTED     23217
+unix  3      [ ]         STREAM     CONNECTED     43555    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     41911
+unix  3      [ ]         STREAM     CONNECTED     39117    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39977    @/tmp/dbus-euDpWAi1
+unix  3      [ ]         STREAM     CONNECTED     34370
+unix  3      [ ]         STREAM     CONNECTED     40240
+unix  3      [ ]         STREAM     CONNECTED     40931    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     38890
+unix  3      [ ]         STREAM     CONNECTED     46200
+unix  3      [ ]         STREAM     CONNECTED     40879    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40754
+unix  3      [ ]         STREAM     CONNECTED     41355    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM                    36223
+unix  3      [ ]         STREAM     CONNECTED     34611    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42006    @/tmp/dbus-e5y1269ked
+unix  2      [ ]         DGRAM                    39169
+unix  3      [ ]         STREAM     CONNECTED     24810    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM                    24724
+unix  3      [ ]         STREAM     CONNECTED     40804    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42525    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     44302
+unix  3      [ ]         STREAM     CONNECTED     41377    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41320    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     35821
+unix  3      [ ]         STREAM     CONNECTED     34551    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     34925    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     37761
+unix  3      [ ]         STREAM     CONNECTED     43637    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     15696872
+unix  3      [ ]         STREAM     CONNECTED     43523
+unix  3      [ ]         STREAM     CONNECTED     45488
+unix  3      [ ]         STREAM     CONNECTED     42593    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     37324
+unix  3      [ ]         STREAM     CONNECTED     39327    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     41263    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41169
+unix  3      [ ]         STREAM     CONNECTED     40862
+unix  3      [ ]         STREAM     CONNECTED     38581
+unix  3      [ ]         STREAM     CONNECTED     43327    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40604    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40195    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     35870
+unix  3      [ ]         STREAM     CONNECTED     43661    @/tmp/dbus-e5y1269ked
+unix  2      [ ]         DGRAM                    39667
+unix  3      [ ]         STREAM     CONNECTED     46136    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     39477
+unix  3      [ ]         STREAM     CONNECTED     42042
+unix  3      [ ]         STREAM     CONNECTED     31964
+unix  3      [ ]         STREAM     CONNECTED     20135    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37800    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41292
+unix  3      [ ]         STREAM     CONNECTED     40978    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     34314
+unix  3      [ ]         STREAM     CONNECTED     48222
+unix  2      [ ]         DGRAM                    21238
+unix  3      [ ]         STREAM     CONNECTED     20141    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39364
+unix  3      [ ]         STREAM     CONNECTED     45508
+unix  3      [ ]         STREAM     CONNECTED     41390    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     41308    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     34960    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     49222    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40916    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42465
+unix  3      [ ]         STREAM     CONNECTED     43322    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40552
+unix  3      [ ]         STREAM     CONNECTED     36255
+unix  3      [ ]         STREAM     CONNECTED     21860
+unix  3      [ ]         STREAM     CONNECTED     46651    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     38892
+unix  3      [ ]         STREAM     CONNECTED     35707    @/tmp/dbus-GDYf8R0k
+unix  3      [ ]         STREAM     CONNECTED     48357    @/dbus-vfs-daemon/socket-RDZAKI4m
+unix  3      [ ]         STREAM     CONNECTED     41884    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43354    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45346    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45303
+unix  3      [ ]         STREAM     CONNECTED     40975    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     34344    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     27278
+unix  3      [ ]         STREAM     CONNECTED     40124
+unix  3      [ ]         STREAM     CONNECTED     37993
+unix  3      [ ]         STREAM     CONNECTED     37762
+unix  3      [ ]         STREAM     CONNECTED     37419    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42997    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39251
+unix  3      [ ]         STREAM     CONNECTED     37831
+unix  3      [ ]         STREAM     CONNECTED     35317
+unix  3      [ ]         STREAM     CONNECTED     35089
+unix  3      [ ]         STREAM     CONNECTED     34973
+unix  3      [ ]         STREAM     CONNECTED     39863    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     45772
+unix  3      [ ]         STREAM     CONNECTED     39552    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45694    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     42040
+unix  3      [ ]         STREAM     CONNECTED     32459
+unix  3      [ ]         STREAM     CONNECTED     28836
+unix  3      [ ]         STREAM     CONNECTED     24465
+unix  3      [ ]         STREAM     CONNECTED     15272
+unix  3      [ ]         STREAM     CONNECTED     40192    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     42053    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM                    36224
+unix  3      [ ]         STREAM     CONNECTED     46201
+unix  3      [ ]         STREAM     CONNECTED     32609    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     31488
+unix  3      [ ]         STREAM     CONNECTED     31464
+unix  3      [ ]         STREAM     CONNECTED     43506
+unix  3      [ ]         STREAM     CONNECTED     40522    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40244    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     37713    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     36011    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42649    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     41934
+unix  3      [ ]         STREAM     CONNECTED     39973
+unix  3      [ ]         STREAM     CONNECTED     49284    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     46076
+unix  3      [ ]         STREAM     CONNECTED     42594
+unix  3      [ ]         STREAM     CONNECTED     39303    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     43378
+unix  3      [ ]         STREAM     CONNECTED     41419
+unix  3      [ ]         STREAM     CONNECTED     41918    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM                    44502
+unix  3      [ ]         STREAM     CONNECTED     41346    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37925    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     42763
+unix  3      [ ]         STREAM     CONNECTED     25794
+unix  3      [ ]         STREAM     CONNECTED     40755    @/tmp/dbus-GDYf8R0k
+unix  3      [ ]         STREAM     CONNECTED     40575
+unix  3      [ ]         STREAM     CONNECTED     21853
+unix  3      [ ]         STREAM     CONNECTED     43656    @/dbus-vfs-daemon/socket-EGQzAfL5
+unix  3      [ ]         STREAM     CONNECTED     46261
+unix  3      [ ]         STREAM     CONNECTED     46138    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     46134    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     42493    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     39478    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     42001
+unix  3      [ ]         STREAM     CONNECTED     31503
+unix  3      [ ]         STREAM     CONNECTED     31475
+unix  3      [ ]         DGRAM                    22864
+unix  3      [ ]         STREAM     CONNECTED     48368    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     39300    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     43446    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     45338
+unix  3      [ ]         STREAM     CONNECTED     37139
+unix  3      [ ]         STREAM     CONNECTED     31651    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     39214
+unix  3      [ ]         STREAM     CONNECTED     37811
+unix  3      [ ]         STREAM     CONNECTED     37168    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     34965
+unix  3      [ ]         STREAM     CONNECTED     21464
+unix  3      [ ]         STREAM     CONNECTED     37770
+unix  3      [ ]         STREAM     CONNECTED     37611    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     46106
+unix  3      [ ]         STREAM     CONNECTED     43338
+unix  3      [ ]         STREAM     CONNECTED     43316
+unix  3      [ ]         STREAM     CONNECTED     40226
+unix  3      [ ]         STREAM     CONNECTED     41425    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     36170
+unix  3      [ ]         STREAM     CONNECTED     13725
+unix  3      [ ]         STREAM     CONNECTED     46644    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45630    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40277    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42016
+unix  3      [ ]         STREAM     CONNECTED     31637    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     32394
+unix  2      [ ]         DGRAM                    24410
+unix  3      [ ]         STREAM     CONNECTED     15274
+unix  3      [ ]         STREAM     CONNECTED     42461    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40367    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     37708    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39126    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     31454
+unix  3      [ ]         STREAM     CONNECTED     49154    @/tmp/dbus-GDYf8R0k
+unix  3      [ ]         STREAM     CONNECTED     39309    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     45348    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     20201    /run/systemd/journal/stdout
+unix  3      [ ]         DGRAM                    22863
+unix  3      [ ]         STREAM     CONNECTED     41925
+unix  3      [ ]         STREAM     CONNECTED     45350    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39118    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39971    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     46637
+unix  3      [ ]         STREAM     CONNECTED     45932    /var/run/pcscd/pcscd.comm
+unix  3      [ ]         STREAM     CONNECTED     43330    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39325    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40602
+unix  3      [ ]         STREAM     CONNECTED     36225
+unix  3      [ ]         STREAM     CONNECTED     13680
+unix  3      [ ]         STREAM     CONNECTED     42970
+unix  3      [ ]         STREAM     CONNECTED     39569    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     21346
+unix  3      [ ]         STREAM     CONNECTED     39341    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     44496
+unix  3      [ ]         STREAM     CONNECTED     41350
+unix  3      [ ]         STREAM     CONNECTED     41293    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     34907    @/tmp/.X11-unix/X1
+unix  2      [ ]         DGRAM                    15648500
+unix  3      [ ]         STREAM     CONNECTED     42627    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43404    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43315    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     45150
+unix  3      [ ]         STREAM     CONNECTED     37347
+unix  3      [ ]         STREAM     CONNECTED     37141
+unix  2      [ ]         DGRAM                    26751
+unix  3      [ ]         STREAM     CONNECTED     38053
+unix  3      [ ]         STREAM     CONNECTED     39963
+unix  3      [ ]         STREAM     CONNECTED     40838    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     38904    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     31515
+unix  3      [ ]         STREAM     CONNECTED     31479
+unix  3      [ ]         STREAM     CONNECTED     43568    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43537    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     39509
+unix  3      [ ]         STREAM     CONNECTED     42366
+unix  3      [ ]         STREAM     CONNECTED     42013
+unix  3      [ ]         STREAM     CONNECTED     39084    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     39966    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM                    34215
+unix  2      [ ]         DGRAM                    29440
+unix  3      [ ]         STREAM     CONNECTED     15336
+unix  3      [ ]         STREAM     CONNECTED     46129
+unix  3      [ ]         STREAM     CONNECTED     43336
+unix  3      [ ]         STREAM     CONNECTED     43325
+unix  3      [ ]         STREAM     CONNECTED     40200
+unix  3      [ ]         STREAM     CONNECTED     40135    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     35944
+unix  2      [ ]         DGRAM                    22048
+unix  3      [ ]         STREAM     CONNECTED     37797
+unix  3      [ ]         STREAM     CONNECTED     37737    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     48255    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     39298
+unix  3      [ ]         STREAM     CONNECTED     37837
+unix  3      [ ]         STREAM     CONNECTED     37803    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     35712
+unix  3      [ ]         STREAM     CONNECTED     34544    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     43526
+unix  3      [ ]         STREAM     CONNECTED     41940
+unix  3      [ ]         STREAM     CONNECTED     41914    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40041
+unix  3      [ ]         STREAM     CONNECTED     37989
+unix  3      [ ]         STREAM     CONNECTED     54158    @/tmp/dbus-8H0rrLd7
+unix  3      [ ]         STREAM     CONNECTED     49175
+unix  3      [ ]         STREAM     CONNECTED     39306    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42570
+unix  3      [ ]         STREAM     CONNECTED     41485
+unix  3      [ ]         STREAM     CONNECTED     23218
+unix  3      [ ]         STREAM     CONNECTED     39157    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     31496
+unix  3      [ ]         STREAM     CONNECTED     31469
+unix  3      [ ]         STREAM     CONNECTED     31457
+unix  3      [ ]         STREAM     CONNECTED     45146    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     43018    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     41260
+unix  3      [ ]         STREAM     CONNECTED     31652
+unix  3      [ ]         STREAM     CONNECTED     40633
+unix  3      [ ]         STREAM     CONNECTED     40125    @/tmp/dbus-euDpWAi1
+unix  3      [ ]         STREAM     CONNECTED     46636
+unix  3      [ ]         STREAM     CONNECTED     46074    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     39595    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     46190    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43415    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40636    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     39331    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     43049    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41376
+unix  3      [ ]         STREAM     CONNECTED     41302
+unix  3      [ ]         STREAM     CONNECTED     34924
+unix  3      [ ]         STREAM     CONNECTED     48285
+unix  3      [ ]         STREAM     CONNECTED     21237
+unix  2      [ ]         DGRAM                    17410467
+unix  3      [ ]         STREAM     CONNECTED     15690239
+unix  3      [ ]         STREAM     CONNECTED     48130    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     45511
+unix  3      [ ]         STREAM     CONNECTED     39322    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     37411
+unix  3      [ ]         STREAM     CONNECTED     37349    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     38055
+unix  3      [ ]         STREAM     CONNECTED     36305
+unix  3      [ ]         STREAM     CONNECTED     40865    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40607    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     41304    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     31511
+unix  3      [ ]         STREAM     CONNECTED     48146    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     46132
+unix  3      [ ]         STREAM     CONNECTED     45505
+unix  3      [ ]         STREAM     CONNECTED     41354    @/tmp/dbus-pYPDg1W1vz
+unix  3      [ ]         STREAM     CONNECTED     38949    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45706    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     39524
+unix  3      [ ]         STREAM     CONNECTED     39213    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     41410    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     42011
+unix  3      [ ]         STREAM     CONNECTED     32681
+unix  3      [ ]         STREAM     CONNECTED     34313
+unix  3      [ ]         STREAM     CONNECTED     31969
+unix  3      [ ]         STREAM     CONNECTED     20207    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39254
+unix  3      [ ]         STREAM     CONNECTED     41296    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     35713
+unix  3      [ ]         STREAM     CONNECTED     34966
+unix  3      [ ]         STREAM     CONNECTED     34325
+unix  3      [ ]         STREAM     CONNECTED     37806
+unix  3      [ ]         STREAM     CONNECTED     35817    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     43456
+unix  3      [ ]         STREAM     CONNECTED     42581    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     42568
+unix  3      [ ]         STREAM     CONNECTED     41450
+unix  3      [ ]         STREAM     CONNECTED     20245
+unix  2      [ ]         DGRAM                    43638
+unix  3      [ ]         STREAM     CONNECTED     48287
+unix  3      [ ]         STREAM     CONNECTED     43554
+unix  3      [ ]         STREAM     CONNECTED     39271    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     35718    @/tmp/dbus-GDYf8R0k
+unix  2      [ ]         STREAM     CONNECTED     45313    @/tmp/dbus-8H0rrLd7
+unix  3      [ ]         STREAM     CONNECTED     44276    @/tmp/dbus-X27vDEfn8J
+unix  2      [ ]         DGRAM                    41167
+unix  3      [ ]         STREAM     CONNECTED     40116    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     31500
+unix  3      [ ]         STREAM     CONNECTED     31460
+unix  3      [ ]         STREAM     CONNECTED     31447
+unix  3      [ ]         STREAM     CONNECTED     31508
+unix  3      [ ]         STREAM     CONNECTED     31487
+unix  3      [ ]         STREAM     CONNECTED     31472
+unix  3      [ ]         STREAM     CONNECTED     40485
+unix  3      [ ]         STREAM     CONNECTED     41238
+unix  3      [ ]         STREAM     CONNECTED     41016
+unix  3      [ ]         STREAM     CONNECTED     48355
+unix  3      [ ]         STREAM     CONNECTED     40648    /var/run/pcscd/pcscd.comm
+unix  3      [ ]         STREAM     CONNECTED     43444
+unix  3      [ ]         STREAM     CONNECTED     42445    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37030
+unix  3      [ ]         STREAM     CONNECTED     41941    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     31461
+unix  3      [ ]         STREAM     CONNECTED     48144
+unix  3      [ ]         STREAM     CONNECTED     37764    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34326
+unix  3      [ ]         STREAM     CONNECTED     41307
+unix  3      [ ]         STREAM     CONNECTED     46648
+unix  3      [ ]         STREAM     CONNECTED     45774    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39550
+unix  3      [ ]         STREAM     CONNECTED     39479
+unix  3      [ ]         STREAM     CONNECTED     40490    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     41496    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39115    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     40549    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     32299    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     20249    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     20248    /run/dbus/system_bus_socket
+unix  3      [ ]         DGRAM                    13737
+unix  3      [ ]         STREAM     CONNECTED     39170    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     38588
+unix  3      [ ]         STREAM     CONNECTED     31450
+unix  3      [ ]         STREAM     CONNECTED     40243
+unix  3      [ ]         STREAM     CONNECTED     41955
+unix  3      [ ]         STREAM     CONNECTED     45420
+unix  3      [ ]         STREAM     CONNECTED     37331
+unix  3      [ ]         STREAM     CONNECTED     38056    @/tmp/dbus-X27vDEfn8J
+unix  2      [ ]         DGRAM                    49333
+unix  3      [ ]         STREAM     CONNECTED     42576    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     41785
+unix  3      [ ]         STREAM     CONNECTED     41423    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34343    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     27048
+unix  3      [ ]         STREAM     CONNECTED     37417
+unix  3      [ ]         STREAM     CONNECTED     40805    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39252    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     37842
+unix  3      [ ]         STREAM     CONNECTED     41316    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     35088    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     34959
+unix  3      [ ]         STREAM     CONNECTED     39797
+unix  3      [ ]         STREAM     CONNECTED     45693
+unix  3      [ ]         STREAM     CONNECTED     41957    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     41400    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41378    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     32460    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     46137
+unix  3      [ ]         STREAM     CONNECTED     40191
+unix  3      [ ]         STREAM     CONNECTED     43013
+unix  3      [ ]         STREAM     CONNECTED     36235    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     36217
+unix  3      [ ]         STREAM     CONNECTED     40520
+unix  3      [ ]         STREAM     CONNECTED     41218
+unix  3      [ ]         STREAM     CONNECTED     40912
+unix  3      [ ]         STREAM     CONNECTED     31491
+unix  3      [ ]         STREAM     CONNECTED     31476
+unix  2      [ ]         DGRAM                    42589
+unix  3      [ ]         STREAM     CONNECTED     48367
+unix  3      [ ]         STREAM     CONNECTED     39305    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     39299    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     45339    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37036
+unix  2      [ ]         DGRAM                    42365
+unix  3      [ ]         STREAM     CONNECTED     41344
+unix  3      [ ]         STREAM     CONNECTED     39076
+unix  3      [ ]         STREAM     CONNECTED     42995
+unix  3      [ ]         STREAM     CONNECTED     39519    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40202    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37772    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34758    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     34334
+unix  3      [ ]         STREAM     CONNECTED     40576    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     14573    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     46642
+unix  3      [ ]         STREAM     CONNECTED     39620    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     48179    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     39594
+unix  3      [ ]         STREAM     CONNECTED     15275
+unix  3      [ ]         STREAM     CONNECTED     43690    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM                    40276
+unix  3      [ ]         STREAM     CONNECTED     41161    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     38590
+unix  3      [ ]         STREAM     CONNECTED     31453
+unix  3      [ ]         STREAM     CONNECTED     46077    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     39265    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     41831
+unix  3      [ ]         STREAM     CONNECTED     41782
+unix  3      [ ]         STREAM     CONNECTED     31095
+unix  3      [ ]         STREAM     CONNECTED     20212    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     23131
+unix  3      [ ]         STREAM     CONNECTED     45425
+unix  3      [ ]         STREAM     CONNECTED     41852
+unix  3      [ ]         STREAM     CONNECTED     40121
+unix  3      [ ]         STREAM     CONNECTED     38580
+unix  3      [ ]         STREAM     CONNECTED     38573
+unix  3      [ ]         STREAM     CONNECTED     34769    /run/user/1346/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     34616    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39291
+unix  3      [ ]         STREAM     CONNECTED     39215    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     41310    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     35710
+unix  3      [ ]         STREAM     CONNECTED     34975
+unix  3      [ ]         STREAM     CONNECTED     34957
+unix  3      [ ]         STREAM     CONNECTED     45509    @/dbus-vfs-daemon/socket-ZMi6HuwW
+unix  3      [ ]         STREAM     CONNECTED     37610
+unix  3      [ ]         STREAM     CONNECTED     46163
+unix  3      [ ]         STREAM     CONNECTED     45578    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41860    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40189
+unix  3      [ ]         STREAM     CONNECTED     41287    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34623    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45629
+unix  2      [ ]         STREAM     CONNECTED     40640
+unix  3      [ ]         STREAM     CONNECTED     42546
+unix  3      [ ]         STREAM     CONNECTED     42038
+unix  3      [ ]         STREAM     CONNECTED     39083
+unix  3      [ ]         STREAM     CONNECTED     24405
+unix  3      [ ]         STREAM     CONNECTED     48627    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM                    45465
+unix  3      [ ]         STREAM     CONNECTED     45432    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42573    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     43403
+unix  3      [ ]         STREAM     CONNECTED     38568    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     42585
+unix  3      [ ]         STREAM     CONNECTED     40836
+unix  3      [ ]         STREAM     CONNECTED     41262    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     46638    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     46630    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     45926
+unix  3      [ ]         STREAM     CONNECTED     39510    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     39470
+unix  3      [ ]         STREAM     CONNECTED     42657    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     34094
+unix  3      [ ]         STREAM     CONNECTED     40603    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     42075
+unix  3      [ ]         STREAM     CONNECTED     31579    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     31971    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     28843
+unix  3      [ ]         STREAM     CONNECTED     45749    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     41789    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     37799    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     24797    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     20131    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41291
+unix  3      [ ]         STREAM     CONNECTED     15696873
+unix  3      [ ]         STREAM     CONNECTED     48145    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     45489
+unix  3      [ ]         STREAM     CONNECTED     41912
+unix  3      [ ]         STREAM     CONNECTED     40040
+unix  3      [ ]         STREAM     CONNECTED     37986
+unix  3      [ ]         STREAM     CONNECTED     36258    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     37142    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     48286    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     41877    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41487    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     35897
+unix  3      [ ]         STREAM     CONNECTED     38903
+unix  3      [ ]         STREAM     CONNECTED     38848
+unix  3      [ ]         STREAM     CONNECTED     31470
+unix  3      [ ]         STREAM     CONNECTED     40231
+unix  3      [ ]         STREAM     CONNECTED     45987
+unix  3      [ ]         STREAM     CONNECTED     41859    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40123    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     39978    @/tmp/dbus-euDpWAi1
+unix  3      [ ]         STREAM     CONNECTED     23638
+unix  2      [ ]         DGRAM                    14522
+unix  3      [ ]         STREAM     CONNECTED     46188
+unix  3      [ ]         STREAM     CONNECTED     40878    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     43337    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     40134
+unix  3      [ ]         STREAM     CONNECTED     36164
+unix  3      [ ]         STREAM     CONNECTED     34333    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     40646
+unix  3      [ ]         STREAM     CONNECTED     37735
+unix  3      [ ]         STREAM     CONNECTED     39340
+unix  3      [ ]         STREAM     CONNECTED     41923    @/tmp/.ICE-unix/2902
+unix  3      [ ]         STREAM     CONNECTED     40248    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41321    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     32690    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     34972
+unix  3      [ ]         STREAM     CONNECTED     33151
+unix  3      [ ]         STREAM     CONNECTED     42583
+unix  3      [ ]         STREAM     CONNECTED     17410471
+unix  3      [ ]         STREAM     CONNECTED     43658
+unix  3      [ ]         STREAM     CONNECTED     46073    @/tmp/dbus-hunY9RxScX
+unix  3      [ ]         STREAM     CONNECTED     43520
+unix  3      [ ]         STREAM     CONNECTED     45437    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40370    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37348
+unix  3      [ ]         STREAM     CONNECTED     40481
+unix  3      [ ]         STREAM     CONNECTED     37637    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     37236    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     32608    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40863
+unix  3      [ ]         STREAM     CONNECTED     34355    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     31512
+unix  3      [ ]         STREAM     CONNECTED     31499
+unix  3      [ ]         STREAM     CONNECTED     31484
+unix  3      [ ]         STREAM     CONNECTED     41855    @/tmp/.X11-unix/X1
+unix  3      [ ]         STREAM     CONNECTED     39666
+unix  3      [ ]         STREAM     CONNECTED     45918
+unix  3      [ ]         STREAM     CONNECTED     39476
+unix  3      [ ]         STREAM     CONNECTED     42545
+unix  3      [ ]         STREAM     CONNECTED     40635    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     20252    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     41303    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     37023
+unix  2      [ ]         DGRAM                    48284
+unix  3      [ ]         STREAM     CONNECTED     48254
+unix  3      [ ]         STREAM     CONNECTED     38908    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     35735    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     34327    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     21236
+unix  3      [ ]         STREAM     CONNECTED     15650485
+unix  3      [ ]         STREAM     CONNECTED     43416    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41788
+unix  3      [ ]         STREAM     CONNECTED     41452    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     26663
+unix  3      [ ]         STREAM     CONNECTED     20250    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM                    13142
+unix  3      [ ]         STREAM     CONNECTED     17410470
+unix  3      [ ]         STREAM     CONNECTED     39596    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     45426
+unix  3      [ ]         STREAM     CONNECTED     41891
+unix  3      [ ]         STREAM     CONNECTED     37412    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     40044
+unix  3      [ ]         STREAM     CONNECTED     38051    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     34691
+unix  3      [ ]         STREAM     CONNECTED     37982
+unix  3      [ ]         STREAM     CONNECTED     40245
+unix  3      [ ]         STREAM     CONNECTED     42002
+unix  3      [ ]         STREAM     CONNECTED     38906
+unix  3      [ ]         STREAM     CONNECTED     31446
+unix  3      [ ]         STREAM     CONNECTED     45605    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40128
+unix  3      [ ]         STREAM     CONNECTED     41285
+unix  3      [ ]         STREAM     CONNECTED     36157
+unix  3      [ ]         STREAM     CONNECTED     45705
+unix  3      [ ]         STREAM     CONNECTED     42488
+unix  3      [ ]         STREAM     CONNECTED     42051    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     41325    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     32682    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM                    24501
+unix  3      [ ]         STREAM     CONNECTED     39330
+unix  3      [ ]         STREAM     CONNECTED     39255    @/tmp/dbus-e5y1269ked
+unix  3      [ ]         STREAM     CONNECTED     44270
+unix  3      [ ]         STREAM     CONNECTED     35740
+unix  3      [ ]         STREAM     CONNECTED     34969
+unix  3      [ ]         STREAM     CONNECTED     32664    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     41351    @/tmp/dbus-X27vDEfn8J
+unix  3      [ ]         STREAM     CONNECTED     37741
+[cmsc250109@tpaclinux1v ~]$ netstat -s
+Ip:
+    5269767 total packets received
+    0 forwarded
+    0 incoming packets discarded
+    4927259 incoming packets delivered
+    3513024 requests sent out
+    345 outgoing packets dropped
+Icmp:
+    23011 ICMP messages received
+    0 input ICMP message failed.
+    ICMP input histogram:
+        destination unreachable: 78
+        echo requests: 22516
+        echo replies: 413
+        timestamp request: 1
+        address mask request: 3
+    23332 ICMP messages sent
+    0 ICMP messages failed
+    ICMP output histogram:
+        destination unreachable: 205
+        echo request: 610
+        echo replies: 22516
+        timestamp replies: 1
+IcmpMsg:
+        InType0: 413
+        InType3: 78
+        InType8: 22516
+        InType13: 1
+        InType17: 3
+        OutType0: 22516
+        OutType3: 205
+        OutType8: 610
+        OutType14: 1
+Tcp:
+    150935 active connections openings
+    5643 passive connection openings
+    15 failed connection attempts
+    106702 connection resets received
+    10 connections established
+    4795870 segments received
+    8952454 segments send out
+    9656 segments retransmited
+    1 bad segments received.
+    18944 resets sent
+Udp:
+    108302 packets received
+    76 packets to unknown port received.
+    0 packet receive errors
+    112677 packets sent
+    0 receive buffer errors
+    0 send buffer errors
+UdpLite:
+TcpExt:
+    26 invalid SYN cookies received
+    12 resets received for embryonic SYN_RECV sockets
+    40181 TCP sockets finished time wait in fast timer
+    586 packets rejects in established connections because of timestamp
+    55152 delayed acks sent
+    81 delayed acks further delayed because of locked socket
+    Quick ack mode was activated 9073 times
+    1046 packets directly queued to recvmsg prequeue.
+    3168 bytes directly in process context from backlog
+    175293 bytes directly received in process context from prequeue
+    1067370 packet headers predicted
+    898 packets header predicted and directly queued to user
+    1768977 acknowledgments not containing data payload received
+    929492 predicted acknowledgments
+    54 times recovered from packet loss by selective acknowledgements
+    Detected reordering 2 times using time stamp
+    1 congestion windows partially recovered using Hoe heuristic
+    9 congestion windows recovered without slow start by DSACK
+    55 congestion windows recovered without slow start after partial ack
+    1 timeouts after SACK recovery
+    173 fast retransmits
+    3 forward retransmits
+    1016 other TCP timeouts
+    TCPLossProbes: 3100
+    TCPLossProbeRecovery: 213
+    9136 DSACKs sent for old packets
+    513 DSACKs received
+    12889 connections reset due to unexpected data
+    3630 connections reset due to early user close
+    957 connections aborted due to timeout
+    TCPDSACKIgnoredNoUndo: 196
+    TCPSpuriousRTOs: 2
+    TCPSackShifted: 2864
+    TCPSackMerged: 599
+    TCPSackShiftFallback: 290
+    TCPRcvCoalesce: 349126
+    TCPOFOQueue: 1666
+    TCPChallengeACK: 3
+    TCPSYNChallenge: 1
+    TCPAutoCorking: 84423
+    TCPFromZeroWindowAdv: 6810
+    TCPToZeroWindowAdv: 6810
+    TCPWantZeroWindowAdv: 8359
+    TCPSynRetrans: 14
+    TCPOrigDataSent: 7698014
+    TCPHystartTrainDetect: 302
+    TCPHystartTrainCwnd: 5814
+    TCPHystartDelayDetect: 2
+    TCPHystartDelayCwnd: 72
+    TCPACKSkippedPAWS: 566
+    TCPACKSkippedSeq: 32
+IpExt:
+    InMcastPkts: 112417
+    OutMcastPkts: 18
+    InBcastPkts: 220403
+    InOctets: 2220027732
+    OutOctets: 8354543692
+    InMcastOctets: 6834450
+    OutMcastOctets: 4168
+    InBcastOctets: 24050680
+    InNoECTPkts: 5262392
