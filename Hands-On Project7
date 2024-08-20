@@ -1,0 +1,227 @@
+# Assignment:Hands-On Project7
+# Course: CMSC250
+# Student: Summer Nazari
+# Professor: Dr. Koorosh Azhandeh
+# Due Date: 03-31-2024
+[cmsc250109@tpaclinux1v ~]$ more .bash_profile.bashrc.bash_logout/etc/bashrc/etc/profile
+.bash_profile.bashrc.bash_logout/etc/bashrc/etc/profile: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ more .profile .bashrc/etc/bash.bashrc/etc/profile
+.profile: No such file or directory
+.bashrc/etc/bash.bashrc/etc/profile: Not a directory
+[cmsc250109@tpaclinux1v ~]$ more  .bshrc /etc/bash.bashrc/etc/profile
+.bshrc: No such file or directory
+/etc/bash.bashrc/etc/profile: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ number=122
+[cmsc250109@tpaclinux1v ~]$ test $number -eq 122
+[cmsc250109@tpaclinux1v ~]$ echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ test $number -gt 142
+[cmsc250109@tpaclinux1v ~]$ echo $?
+1
+
+[cmsc250109@tpaclinux1v ~]$ lname="Rossetti"
+[cmsc250109@tpaclinux1v ~]$ test $lname = "Rossetti"
+[cmsc250109@tpaclinux1v ~]$ echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ test $lname != "Hanson"
+[cmsc250109@tpaclinux1v ~]$ echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ echo -z $lname
+-z Rossetti
+[cmsc250109@tpaclinux1v ~]$ test -z $lname
+[cmsc250109@tpaclinux1v ~]$ echo $?
+1
+[cmsc250109@tpaclinux1v ~]$ mkdir test_directory
+[cmsc250109@tpaclinux1v ~]$ test -d test_direcotry
+[cmsc250109@tpaclinux1v ~]$ echo $?
+1
+[cmsc250109@tpaclinux1v ~]$ touch test_file
+[cmsc250109@tpaclinux1v ~]$ ls -l test_file
+-rw-r-----. 1 cmsc250109 users 0 Mar 30 19:47 test_file
+[cmsc250109@tpaclinux1v ~]$ test -x test_file
+[cmsc250109@tpaclinux1v ~]$ echo $?
+1
+[cmsc250109@tpaclinux1v ~]$ test -r test_file
+[cmsc250109@tpaclinux1v ~]$ echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ test -r test_file -a -w test_file
+[cmsc250109@tpaclinux1v ~]$ test ! -r test_file
+[cmsc250109@tpaclinux1v ~]$ echo $?
+1
+[cmsc250109@tpaclinux1v ~]$ test -d source ; echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ cd~/spurce
+-bash: cd~/spurce: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ test -e corp_phones ;
+[cmsc250109@tpaclinux1v ~]$ echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ test -e phmenu
+[cmsc250109@tpaclinux1v ~]$ ech0 $?
+bash: ech0: command not found...
+[cmsc250109@tpaclinux1v ~]$ test -e phoneadd
+[cmsc250109@tpaclinux1v ~]$ echo $?
+1
+[cmsc250109@tpaclinux1v ~]$ test -e phmenu
+[cmsc250109@tpaclinux1v ~]$ echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ test -e phlist1
+[cmsc250109@tpaclinux1v ~]$ echo $?
+1
+[cmsc250109@tpaclinux1v ~]$ cd
+[cmsc250109@tpaclinux1v ~]$ vi .bash_profile
+[cmsc250109@tpaclinux1v ~]$ echo $PATH
+/usr/local/emacs/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cmsc2501/cmsc250109/.local/bin:/home/cmsc2501/cmsc250109/bin
+[cmsc250109@tpaclinux1v ~]$ cd
+[cmsc250109@tpaclinux1v ~]$ vi veg_choice
+[cmsc250109@tpaclinux1v ~]$ vi veg_choice
+[cmsc250109@tpaclinux1v ~]$ vi guess
+[cmsc250109@tpaclinux1v ~]$ vi colors
+[cmsc250109@tpaclinux1v ~]$ cd~/source
+-bash: cd~/source: No such file or directory
+
+[cmsc250109@tpaclinux1v ~]$ echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ test -x test_file -o -r test_file
+[cmsc250109@tpaclinux1v ~]$ echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ grep 219-555-4501 corp_phones`
+>
+> ^C
+[cmsc250109@tpaclinux1v ~]$ grep 219-555-4501 corp_phones1
+[cmsc250109@tpaclinux1v ~]$ gerp 219-555-4501 corp_phones1 | tr ':' ''
+tr: when not truncating set1, string2 must be non-empty
+bash: gerp: command not found...
+Similar command is: 'grep'
+[cmsc250109@tpaclinux1v ~]$ ^C
+[cmsc250109@tpaclinux1v ~]$ gerp 219-555-4501 corp_phones | tr ':' ''
+tr: when not truncating set1, string2 must be non-empty
+bash: gerp: command not found...
+Similar command is: 'grep'
+[cmsc250109@tpaclinux1v ~]$ grep 219-555-4501 corp_phones | tr ':' ''
+tr: when not truncating set1, string2 must be non-empty
+[cmsc250109@tpaclinux1v ~]$ grep 219-555-4501 corp_phones | tr ':'' '
+tr: missing operand after ‘: ’
+Two strings must be given when translating.
+Try 'tr --help' for more information.
+Try 'tr --help' for more information.
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ grep 219-555-4501 corp_phones | tr ':' ' '
+[cmsc250109@tpaclinux1v ~]$ grep 219-555-4501 corp_phones1 | tr ':' ''
+tr: when not truncating set1, string2 must be non-empty
+[cmsc250109@tpaclinux1v ~]$ ls
+_4540          data1                  our_users            source
+account3       data2                  phmenu               source_file
+account3.c     datafiles              practice             testcorp
+account4       dept                   practice.fil         testcorppaste
+account4.c     descriptions           practice.fil~        test_directory
+accounts1      desriptions            pratice              test_file
+accounts2      destination_directory  products1            testscript
+accounts2.c    eFile                  products2            textfile
+accounts3      favorite_foods         proudcts             textfiles
+accounts4      first.file             sandwich             third.file
+accouts1.c     guess                  screen               today
+chap1          history                script_file.sh       todayFile
+chap2          history.bak            scrrenFile           todayFiles.txt
+chap3          manycolors             second.file          todayFile.txt
+chap4          month                  secoud.file          total_accounts
+colors         myfile.txt             seqtotal             user_info
+colorscript    myscript.sh            sonn
+
+            Corporate Phone Reporting Menu
+            ==============================
+
+         P - Print Phone List
+         A - Add New Phones
+         S - Search for Phones
+         V - View Phone List
+         D - Delete Phone
+
+         Q - Quit: Q
+: command not found...
+[cmsc250109@tpaclinux1v ~]$ export CLEAR
+[cmsc250109@tpaclinux1v ~]$ echo "$CLEAR"
+
+[cmsc250109@tpaclinux1v ~]$ CLEAR= `clear`
+bash:
+: command not found...
+[cmsc250109@tpaclinux1v ~]$ wxport CLEAR
+bash: wxport: command not found...
+[cmsc250109@tpaclinux1v ~]$ echo "$CLEAR"
+
+[cmsc250109@tpaclinux1v ~]$ cd ~/source
+[cmsc250109@tpaclinux1v source]$ vi phoneadd
+[cmsc250109@tpaclinux1v source]$ vi phoneadd
+[cmsc250109@tpaclinux1v source]$ vi phoneadd
+[cmsc250109@tpaclinux1v source]$ chmod a+x phoneadd
+[cmsc250109@tpaclinux1v source]$ ./phoneadd
+trap: usage: trap
+./phoneadd: line 50: syntax error: unexpected end of file
+[cmsc250109@tpaclinux1v source]$ tput cup 10 4; echo "Date Hired :"
+# Check to see if the phone number already exists
+while grep "$phonenum" $phonefile > ~/tmp/temp
+do
+tputDate Hired :echo "This number has already
+[cmsc250109@tpaclinux1v source]$ tput cup 12 4; echo "Add Another? (y)es or (q)uit "Add Another? (y)es or (q)uit p/temp
+[cmsc250109@tpaclinux1v source]$ tput cup 4 18; read phonenum
+continue... "
+read prompt
+tput cup 4 18 ; echo " "
+tput cup 4 18 ; read phonenum
+if test $phonenum = "q"
+then
+clear ; exit
+fi
+done
+tput cup 5 18 ; read lname
+
+    Corporate Phone List Additions
+    ==============================
+
+    Phone Number: 240-936-9111
+    Last Name :   Brooks
+    First Name :  Sally
+    Middle Init : H
+Dept# :       4540
+    Job Title :   Programmer
+./phDate Hired : 2-20-2007
+./phoneadd: line 106: $'echo240-936-9111:Brooks:Sally:H:4540:\nProgrammer:-20-2007': command not found or (q)uit:q
+[cmsc250109@tpaclinux1v ~]$ cd
+[cmsc250109@tpaclinux1v ~]$ datenow( )
+> {
+> date
+> }
+[cmsc250109@tpaclinux1v ~]$ datenow
+Sun Mar 31 15:09:28 EDT 2024
+[cmsc250109@tpaclinux1v ~]$ datenow( )
+> {
+> echo "$1"
+> date
+> }
+[cmsc250109@tpaclinux1v ~]$ datenow "Today's date and time are:"
+Today's date and time are:
+Sun Mar 31 15:10:38 EDT 2024
+[cmsc250109@tpaclinux1v ~]$ vi .myfuncs
+[cmsc250109@tpaclinux1v ~]$ vi ..myfuncs
+[cmsc250109@tpaclinux1v ~]$ . .myfuncs
+-bash: .myfuncs: line 6: syntax error near unexpected token `sort'
+-bash: .myfuncs: line 6: ` sort -k 6  -t: corp_phones'
+[cmsc250109@tpaclinuCorporate Phone List
+                    ====================
+[cmsc250109@tpaclinux1v ~]$ dort_job
+.myfuncs: line 6: syntax error near unexpected token `sort'
+.myfuncs: line 6: ` sort -k 6  -t: corp_phones'
+                          t foun
+[cmsc250109@tpaclinux1v ~]$ cd
+[cmsc250109@tpaclinux1v ~]$ . ~/source/ .myfuncs
+-bash: .: /home/cmsc2501/cmsc250109/source/: is a directory
+[cmsc250109@tpaclinux1v ~]$ sort_name
+
+[cmsc250109@tpaclinux1v ~]$ sort_dept
+bash: sort_dept: command not found...
+[cmsc250109@tpaclinux1v ~]$ sort_job
+bash: sort_job: command not found...
+[cmsc250109@tpaclinux1v ~]$ vi phlist1
+[cmsc250109@tpaclinux1v ~]$ chmod a+x phlist1
+[cmsc250109@tpaclinux1v ~]$ ./phlist
+-bash: ./phlist: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ ./phlist1
