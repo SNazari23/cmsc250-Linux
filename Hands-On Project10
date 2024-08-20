@@ -1,0 +1,117 @@
+# Assignment: Hands-On Projects Chapter 10
+# Course: CMSC250
+# Student: Summer Nazari 
+# Professor: Koorosh Azhandeh
+# Due Date: 04/29/24
+[cmsc250109@tpaclinux1v ~]$ vi inches.c
+[cmsc250109@tpaclinux1v ~]$ gcc inches.c
+[cmsc250109@tpaclinux1v ~]$ ./a.out
+There are 120 inches in 10 feet.
+[cmsc250109@tpaclinux1v ~]$ vi radius.c
+[cmsc250109@tpaclinux1v ~]$ vi radius.c
+[cmsc250109@tpaclinux1v ~]$ gcc -o radius radius.c
+[cmsc250109@tpaclinux1v ~]$ ./radius
+The area, 7853.975098, is too large.
+[cmsc250109@tpaclinux1v ~]$ vi rain.c
+[cmsc250109@tpaclinux1v ~]$ gcc -o rain rain.c
+[cmsc250109@tpaclinux1v ~]$ ./rain
+We have had 0 inches of rain.
+We have had 1 inches of rain.
+We have had 2 inches of rain.
+We have had 3 inches of rain.
+We have had 4 inches of rain.
+We have had 5 inches of rain.
+We have had 6 inches of rain.
+We have had 7 inches of rain.
+We have had 8 inches of rain.
+We have had 9 inches of rain.
+We have had a total of 45 inches of rain.
+[cmsc250109@tpaclinux1v ~]$ vi absolute.c
+[cmsc250109@tpaclinux1v ~]$ gcc -o absolute absolute.c
+[cmsc250109@tpaclinux1v ~]$ ./absolute
+The absolute value of -12 is 12
+[cmsc250109@tpaclinux1v ~]$ vi abs_func.c
+[cmsc250109@tpaclinux1v ~]$ vi abs_main.c
+[cmsc250109@tpaclinux1v ~]$ gcc abs_main.c abs_func.c -o abs
+[cmsc250109@tpaclinux1v ~]$ ./abs
+The absolute value of -12 is 12
+[cmsc250109@tpaclinux1v ~]$ vi sqaure_func.c
+[cmsc250109@tpaclinux1v ~]$ vi sqaure_main.c
+[cmsc250109@tpaclinux1v ~]$ vi make_sqaure
+[cmsc250109@tpaclinux1v ~]$ make -f make_sqaure sqaure
+gcc -c sqaure_func.c
+gcc -c  make_sqaure
+gcc -c sqaure func.o sqaure_main.o -o sqaure 
+[cmsc250109@tpaclinux1v ~] ./sqaure 
+The square of 1 is 1 
+The square of 2 is 4
+The square of 3 is 9
+The square of 4 is 16 
+The square of 5 is 25
+The square of 6 is 36
+The square of 7 is 49
+The square of 8 is 64
+The square of 9 is 81
+The square of 10 is 100
+[cmsc250109@tpaclinux1v ~]$ vi keyboard.c
+[cmsc250109@tpaclinux1v ~]$ gcc keyboard.c -o keyboard
+[cmsc250109@tpaclinux1v ~]$ ./keyboard
+
+Enter your First Name: Troye
+
+Enter your Desired Monthly Income: 1500
+
+Enter your friend's weight: 140
+
+ Recap
+I am Troye and I wish to have 1500.00 per month
+I never would have guessed your friend weighs 140 lbs
+[cmsc250109@tpaclinux1v ~]$ vi decode.c
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ vi encode.c
+[cmsc250109@tpaclinux1v ~]$ vi encode_file.c
+[cmsc250109@tpaclinux1v ~]$ vi decode.c
+[cmsc250109@tpaclinux1v ~]$ vi decode_file.c
+[cmsc250109@tpaclinux1v ~]$ vi encode_make
+[cmsc250109@tpaclinux1v ~]$ vi decode_file.c
+[cmsc250109@tpaclinux1v ~]$ make -f encode_make
+gcc -c encode.c
+gcc -c encode_file.c
+gcc encode.o  encode_file.o -o encode
+[cmsc250109@tpaclinux1v ~]$ make -f decode_make
+gcc -c decode.c
+gcc -c decode_file.c
+gcc decode.o  decode_file.o -o decode
+[cmsc250109@tpaclinux1v ~]$ ./encode
+Enter the name of the file to encode: testfile
+Enter the output file name: secrect_file 
+The file has been encoded. 
+[cmsc250109@tpaclinux1v ~]$ cat  secrect_file 
+^rs}*?k}*m|ok~on*l?*k*M*z|yq|kw8                        [cmsc250109@tpaclinux1v ~]$ 
+ [cmsc250109@tpaclinux1v ~]$  ./decode
+Enter the name of the file to decode: secrect_file 
+Enter the output file name: normal_file
+The file has been decoded. 
+ [cmsc250109@tpaclinux1v ~]$ cat normal_file
+This was created by a c program . 
+[cmsc250109@tpaclinux1v ~]$ vi simple.C
+[cmsc250109@tpaclinux1v ~]$ g++ simple.C -o sim_plus
+[cmsc250109@tpaclinux1v ~]$ sim_plus
+bash: sim_plus: command not found...
+[cmsc250109@tpaclinux1v ~]$ ./sim_plus
+C++ is a programming language.
+Like C, C++ is compatible with UNIX/Linux.
+[cmsc250109@tpaclinux1v ~]$ vi fileread.C
+[cmsc250109@tpaclinux1v ~]$ g++ fileread.C -o fileread
+[cmsc250109@tpaclinux1v ~]$ ./fileread
+This was created by a C program. 
+[cmsc250109@tpaclinux1v ~]$ vi datestuf.C
+[cmsc250109@tpaclinux1v ~]$ g++ datestuf.C -o datestuf
+[cmsc250109@tpaclinux1v ~]$ ./datestuf
+1. It is now Thu Apr 25 00:20:23 2024
+2. It is now Thu Apr 25 00:20:23 2024
+[cmsc250109@tpaclinux1v ~]$ [cmsc250109@tpaclinux1v ~]$ vi file.C
+[cmsc250109@tpaclinux1v ~]$ [cmsc250109@tpaclinux1v ~]$ g++ file.C -o file
+[cmsc250109@tpaclinux1v ~]$ ./file
+Eneter File Name: hello.C
+File Not Found!!! 
