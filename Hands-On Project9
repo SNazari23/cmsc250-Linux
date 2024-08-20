@@ -1,0 +1,94 @@
+# Assignment: Hands-On Projects Chapter 9
+# Course: CMSC250
+# Student:  Summer Nazari 
+# Professor: Koorosh Azhandeh
+# Due Date: 04/21/24
+[cmsc250109@tpaclinux1v ~]$ cat > students
+Joespeh
+Alice
+Mary
+Zora
+Aaron
+Barbara
+Larry
+[cmsc250109@tpaclinux1v ~]$ vi perlread1.pl
+[cmsc250109@tpaclinux1v ~]$ chmod ugo+x perlread1.pl
+[cmsc250109@tpaclinux1v ~]$ ./perlread1.pl students
+Joespeh
+Alice
+Mary
+Zora
+Aaron
+Barbara
+Larry
+File "students" has 7 lines
+[cmsc250109@tpaclinux1v ~]$ vi perlread2.pl
+[cmsc250109@tpaclinux1v ~]$ ./peerlread2.pl
+Joespeh
+Alice
+Mary
+Zora
+Aaron
+Barbara
+Larry
+File "students" has 7 lines
+[cmsc250109@tpaclinux1v ~]$ vi perlsort1.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x perlsort1.pl
+[cmsc250109@tpaclinux1v ~]$ ./perlsort1.pl
+Apples  Bannas Oranges   Pears Pineapples   Tangerines                                                                  
+[cmsc250109@tpaclinux1v ~]$ vi perlsort2.pl
+[cmsc250109@tpaclinux1v ~]$ ./perlsort2.pl students
+Joespeh
+Alice
+Mary
+Zora
+Aaron
+Barbara
+Larry
+Marry 
+Zona
+[cmsc250109@tpaclinux1v ~]$ cat > numberlist
+130
+100
+121
+101
+120
+122
+[cmsc250109@tpaclinux1v ~]$ vi perlsort3.pl
+[cmsc250109@tpaclinux1v ~]$ ./persort3.pl numberlist
+130
+100
+121
+101
+120
+122
+[cmsc250109@tpaclinux1v ~]$ vi perlsort4.pl
+[cmsc250109@tpaclinux1v ~]$ ./pertsort4.pl numberlist
+[cmsc250109@tpaclinux1v ~]$ vi perlsort3.pl
+[cmsc250109@tpaclinux1v ~]$ ./persort3.pl numberlist
+-bash: ./persort3.pl: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ vi perlsort4.pl
+[cmsc250109@tpaclinux1v ~]$ ./pertsort4.pl numberlist
+130
+100
+121
+101
+120
+122
+130
+[cmsc250109@tpaclinux1v ~]$ vi UNIXtools.html
+[cmsc250109@tpaclinux1v ~]$ chmod ugo+x UNIXtools.html
+[cmsc250109@tpaclinux1v ~]$ mkdir cgi-bin
+[cmsc250109@tpaclinux1v ~]$ chmod 755 cgi-bin
+[cmsc250109@tpaclinux1v ~]$ cgi-bin
+bash: cgi-bin: command not found...
+[cmsc250109@tpaclinux1v ~]$ cd cgi-bin
+[cmsc250109@tpaclinux1v cgi-bin]$ vi projest.html
+[cmsc250109@tpaclinux1v cgi-bin]$ vi projest.html
+[cmsc250109@tpaclinux1v cgi-bin]$ cat project.cgi
+[cmsc250109@tpaclinux1v ~]$ vi software.html
+[cmsc250109@tpaclinux1v ~]$ chmod a+rx software.cgi
+chmod: cannot access ‘software.cgi’: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ chmod a+rx software.html
+[cmsc250109@tpaclinux1v ~]$ vi software.cgi
+[cmsc250109@tpaclinux1v ~]$ chmod a+rx software.cgi
