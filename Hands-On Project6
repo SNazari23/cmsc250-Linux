@@ -1,0 +1,371 @@
+# Assignment:Hands-On Project6
+# Course: CMSC250
+# Student: Summer Nazari
+# Professor: Dr. Koorosh Azhandeh
+# Due Date: 03-24-2024
+[cmsc250109@tpaclinux1v ~]$ printenv SHELL PATH
+/bin/bash
+/usr/local/emacs/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cmsc2501/cmsc250109/.local/bin:/home/cmsc2501/cmsc250109/bin
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ DOG = Shepherd
+bash: DOG: command not found...
+[cmsc250109@tpaclinux1v ~]$ echo DOG
+DOG
+[cmsc250109@tpaclinux1v ~]$ echo $DOG
+
+[cmsc250109@tpaclinux1v ~]$ DOG = "Shepherd"
+bash: DOG: command not found...
+[cmsc250109@tpaclinux1v ~]$ echo $DOG
+
+[cmsc250109@tpaclinux1v ~]$ MEMO = "Meeting will be at noon today"
+bash: MEMO: command not found...
+[cmsc250109@tpaclinux1v ~]$ echo $MEMO
+
+[cmsc250109@tpaclinux1v ~]$ echo '$HOME'
+$HOME
+[cmsc250109@tpaclinux1v ~]$ echo "$HOME"
+/home/cmsc2501/cmsc250109
+[cmsc250109@tpaclinux1v ~]$ TODAY ='date'
+bash: TODAY: command not found...
+[cmsc250109@tpaclinux1v ~]$ echo $TODAY
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ cat > testscript
+[cmsc250109@tpaclinux1v ~]$ echo $MY_VAR
+[cmsc250109@tpaclinux1v ~]$ let X=10+2*7
+[cmsc250109@tpaclinux1v ~]$ echo $X
+24
+[cmsc250109@tpaclinux1v ~]$ let  Y=X+2*4
+[cmsc250109@tpaclinux1v ~]$ echo $Y
+32
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$
+[cmsc250109@tpaclinux1v ~]$ echo $X
+24
+HISTCONTROL=ignoredups
+SHLVL=1
+HOME=/home/cmsc2501/cmsc250109
+LOGNAME=cmsc250109
+QTLIB=/usr/lib64/qt-3.3/lib
+CVS_RSH=ssh
+XDG_DATA_DIRS=/home/cmsc2501/cmsc250109/.local/share/flatpak/exports/share:/var/lib/flatp
+ak/exports/share:/usr/local/share:/usr/share
+SSH_CONNECTION=10.68.16.50 58412 172.28.240.41 22
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+XDG_RUNTIME_DIR=/run/user/1154
+QT_PLUGIN_PATH=/usr/lib64/kde4/plugins:/usr/lib/kde4/plugins
+_=/usr/bin/printenv
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ echo $PATH
+/usr/local/emacs/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cmsc2501/cmsc250109/.local/bin:/home/cmsc2501/cmsc250109/bin
+[cmsc250109@tpaclinux1v ~]$ PATH =$PATH
+bash: PATH: command not found...
+[cmsc250109@tpaclinux1v ~]$ echo $PATH
+/usr/local/emacs/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cmsc2501/cmsc250109/.local/bin:/home/cmsc2501/cmsc250109/bin
+[cmsc250109@tpaclinux1v ~]$ testscript
+bash: testscript: command not found...
+[cmsc250109@tpaclinux1v ~]$ vi seqtotal
+[cmsc250109@tpaclinux1v ~]$ sh seqtotal
+[cmsc250109@tpaclinux1v ~]$ ./veg_choice
+what is your favorite vegtable? broccoli
+Broccoli is a healthy choice.
+[cmsc250109@tpaclinux1v ~]$ chmod ugo+x veg_choice
+[cmsc250109@tpaclinux1v ~]$ ./veg_choice
+what is your favorite vegtable? corn
+ Don't forget to eat your broccoli also.
+[cmsc250109@tpaclinux1v ~]$ vi veg_choice
+[cmsc250109@tpaclinux1v ~]$ chmod ugo+x veg_choice
+[cmsc250109@tpaclinux1v ~]$ ./veg_choice
+what is your favorite vegtable? corn
+ Don't forget to eat your broccoli also.
+[cmsc250109@tpaclinux1v ~]$ vi veg_choice
+[cmsc250109@tpaclinux1v ~]$ chmod ugo+x veg_choice
+[cmsc250109@tpaclinux1v ~]$ ./veg_choice
+what is your favorite vegtable? carrots
+Carrots is a healthy choice.
+
+[cmsc250109@tpaclinux1v ~]$ vi our_users
+[cmsc250109@tpaclinux1v ~]$ USERS in john ellen tom becky eli jill
+bash: USERS: command not found...
+Similar command is: 'users'
+[cmsc250109@tpaclinux1v ~]$ do
+-bash: syntax error near unexpected token `do'
+[cmsc250109@tpaclinux1v ~]$ for USERS in john ellen tom becky eli jill
+> do
+> echo $USERS
+> done
+john
+ellen
+tom
+becky
+eli
+jill
+bash: sone: command not found...
+ellen
+bash: sone: command not found...
+tom
+bash: sone: command not found...
+becky
+bash: sone: command not found...
+eli
+bash: sone: command not found...
+jill
+bash: sone: command not found...
+[cmsc250109@tpaclinux1v ~]$ cat > chap1
+this is chapter 1
+^C
+[cmsc250109@tpaclinux1v ~]$ cat > chap2
+this is chapter 2
+^C
+[cmsc250109@tpaclinux1v ~]$ cat > chap3
+This is chapter 3 ^C
+[cmsc250109@tpaclinux1v ~]$ cat > chap4
+this is chapter 4
+^C
+[cmsc250109@tpaclinux1v ~]$ for file in chap [1234]; do
+> more $file
+> done
+chap: No such file or directory
+[1234]: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ vi colors
+[cmsc250109@tpaclinux1v ~]$ vi nameaddr
+[cmsc250109@tpaclinux1v ~]$ chmod ugo+x nameaddr
+[cmsc250109@tpaclinux1v ~]$ ./nameaddr
+Enter Name: Candence
+Enter City: Rockey Road
+Enter State: Md
+Enter zip code: 28790
+Continue? (y)es or (n) o: n
+
+[cmsc250109@tpaclinux1v ~]$ vi manycolors
+[cmsc250109@tpaclinux1v ~]$ tput clear ; tput cup 10 15 ; echo "Hello" ; tput cup 20 0
+
+
+
+
+
+
+
+
+
+               Hello
+
+
+[cmsc250109@tpaclinux1v ~]$ sh -v colors
+ echo -n "Try to guess my favorite colors: "
+Try to guess my favorite colors:  read guess
+green
+ while  ["$guess" != "red"] ; do
+ echo "No, not that one. Try agian. "; read guess
+ done
+colors: line 3: [green: command not found
+[cmsc250109@tpaclinux1v ~]$ sh -v colors
+ echo -n "Try to guess my favorite colors: "
+Try to guess my favorite colors:  read guess
+red
+ while  ["$guess" != "red"] ; do
+ echo "No, not that one. Try agian. "; read guess
+ done
+colors: line 3: [red: command not found
+[cmsc250109@tpaclinux1v ~]$ sh -x colors
++ echo -n 'Try to guess my favorite colors: '
+Try to guess my favorite colors: + read guess
+red
++ '[red' '!=' 'red]'
+colors: line 3: [red: command not found
+[cmsc250109@tpaclinux1v ~]$ vi colors
+[cmsc250109@tpaclinux1v ~]$ sh -v colors
+ echo -n "Try to guess my favorite colors: "
+Try to guess my favorite colors:  read guess
+green
+ while  "$guess" != "red" ; do
+ echo "No, not that one. Try agian. "; read guess
+ done
+colors: line 3: green: command not found
+
+[cmsc250109@tpaclinux1v ~]$ vi manycolors
+[cmsc250109@tpaclinux1v ~]$ sh -v colors
+ echo -n "Try to guess my favorite colors: "
+Try to guess my favorite colors:  read guess
+green
+ while  "$guess" != "red" ; do
+ echo "No, not that one. Try agian. "; read guess
+ done
+colors: line 3: green: command not found
+
+[cmsc250109@tpaclinux1v ~]$ sh -x colors
++ echo -n 'Try to guess my favorite colors: '
+Try to guess my favorite colors: + read guess
+red
++ red '!=' red
+?
+echo
+?
+^N
+?
+^C
+?
+^X^Z
+[1]+  Stopped                 sh -x colors
+[cmsc250109@tpaclinux1v ~]$ alias ll="ls -l"
+[cmsc250109@tpaclinux1v ~]$ ll
+total 148
+drwxr-x---. 2 cmsc250109 users    6 Feb 18 23:05 _4540
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 03:55 account3
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 04:03 account3.c
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 03:55 account4
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 04:03 account4.c
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 03:55 accounts1
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 03:55 accounts2
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 04:03 accounts2.c
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 03:32 accounts3
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 03:33 accounts4
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 04:03 accouts1.c
+-rw-r-----. 1 cmsc250109 users   19 Mar 27 21:35 chap1
+-rw-r-----. 1 cmsc250109 users   19 Mar 27 21:36 chap2
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 21:36 chap3
+-rw-r-----. 1 cmsc250109 users   19 Mar 27 21:37 chap4
+-rw-r-----. 1 cmsc250109 users  150 Mar 30 01:45 colors
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 22:06 colorscript
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 02:48 corp_phones1
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 02:49 corp_phones2
+-rw-r-----. 1 cmsc250109 users   55 Feb 11 13:21 current_users
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 03:30 data1
+-rw-r-----. 1 cmsc250109 users    0 Mar 26 03:30 data2
+drwxr-x---. 2 cmsc250109 users   32 Mar 26 03:31 datafiles
+drwxr-x---. 2 cmsc250109 users    6 Feb 18 23:05 dept
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:30 descriptions
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:33 desriptions
+drwxr-x---. 2 cmsc250109 users   25 Mar 27 03:35 destination_directory
+-rw-r-----. 1 cmsc250109 users  244 Mar 26 01:16 eFile
+-rw-r-----. 1 cmsc250109 users   33 Feb 11 22:17 favorite_foods
+-rw-r-----. 1 cmsc250109 users  102 Mar 26 00:01 first.file
+-rw-r-----. 1 cmsc250109 users   36 Mar 27 12:00 history
+-rw-r-----. 1 cmsc250109 users   36 Mar 27 03:22 history.bak
+-rwxr-x--x. 1 cmsc250109 users  311 Mar 27 21:57 manycolors
+-rw-r-----. 1 cmsc250109 users  142 Feb 11 21:40 month
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:29 myfile.txt
+-rwxr-x---. 1 cmsc250109 users    0 Mar 27 03:28 myscript.sh
+-rwxr-x--x. 1 cmsc250109 users  253 Mar 27 21:43 nameaddr
+drwxr-x---. 2 cmsc250109 users    6 Feb 18 22:48 newdir
+-rw-r-----. 1 cmsc250109 users    0 Feb 18 22:48 newdir.newfile
+-rw-r-----. 1 cmsc250109 users  119 Feb 11 13:27 notes
+-rw-r-----. 1 cmsc250109 users   71 Mar 27 21:34 our_users
+-rw-r-----. 1 cmsc250109 users    1 Mar 26 02:02 phmenu
+-rw-r-----. 1 cmsc250109 users  136 Mar 25 22:40 practice
+-rw-r-----. 1 cmsc250109 users  106 Mar 25 22:23 practice.fil
+-rw-r-----. 1 cmsc250109 users  104 Mar 25 22:17 practice.fil~
+-rw-r-----. 1 cmsc250109 users    0 Mar 25 22:10 pratice
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:44 products1
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:44 products2
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:30 proudcts
+-rw-r-----. 1 cmsc250109 users  456 Mar 30 01:35 screen
+-rwxr-x---. 1 cmsc250109 users    1 Mar 26 03:37 script_file.sh
+-rw-r-----. 1 cmsc250109 users  454 Mar 27 22:04 scrrenFile
+-rw-r-----. 1 cmsc250109 users   78 Mar 26 00:06 second.file
+-rw-r-----. 1 cmsc250109 users    0 Mar 25 23:22 secoud.file
+-rw-r-----. 1 cmsc250109 users   60 Mar 27 15:20 seqtotal
+-rw-r-----. 1 cmsc250109 users  189 Mar 26 00:54 sonnet
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 02:48 sorted_corp_phones1
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:23 sorted_crop_phones1
+drwxr-x---. 2 cmsc250109 users   24 Mar 27 22:12 source
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:33 source_file
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:48 testcorp
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:47 testcorppaste
+-rw-r-----. 1 cmsc250109 users    4 Mar 27 17:57 testscript
+-rw-r-----. 1 cmsc250109 users  199 Mar 25 22:04 textfile
+-rw-r-----. 1 cmsc250109 users  146 Mar 25 22:38 textfiles
+-rw-r-----. 1 cmsc250109 users    2 Mar 26 00:14 third.file
+-rw-r-----. 1 cmsc250109 users    0 Mar 25 23:55 today
+-rw-r-----. 1 cmsc250109 users   77 Mar 25 23:57 todayFile
+-rw-r-----. 1 cmsc250109 users    1 Mar 25 23:16 todayFiles.txt
+-rw-r-----. 1 cmsc250109 users    0 Mar 25 23:16 todayFile.txt
+-rw-r-----. 1 cmsc250109 users    0 Mar 27 03:26 total_accounts
+-rw-r-----. 1 cmsc250109 users  728 Feb 11 22:03 user_info
+-rwxr-x--x. 1 cmsc250109 users  203 Mar 27 21:32 veg_choice
+-rwxr-x--x. 1 cmsc250109 users  202 Mar 27 15:30 verg_choice
+-rw-r-----. 1 cmsc250109 users 2570 Feb 11 22:10 who_info
+-rw-r-----. 1 cmsc250109 users 2018 Feb 11 13:22 year_2024
+[cmsc250109@tpaclinux1v ~]$ ls
+_4540          data1                  our_users            testcorp
+account3       data2                  phmenu               testcorppaste
+account3.c     datafiles              practice             testscript
+account4       dept                   practice.fil         textfile
+account4.c     descriptions           practice.fil~        textfiles
+accounts1      desriptions            pratice              third.file
+accounts2      destination_directory  products1            today
+accounts2.c    eFile                  products2            todayFile
+accounts3      favorite_foods         proudcts             todayFiles.txt
+accounts4      first.file             screen               todayFile.txt
+accouts1.c     history                script_file.sh       total_accounts
+chap1          history.bak            scrrenFile           user_info
+chap2          manycolors             second.file          veg_choice
+chap3          month                  secoud.file          verg_choice
+chap4          myfile.txt             seqtotal             who_info
+colors         myscript.sh            sonnet               yasmine_name
+colorscript    nameaddr               sorted_corp_phones1  year_2024
+corp_phones1   newdir                 sorted_crop_phones1
+corp_phones2   newdir.newfile         source
+current_users  notes                  source_file
+[cmsc250109@tpaclinux1v ~]$ mkdir source
+mkdir: cannot create directory ‘source’: File exists
+[cmsc250109@tpaclinux1v ~]$ cd source
+[cmsc250109@tpaclinux1v source]$ vi phmenu
+ #==========================================#
+ #Script Name:     phmenu
+ #By:              Your initials here
+ #Date:            Today's date
+ #Purrpose:        A menu for the Corpate phone List
+ #Command Line:    phemenu
+#=================================================
+loop=y
+./phmenu: line 9: [: missing `]'
+[cmsc250109@tpaclinux1v ~]$ ./phmenu
+./phmenu: line 1: $'\177========================================================': command not found
+./phmenu: line 9: [: missing `]'
+[cmsc250109@tpaclinux1v ~]$ vi corp_phones
+[cmsc250109@tpaclinux1v ~]$ cd source
+[cmsc250109@tpaclinux1v source]$ pwd
+/home/cmsc2501/cmsc250109/source
+[cmsc250109@tpaclinux1v source]$ vi corp_phones
+[cmsc250109@tpaclinux1v source]$ vi corp_phones
+[cmsc250109@tpaclinux1v source]$ vi corp_phones
+[cmsc250109@tpaclinux1v source]$ gerp 219-555-4591 corp_phones
+bash: gerp: command not found...
+Similar command is: 'grep'
+[cmsc250109@tpaclinux1v source]$ grep 219-555-4591 corp_phones
+219-555-4591:Moore:Sarah:H:4500:Dept Manager:08-01-1978
+[cmsc250109@tpaclinux1v source]$ grep Accountant corp_phones
+219-555-4544:Polk:John:S:4520:Accountant:09-22-2001
+[cmsc250109@tpaclinux1v source]$ vi phmenu
+[cmsc250109@tpaclinux1v source]$ vi phlist1
+[cmsc250109@tpaclinux1v source]$ chmod a+x phlist1
+[cmsc250109@tpaclinux1v source]$ ./phlist1
+
+
+                    Corporate Phone List
+                    ====================
+
+                                [cmsc250109@tpaclinux1v source]$ vi courp_phones
+Mitchell     Barbara      C     19-555-4587 4541 Admin Asst 12-14-1995
+Olson        Timothy      H     219-555-4589 4544 Supervisor 06-30-1983
+Moore        Sarah        H     219-555-4591 4500 Dept Manag 08-01-1978
+Polk         John         S     219-555-4544 4520 Accountant 09-22-2001
+Robinson     Albert       J     219-555-4501 4501  Secretary 08-12-1997
+
+[cmsc250109@tpaclinux1v source]$ vi phoneadd
+[cmsc250109@tpaclinux1v source]$ chmod a+x phoneadd
+[cmsc250109@tpaclinux1v source]$ ./phoneadd
+trap: usage: trap [-lp] [[arg] signal_spec ...]
+./phoneadd: line 13: [: missing `]'
+[cmsc250109@tpaclinux1v source]$ vi phoneadd
+[cmsc250109@tpaclinux1v source]$ chmod a+x phoneadd
+[cmsc250109@tpaclinux1v source]$ ,/phoneadd
+-bash: ,/phoneadd: No such file or directory
+[cmsc250109@tpaclinux1v source]$ ./phoneadd
+trap: usage: trap [-lp] [[arg] signal_spec ...]
+./phoneadd: line 13: [: missing `]'
+[cmsc250109@tpaclinux1v source]$ vi phoneadd
+[cmsc250109@tpaclinux1v source]$ chmod a+x phoneadd
+[cmsc250109@tpaclinux1v source]$ ./phoneadd
+trap: usage: trap [-lp] [[arg] signal_spec ...]
+./phoneadd: line 13: [: missing `]'
