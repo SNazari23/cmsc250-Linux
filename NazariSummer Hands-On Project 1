@@ -1,0 +1,206 @@
+# Assignment: Hands-On Projects Chapter 1
+# Course: CMSC250
+# Student: Summer Nazari 
+# Professor: Koorosh Azhandeh
+# Due Date: 02/11/24
+[cmsc250109@tpaclinux1v ~]$ date
+Sun Feb 11 12:48:26 EST 2024
+[cmsc250109@tpaclinux1v ~]$ Date
+bash: Date: command not found...
+Similar command is: 'date'
+[cmsc250109@tpaclinux1v ~]$ date -u
+Sun Feb 11 17:49:17 UTC 2024
+[cmsc250109@tpaclinux1v ~]$ cal
+    February 2024
+Su Mo Tu We Th Fr Sa
+             1  2  3
+ 4  5  6  7  8  9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28 29
+
+[cmsc250109@tpaclinux1v ~]$ cal cal - j
+cal: illegal day value: 'cal'
+[cmsc250109@tpaclinux1v ~]$ cal -j 2024
+                           2024
+
+          January                       February
+Sun Mon Tue Wed Thu Fri Sat   Sun Mon Tue Wed Thu Fri Sat
+      1   2   3   4   5   6                    32  33  34
+  7   8   9  10  11  12  13    35  36  37  38  39  40  41
+ 14  15  16  17  18  19  20    42  43  44  45  46  47  48
+ 21  22  23  24  25  26  27    49  50  51  52  53  54  55
+ 28  29  30  31                56  57  58  59  60
+
+           March                         April
+Sun Mon Tue Wed Thu Fri Sat   Sun Mon Tue Wed Thu Fri Sat
+                     61  62        92  93  94  95  96  97
+ 63  64  65  66  67  68  69    98  99 100 101 102 103 104
+ 70  71  72  73  74  75  76   105 106 107 108 109 110 111
+ 77  78  79  80  81  82  83   112 113 114 115 116 117 118
+ 84  85  86  87  88  89  90   119 120 121
+ 91
+            May                           June
+Sun Mon Tue Wed Thu Fri Sat   Sun Mon Tue Wed Thu Fri Sat
+            122 123 124 125                           153
+126 127 128 129 130 131 132   154 155 156 157 158 159 160
+133 134 135 136 137 138 139   161 162 163 164 165 166 167
+140 141 142 143 144 145 146   168 169 170 171 172 173 174
+147 148 149 150 151 152       175 176 177 178 179 180 181
+                              182
+            July                         August
+Sun Mon Tue Wed Thu Fri Sat   Sun Mon Tue Wed Thu Fri Sat
+    183 184 185 186 187 188                   214 215 216
+189 190 191 192 193 194 195   217 218 219 220 221 222 223
+196 197 198 199 200 201 202   224 225 226 227 228 229 230
+203 204 205 206 207 208 209   231 232 233 234 235 236 237
+210 211 212 213               238 239 240 241 242 243 244
+
+         September                      October
+Sun Mon Tue Wed Thu Fri Sat   Sun Mon Tue Wed Thu Fri Sat
+245 246 247 248 249 250 251           275 276 277 278 279
+252 253 254 255 256 257 258   280 281 282 283 284 285 286
+259 260 261 262 263 264 265   287 288 289 290 291 292 293
+266 267 268 269 270 271 272   294 295 296 297 298 299 300
+273 274                       301 302 303 304 305
+
+          November                      December
+Sun Mon Tue Wed Thu Fri Sat   Sun Mon Tue Wed Thu Fri Sat
+                    306 307   336 337 338 339 340 341 342
+308 309 310 311 312 313 314   343 344 345 346 347 348 349
+315 316 317 318 319 320 321   350 351 352 353 354 355 356
+322 323 324 325 326 327 328   357 358 359 360 361 362 363
+329 330 331 332 333 334 335   364 365 366
+
+
+[cmsc250109@tpaclinux1v ~]$ cal 7 1776
+      July 1776
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
+
+[cmsc250109@tpaclinux1v ~]$
+[cmsc250109@tpaclinux1v ~]$
+[cmsc250109@tpaclinux1v ~]$ who
+cmsc250109 pts/0        2024-02-11 12:46 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ who -H
+NAME     LINE         TIME             COMMENT
+cmsc250109 pts/0        2024-02-11 12:46 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ who -u
+cmsc250109 pts/0        2024-02-11 12:46   .         43253 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ who -uH
+NAME     LINE         TIME             IDLE          PID COMMENT
+cmsc250109 pts/0        2024-02-11 12:46   .         43253 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ who -q
+cmsc250109
+# users=1
+[cmsc250109@tpaclinux1v ~]$ who am i
+cmsc250109 pts/0        2024-02-11 12:46 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ who am i -H
+NAME     LINE         TIME             COMMENT
+cmsc250109 pts/0        2024-02-11 12:46 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ whoami
+cmsc250109\
+[cmsc250109@tpaclinux1v ~]$ clear^C
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ man who
+WHO(1)                           User Commands                          WHO(1)
+
+NAME
+       who - show who is logged on
+
+SYNOPSIS
+       who [OPTION]... [ FILE | ARG1 ARG2 ]
+
+DESCRIPTION
+       Print information about users who are currently logged in.
+
+       -a, --all
+              same as -b -d --login -p -r -t -T -u
+
+       -b, --boot
+              time of last system boot
+
+       -d, --dead
+              print dead processes
+
+       -H, --heading
+              print line of column headings
+
+[cmsc250109@tpaclinux1v ~]$ date ; cal
+Sun Feb 11 13:10:17 EST 2024
+    February 2024
+Su Mo Tu We Th Fr Sa
+             1  2  3
+ 4  5  6  7  8  9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28 29
+
+[cmsc250109@tpaclinux1v ~]$ date ; who -uH
+Sun Feb 11 13:10:34 EST 2024
+NAME     LINE         TIME             IDLE          PID COMMENT
+cmsc250109 pts/0        2024-02-11 13:09   .         44829 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ date
+Sun Feb 11 13:11:44 EST 2024
+[cmsc250109@tpaclinux1v ~]$ who
+cmsc250109 pts/0        2024-02-11 13:09 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ who -uH
+NAME     LINE         TIME             IDLE          PID COMMENT
+cmsc250109 pts/0        2024-02-11 13:09   .         44829 (10.68.16.41)
+cmsc250109 pts/0        2024-02-11 13:09   .         44829 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ up arrow
+bash: up: command not found...
+[cmsc250109@tpaclinux1v ~]$ date
+Sun Feb 11 13:13:19 EST 2024
+[cmsc250109@tpaclinux1v ~]$
+[cmsc250109@tpaclinux1v ~]$ passwd
+Changing password for user cmsc250109.
+Changing password for cmsc250109.
+(current) UNIX password:
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[cmsc250109@tpaclinux1v ~]$ cat/etc/shells
+-bash: cat/etc/shells: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ cat / etc/ shells
+cat: /: Is a directory
+cat: etc/: No such file or directory
+cat: shells: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ cat -n / etc/shells
+cat: /: Is a directory
+cat: etc/shells: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ more / etc/termcap
+
+*** /: directory ***\
+[cmsc250109@tpaclinux1v ~]$ less /etc/termcap
+/etc/termcap: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ head /etc/termcap
+head: cannot open \'91/etc/termcap\'92 for reading: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ who > current_users
+[cmsc250109@tpaclinux1v ~]$ cat current_users
+cmsc250109 pts/0        2024-02-11 13:09 (10.68.16.41)
+[cmsc250109@tpaclinux1v ~]$ cal 2024 > year_2024
+[cmsc250109@tpaclinux1v ~]$ less year_2024
+[cmsc250109@tpaclinux1v ~]$
+[cmsc250109@tpaclinux1v ~]$ cat > notes
+Remeber to order a new CD-ROM, and send the report by Thursday
+[cmsc250109@tpaclinux1v ~]$ cat notes
+Remeber to order a new CD-ROM, and send the report by Thursday
+[cmsc250109@tpaclinux1v ~]$ cat >> notes
+Also remember to make reservations for Sept. conference
+[cmsc250109@tpaclinux1v ~]$ cal 11 2025
+    November 2025
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30
+[cmsc250109@tpaclinux1v ~]$ less notes
+[cmsc250109@tpaclinux1v ~]$}
