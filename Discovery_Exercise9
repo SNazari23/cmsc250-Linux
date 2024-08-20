@@ -1,0 +1,57 @@
+# Assignment: Discovery exercise 9
+# Course: CMSC250
+# Student: Yasmine Summer Nazari 
+# Professor: Koorosh Azhandeh
+# Due Date: 04/21/24
+[cmsc250109@tpaclinux1v ~]$ vi ps.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x ps.pl
+[cmsc250109@tpaclinux1v ~]$ ./ps.pl 
+Perl was developed by Larry Wall.
+[cmsc250109@tpaclinux1v ~]$ vi beth.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x beth.pl
+[cmsc250109@tpaclinux1v ~]$ ./beth.pl 
+Welcome Beth.
+[cmsc250109@tpaclinux1v ~]$ vi beth.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x beth.pl
+[cmsc250109@tpaclinux1v ~]$ ./beth.pl 
+Name: Harry 
+Welcome Harry 
+[cmsc250109@tpaclinux1v ~]$ vi beth.pl
+[cmsc250109@tpaclinux1v ~]$ vi veg.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x beth.pl
+[cmsc250109@tpaclinux1v ~]$ ./beth.pl 
+[cmsc250109@tpaclinux1v ~]$ vi veg.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x veg.pl
+[cmsc250109@tpaclinux1v ~]$ ./veg.pl 
+peas  carrots  spinach   corn     beans
+[cmsc250109@tpaclinux1v ~]$ vi sortLast.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x sortLast.pl
+[cmsc250109@tpaclinux1v ~]$ ./sortLast.pl
+Adams
+Brown
+Martin  
+Perry
+Ramirez
+Yablonsky
+[cmsc250109@tpaclinux1v ~]$ vi fileAccess.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x fileAccess.pl
+[cmsc250109@tpaclinux1v ~]$ ./fileAccess.pl
+Enter a File: hello.p
+That file is nonexistent. 
+[cmsc250109@tpaclinux1v ~]$ vi mesureConvert.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x mesureConvert.pl
+[cmsc250109@tpaclinux1v ~]$ ./mesureConvert.pl
+Enter something in inches: 1 
+1 inch is 2.54 in Centermeters 
+[cmsc250109@tpaclinux1v ~]$ vi sortnum.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x sortnum.pl
+[cmsc250109@tpaclinux1v ~]$ ./sortnum.pl
+ 2 10 19 35 115 
+[cmsc250109@tpaclinux1v ~]$ vi lastQestion.pl
+[cmsc250109@tpaclinux1v ~]$ chmod a+x lastQestion.pl
+[cmsc250109@tpaclinux1v ~]$ ./lastQestion.pl
+key:               String Value: 
+1                    Martin 
+2                    Hanson 
+3                    Stephens 
+4                    Rawlins
