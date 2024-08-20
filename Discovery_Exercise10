@@ -1,0 +1,55 @@
+# Assignment: Discovery exercise 10
+# Course: CMSC250
+# Student:  Summer Nazari 
+# Professor: Koorosh Azhandeh
+# Due Date: 04/29/24
+[cmsc250109@tpaclinux1v ~]$ vi fedora.c
+[cmsc250109@tpaclinux1v ~]$ g+= fedora.c -o fedora
+bash: fedora.c: command not found...
+[cmsc250109@tpaclinux1v ~]$ g++ fedora.c -o fedora
+[cmsc250109@tpaclinux1v ~]$ ./fedora
+ Fedora is a version of  Linux.[cmsc250109@tpaclinux1v ~]$ vi simple.C
+[cmsc250109@tpaclinux1v ~]$ vi dis10Simple.C
+[cmsc250109@tpaclinux1v ~]$ vi rain.c
+[cmsc250109@tpaclinux1v ~]$ gcc -o rain rain.c
+[cmsc250109@tpaclinux1v ~]$ ./rain
+We have had 0 inches of rain.
+We have had 1 inches of rain.
+We have had 2 inches of rain.
+We have had 3 inches of rain.
+We have had 4 inches of rain.
+We have had 5 inches of rain.
+We have had 6 inches of rain.
+We have had 7 inches of rain.
+We have had 8 inches of rain.
+We have had 9 inches of rain.
+We have had a total of 181 inches of rain.
+[cmsc250109@tpaclinux1v ~]$ vi pratice4.c
+[cmsc250109@tpaclinux1v ~]$ gcc pratice4.c -o pratice4
+[cmsc250109@tpaclinux1v ~]$ ./practice4
+-bash: ./practice4: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ gcc pratice4.c -o pratice4
+[cmsc250109@tpaclinux1v ~]$ ./pratice4
+
+Enter your First Name: Jenny
+
+Your name is Jenny 
+[cmsc250109@tpaclinux1v ~]$ vi cubePro.c
+[cmsc250109@tpaclinux1v ~]$ gcc cubePro.c -o cubePro
+[cmsc250109@tpaclinux1v ~]$ ./cubePro
+Enter a number: 4
+Cubed Num: 64
+[cmsc250109@tpaclinux1v ~]$ vi isP.c
+[cmsc250109@tpaclinux1v ~]$ gcc isP.c -o isP
+[cmsc250109@tpaclinux1v ~]$ ./isP
+Enter Number: 3 
+3 is Prime !!
+[cmsc250109@tpaclinux1v ~]$ vi temp.c
+[cmsc250109@tpaclinux1v ~]$ gcc -o temp temp.c
+[cmsc250109@tpaclinux1v ~]$ ./temp
+Enter temperture outside: 89
+ It is just fine outside
+[cmsc250109@tpaclinux1v ~]$ vi car.C
+[cmsc250109@tpaclinux1v ~]$ g++ car.C -o car
+[cmsc250109@tpaclinux1v ~]$ ./car
+ I own a 2012  Nissian Murano.
