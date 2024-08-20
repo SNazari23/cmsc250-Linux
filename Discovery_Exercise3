@@ -1,0 +1,17 @@
+# Assignment: Discovery exercise 43
+# Course: CMSC250
+# Student: Summer Nazari
+# Professor: Dr. Koorosh Azhandeh
+# Due Date: 02-29-2024
+[cmsc250109@tpaclinux1v ~]$ vi todayFile
+[cmsc250109@tpaclinux1v ~]$ vi todayFile
+[cmsc250109@tpaclinux1v ~]$ vi first.file
+[cmsc250109@tpaclinux1v ~]$ vi second.file
+[cmsc250109@tpaclinux1v ~]$ vi first.file
+[cmsc250109@tpaclinux1v ~]$ vi second.file
+[cmsc250109@tpaclinux1v ~]$ vi third.file
+[cmsc250109@tpaclinux1v ~]$ vi third.file
+[cmsc250109@tpaclinux1v ~]$ vi third.file
+[cmsc250109@tpaclinux1v ~]$ emacs sonnet
+[cmsc250109@tpaclinux1v ~]$ emacs eFile
+[cmsc250109@tpaclinux1v ~]$
