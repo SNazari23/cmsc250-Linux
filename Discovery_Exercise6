@@ -1,0 +1,147 @@
+# Assignment: Discovery exercise 6
+# Course: CMSC250
+# Student: Yasmine Summer Nazari
+# Professor: Dr. Koorosh Azhandeh
+ # Due Date: 03-24-2024
+[cmsc250109@tpaclinux1v ~]$ printenv HOME
+/home/cmsc2501/cmsc250109
+[cmsc250109@tpaclinux1v ~]$ echo $HOME
+/home/cmsc2501/cmsc250109
+[cmsc250109@tpaclinux1v ~]$ let t=20
+[cmsc250109@tpaclinux1v ~]$ let s=t+30
+[cmsc250109@tpaclinux1v ~]$ echo $1
+
+[cmsc250109@tpaclinux1v ~]$ echo $t
+20
+[cmsc250109@tpaclinux1v ~]$ echo $s
+50
+[cmsc250109@tpaclinux1v ~]$ export s=$s
+[cmsc250109@tpaclinux1v ~]$ printenv s
+50
+[cmsc250109@tpaclinux1v ~]$ cd source
+[cmsc250109@tpaclinux1v source]$ echo $PATH [or] printenv PATH
+/usr/local/emacs/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cmsc2501/cmsc250109/.local/bin:/home/cmsc2501/cmsc250109/bin [or] printenv PATH
+[cmsc250109@tpaclinux1v source]$ PATH =$PATH:.
+bash: PATH: command not found...
+[cmsc250109@tpaclinux1v source]$ vi phmenu
+[cmsc250109@tpaclinux1v source]$ cd
+[cmsc250109@tpaclinux1v ~]$ set -o nocpobber
+-bash: set: nocpobber: invalid option name
+[cmsc250109@tpaclinux1v ~]$ cd
+[cmsc250109@tpaclinux1v ~]$ set -o noclobber
+[cmsc250109@tpaclinux1v ~]$ alias var= `printenv`
+[cmsc250109@tpaclinux1v ~]$ cd
+[cmsc250109@tpaclinux1v ~]$ sandwiches=("chicken" "ham" "hummus" "tomato")
+
+[cmsc250109@tpaclinux1v ~]$ for sandwich in "${sandwiches[@]}"
+> do
+> echo "$sandwich"
+> done
+chicken
+ham
+hummus
+tomato
+[cmsc250109@tpaclinux1v ~]$ vi sandwich
+[cmsc250109@tpaclinux1v ~]$ chmod 755 sandwich
+[cmsc250109@tpaclinux1v ~]$ ./sandwich
+Guess my favorite sandwich:./sandwich: line 5: $'sandwich: \n read guess \n case  in \n tuna) echo Tuna': command not found
+./sandwich: line 7: favorite: command not found
+./sandwich: line 8: unexpected EOF while looking for matching `"'
+./sandwich: line 11: syntax error: unexpected end of file
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ ^C
+[cmsc250109@tpaclinux1v ~]$
+[cmsc250109@tpaclinux1v ~]$ case "$guess" in
+>  "tuna")
+>         echo "Congratulations! Tuna is my favorite sandwich."
+>         ;;
+>     "turkey")
+>         echo "Close, but not quite. Keep guessing!"
+        echo "Close, but not quite. Keep guessing"Guess my favroite sandwich: "
+>         ;;
+>     "BLT")
+>         echo "Not my favorite, but a classic choice."
+>         ;;
+>     *)
+>         echo "That's not it. Try again!"
+        echo "That's not it. Try again"Guess my favroite sandwich: "
+>         ;;
+> esac
+> ^C
+[cmsc250109@tpaclinux1v ~]$ alias list='ls -l'
+alias list='ls -l'
+-bash: alias: =ls -l: not found
+[cmsc250109@tpaclinux1v ~]$ read -p "Enter a value: " value
+Enter a value: 23
+[cmsc250109@tpaclinux1v ~]$ if [ "$value" = "100" ]; then
+> echo "That's a large number."
+> else
+> echo " Not quite 100."
+> fi
+ Not quite 100.
+[cmsc250109@tpaclinux1v ~]$ let ram =1024
+-bash: let: =1024: syntax error: operand expected (error token is "=1024")
+[cmsc250109@tpaclinux1v ~]$ let ram=1024
+[cmsc250109@tpaclinux1v ~]$ echo $ram
+1024
+[cmsc250109@tpaclinux1v ~]$ cd
+[cmsc250109@tpaclinux1v ~]$ let ram=1024
+[cmsc250109@tpaclinux1v ~]$ echo $ram
+1024
+[cmsc250109@tpaclinux1v ~]$ cd
+[cmsc250109@tpaclinux1v ~]$ HOME="/home"
+[cmsc250109@tpaclinux1v cmsc250109]$ cd
+[cmsc250109@tpaclinux1v ~]$ HOME="/home/agrant"
+[cmsc250109@tpaclinux1v home]$ #!/bin/bash
+[cmsc250109@tpaclinux1v home]$ read -p "Enter your guess (e.g, 'tuna', 'turkey',
+> if [ "$guess" = "tuna" ]; then
+> echo "Congratulations! Tuna is my favorite sandwich."
+> elif [ "$guess" = "turkey" ]; then
+> echo "Close, but not quite. Keep guessing!"
+echo "Close, but not quite. Keep guessing"Guess my favroite sandwich: "
+Enter your guess (e.g, 'tuna', 'turkey',
+if [  = tuna ]; then
+echo Congratulations!
+-bash: read: `sandwich.
+elif [  = turkey ]; then
+echo Close,': not a valid identifier
+[cmsc250109@tpaclinux1v home]$ ^C
+[cmsc250109@tpaclinux1v home]$ clear
+[cmsc250109@tpaclinux1v home]$ cd
+-bash: cd: /home/agrant: No such file or directory
+[cmsc250109@tpaclinux1v home]$ HOME="/home"
+[cmsc250109@tpaclinux1v ~]$ cd
+[cmsc250109@tpaclinux1v ~]$ HOME="/home/vagrant"
+[cmsc250109@tpaclinux1v home]$ tput clear
+[cmsc250109@tpaclinux1v home]$ tput cup 7 22
+
+
+[cmsc250109@tpaclinux1v ~]$ HOME="/home"
+[cmsc250109@tpaclinux1v cmsc250109]$ cd
+[cmsc250109@tpaclinux1v ~]$ HOME="/home/agrant"
+[cmsc250109@tpaclinux1v home]$ #!/bin/bash
+
+[cmsc250109@tpaclinux1v ~]$ vi soupFile
+[cmsc250109@tpaclinux1v ~]$ trap -l
+ 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+ 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+43) SIGRTSelect 44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+a soup ... (q) to quit RTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+[cmsc250109@tpaclinux1v ~]$ echo command
+commandRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+[cmsc250109@tpaclinux1v ~]$
+[cmsc250109@tpaclinux1v ~]$ 31: SIGSYS
+[cmsc250109@tpaclinux1v ~]$ ...
+[cmsc250109@tpaclinux1v ~]$ 31:SIGSYS
+[cmsc250109@tpaclinux1v ~]$  found...
+[cmsc250109@tpaclinux1v ~]$ tput cup 10 9; echo -e "Select
+[cmsc250109@tpaclinux1v ~]$
+[cmsc250109@tpaclinux1v ~]$ my_var="yes"
+[cmsc250109@tpaclinux1v ~]$ echo "\$my_var"
+$my_var
