@@ -1,0 +1,106 @@
+# Assignment: Hands-On Projects Chapter 5
+# Course: CMSC250
+# Student: Summer Nazari 
+# Professor: Koorosh Azhandeh
+#  Date: 03/10/24
+summernazari@Summers-Air ~ % wc /etc/termcap 
+wc: /etc/termcap: open: No such file or directory
+summernazari@Summers-Air ~ % tr -d 'oa' < my_list > changedlist
+summernazari@Summers-Air ~ % grep "Foot" my_list
+Football 
+summernazari@Summers-Air ~ % diff -y trees more_trees
+diff: trees: No such file or directory
+summernazari@Summers-Air ~ % diff trees more_trees
+diff: trees: No such file or directory
+summernazari@Summers-Air ~ % wc -c trees more_trees
+wc: trees: open: No such file or directory
+wc: more_trees: open: No such file or directory
+       0 total
+summernazari@Summers-Air ~ % sed 's/tree/plant/g' more trees 
+sed: more: No such file or directory
+sed: trees: No such file or directory
+summernazari@Summers-Air ~ % nano trees         
+summernazari@Summers-Air ~ % 
+summernazari@Summers-Air ~ % 
+summernazari@Summers-Air ~ % echo -e " Oak tree\\nPine tree\\nSpruce tree\\nCottonwood\\nMaple tree" > trees
+summernazari@Summers-Air ~ % vi more_trees 
+summernazari@Summers-Air ~ % diff -y trees more_trees 
+ Oak tree							|        Redwood 
+Pine tree							|       Willow tree 
+Spruce tree							|       
+Cottonwood							<       
+Maple tree							<       
+summernazari@Summers-Air ~ % diff trees more_trees
+1,5c1,3
+<  Oak tree
+< Pine tree
+< Spruce tree
+< Cottonwood
+< Maple tree
+>  Redwood 
+> Willow tree 
+> 
+summernazari@Summers-Air ~ % wc -c trees more_trees
+
+      54 trees
+      24 more_trees
+      78 total
+summernazari@Summers-Air ~ % sed 's/tree/plant/g' more_trees
+
+ Redwood 
+Willow plant 
+
+summernazari@Summers-Air ~ % echo "country:1000:210" > CD_list
+echo "rock:1001:380" >> CD_list
+echo "classical:1002:52" >> CD_list
+echo "alternative:1003:122" >> CD_list
+echo "light rock:1004:151" >> CD_list
+echo "light rock:1004:151" >> CD_list
+echo "celtic:1005:44" >> CD_list
+echo "jazz:1006:62" >> CD_list
+echo "soundtracks:1007:32" >> CD_list
+echo "soundtracks:1007:32" >> CD_list
+summernazari@Summers-Air ~ % sed -i -f add_lines.sed CD_list
+sed: 1: "add_lines.sed": command a expects \\ followed by text
+summernazari@Summers-Air ~ % sed -i -f add_lines.sed CD_list
+sed: 1: "add_lines.sed": command a expects \\ followed by text
+summernazari@Summers-Air ~ % uniq -d CD_list
+
+light rock:1004:151
+soundtracks:1007:32
+summernazari@Summers-Air ~ % uniq CD_list CD_list_new
+summernazari@Summers-Air ~ % sed 's/misc/other/g' CD_list_new > CD_list_replace
+summernazari@Summers-Air ~ % diff CD_list CD_list_replace
+
+6d5
+< light rock:1004:151
+10d8
+< soundtracks:1007:32
+summernazari@Summers-Air ~ % grep "celtic" CD_list_new
+
+celtic:1005:44
+summernazari@Summers-Air ~ % tr '[:lower:]' '[:upper:]' < CD_list_new > CD_list_uppercase
+\
+summernazari@Summers-Air ~ % sed -i 's/LIGHT ROCK/EASY LISTENING/g; s/ALTERNATIVE/EXPERIMENTAL/g' CD_list_new
+sed: 1: "CD_list_new": invalid command code C
+summernazari@Summers-Air ~ % echo "Project Number,Software Code,Software Description" > software
+echo "1000,001,Excel" >> software
+echo "1001,002,Word" >> software
+# Add more records as needed
+zsh: command not found: #
+summernazari@Summers-Air ~ % awk -F ',' 'NR==FNR\{software[$1]=$0; next\} \{if ($1 in software) print "Project Number: " $1 ", Software Code: " $2 ", Software Description: " $3 ", Project Name: " $2\}' software project
+awk: can't open file project
+ input record number 3, file project
+ source line number 1
+summernazari@Summers-Air ~ % head -n 20 /etc/termcap | sed 's/version/VERSION/g'
+head: /etc/termcap: No such file or directory
+summernazari@Summers-Air ~ % diff -y file1 file2 > diff_file1_file2
+diff -y file1 file3 > diff_file1_file3
+diff -y file2 file3 > diff_file2_file3
+summernazari@Summers-Air ~ % diff -y file1 file2 > diff_file1_file2
+diff -y file1 file3 > diff_file1_file3
+diff -y file2 file3 > diff_file2_file3
+
+summernazari@Summers-Air ~ % diff -y file1 file2 > diff_file1_file2
+diff -y file1 file3 > diff_file1_file3
+diff -y file2 file3 > diff_file2_file3
