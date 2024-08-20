@@ -1,0 +1,460 @@
+# Assignment: Hands-On Projects Chapter 5
+# Course: CMSC250
+# Student: Summer Nazari 
+# Professor: Koorosh Azhandeh
+#  Date: 03/10/24
+summernazari@Summers-Air ~ % ls -l 
+summernazari@Summers-Air ~ % ls -l 
+summernazari@Summers-Air ~ % 
+summernazari@Summers-Air ~ %
+summernazari@Summers-Air ~ % q 
+zsh: command not found: q
+summernazari@Summers-Air ~ % ls /etc | sort -r |more 
+zshrc_Apple_Terminal
+cups
+csh.logout
+csh.login
+summernazari@Summers-Air ~ % grep IBM /etc / termcap 
+grep: /etc: Is a directory
+grep: /: Is a directory
+grep: termcap: No such file or directory
+summernazari@Summers-Air ~ % grep IBM /etc/termcap | more  
+grep: /etc/termcap: No such file or directory
+summernazari@Summers-Air ~ % clear 
+summernazari@Summers-Air ~ % grep IBM /etc/termcap |head 
+grep: /etc/termcap: No such file or directory
+summernazari@Summers-Air ~ % gerp Linus /etc/termcap 
+zsh: command not found: gerp
+summernazari@Summers-Air ~ % grep -1 linux /etc/termcap 
+grep: /etc/termcap: No such file or directory
+summernazari@Summers-Air ~ % clear 
+summernazari@Summers-Air ~ % grep -i "^lin" /etc/termcap
+grep: /etc/termcap: No such file or directory
+summernazari@Summers-Air ~ % /etc/termcap 
+zsh: no such file or directory: /etc/termcap
+summernazari@Summers-Air ~ % grep -i "^lin"/etc/termcap
+summernazari@Summers-Air ~ % grep linux/etc/*
+zsh: no matches found: linux/etc/*
+summernazari@Summers-Air ~ % clear
+summernazari@Summers-Air ~ % gerp -l linux /etc/*
+zsh: command not found: gerp
+summernazari@Summers-Air ~ % clear
+summernazari@Summers-Air ~ % gerp "IBM PC" /etc/termcap 
+zsh: command not found: gerp
+summernazari@Summers-Air ~ % clear
+summernazari@Summers-Air ~ % ls /etc | gerp magic 
+summernazari@Summers-Air ~ % clear
+summernazari@Summers-Air ~ % vi zoo1
+summernazari@Summers-Air ~ % uniq zoo1 >zoo2
+summernazari@Summers-Air ~ % cat zoo2  
+ Monkeys:Bananas:2000:850.00
+ Lions:Raw Meat:4000:1245.50
+ Lions:Raw Meat:4000:12450.50
+ Camels:Vegtable:2300:464.75
+ Elephants:Hay: 120000:1105.75
+ Elephants:Hat:120000:1105.75 
+summernazari@Summers-Air ~ % cat > my_list
+Football 
+Basketball 
+Skates 
+Soocer ball 
+summernazari@Summers-Air ~ % cp my_list your_list 
+summernazari@Summers-Air ~ % comm my_lost your_list 
+comm: my_lost: No such file or directory
+summernazari@Summers-Air ~ % comm my_list your_list 
+		Football 
+		Basketball 
+		Skates 
+		Soocer ball 
+summernazari@Summers-Air ~ % cat >> my_list
+Golf ball 
+summernazari@Summers-Air ~ % my_list your_list 
+zsh: command not found: my_list
+summernazari@Summers-Air ~ % cat>>your_list
+tennis ball
+summernazari@Summers-Air ~ % comm my_list your_list
+		Football 
+		Basketball 
+		Skates 
+		Soocer ball 
+Golf ball 
+	tennis ball 
+summernazari@Summers-Air ~ % more zoo1 zoo2 
+ Monkeys:Bananas:2000:850.00
+ Lions:Raw Meat:4000:1245.50
+ Lions:Raw Meat:4000:12450.50
+ Camels:Vegtable:2300:464.75
+ Elephants:Hay: 120000:1105.75
+ Elephants:Hat:120000:1105.75 
+ Monkeys:Bananas:2000:850.00
+ Lions:Raw Meat:4000:1245.50
+ Lions:Raw Meat:4000:12450.50
+ Camels:Vegtable:2300:464.75
+ Elephants:Hay: 120000:1105.75
+ Elephants:Hat:120000:1105.75 
+summernazari@Summers-Air ~ % diff zoo1 zoo2
+summernazari@Summers-Air ~ % diff zoo2 zoo1 
+summernazari@Summers-Air ~ % cat > counters 
+Linus is a full featured Unix clone 
+Linus is avilable in free and commerical verison 
+summernazari@Summers-Air ~ % wc -l counters 
+summernazari@Summers-Air ~ % wc -c counters 
+summernazari@Summers-Air ~ % wc -c counters 
+summernazari@Summers-Air ~ % wc -w counters 
+summernazari@Summers-Air ~ % wc -lwc conters 
+wc: conters: open: No such file or directory
+summernazari@Summers-Air ~ % sed -n 3,4p unix_stuff 
+sed: unix_stuff: No such file or directory
+summernazari@Summers-Air ~ % sed -n -e 3,4d -e p unix_stuff 
+sed: unix_stuff: No such file or directory
+summernazari@Summers-Air ~ % sed -n /Flat/p unix_stuff 
+sed: unix_stuff: No such file or directory
+summernazari@Summers-Air ~ % sed -n s/Flat?text/p unix_stuff 
+zsh: no matches found: 
+> Information and Orcale, two major relational database  
+zsh: command not found: and
+summernazari@Summers-Air ~ %  sed -f more_stuff unix_stuff 
+sed: more_stuff: No such file or directory
+summernazari@Summers-Air ~ % sed -f stuff_replace unix_stuff > unix_stuff2 
+sed: stuff_replace: No such file or directory
+summernazari@Summers-Air ~ % cat unix_stuff2 
+summernazari@Summers-Air ~ % tr [a-z\}\{A_Z\} 
+> LINUS IS A FULL FEATURED UNIX CLONE. 
+zsh: bad pattern: [a-z\}\{A_Z\}
+summernazari@Summers-Air ~ % tr -d "full" < counters 
+Lins is a  eatred Unix cone 
+Lins is aviabe in ree and commerica verison 
+summernazari@Summers-Air ~ % cat zoo2 
+ Monkeys:Bananas:2000:850.00
+ Lions:Raw Meat:4000:1245.50
+ Lions:Raw Meat:4000:12450.50
+ Camels:Vegtable:2300:464.75
+ Elephants:Hay: 120000:1105.75
+ Elephants:Hat:120000:1105.75 
+summernazari@Summers-Air ~ % tr -s":"""<zoo2
+tr: illegal option -- :
+usage: tr [-Ccsu] string1 string2
+       tr [-Ccu] -d string1
+       tr [-Ccu] -s string1
+       tr [-Ccu] -ds string1 string2
+summernazari@Summers-Air ~ % pr -h "Unix files & Databases" < unix_stuff | more 
+zsh: no such file or directory: unix_stuff
+summernazari@Summers-Air ~ % pr -1 23 -h "UNIX Files & Databases" < unix_stuff 
+zsh: no such file or directory: unix_stuff
+summernazari@Summers-Air ~ % vi programmer 
+summernazari@Summers-Air ~ % awk -F'\{printf%d%-12.12s%-10\\n",$1,$2,$3\}'programmer 
+awk: no program given
+summernazari@Summers-Air ~ % 
+summernazari@Summers-Air ~ % cut f 2 -d: programmer > temp1
+usage: cut -b list [-n] [file ...]
+       cut -c list [file ...]
+       cut -f list [-s] [-w | -d delim] [file ...]
+summernazari@Summers-Air ~ % -f 5 -d: programmer > temp2 a
+zsh: command not found: -f
+summernazari@Summers-Air ~ % paste temp1 temp2 > progsal\
+summernazari@Summers-Air ~ % more progsal
+summernazari@Summers-Air ~ % ohnson 39000
+zsh: command not found: ohnson
+summernazari@Summers-Air ~ % King 39800
+zsh: command not found: King
+summernazari@Summers-Air ~ % Brown 35000
+zsh: command not found: Brown
+summernazari@Summers-Air ~ % Adams 42000
+zsh: command not found: Adams
+summernazari@Summers-Air ~ % Utley 36000
+zsh: command not found: Utley
+summernazari@Summers-Air ~ % Wilson 39000
+zsh: command not found: Wilson
+summernazari@Summers-Air ~ % Culligan 39000
+zsh: command not found: Culligan
+summernazari@Summers-Air ~ % awk -F: '\{printf "%-10.10s %7.0f \\n", $2, $5\}' programmer
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0
+Brown        35000 
+Adams        42000
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0 
+Brown        35000 
+Adams        42000 
+Utley        36000 
+Wilson       39000 
+Culligan     39000 
+Mitchell     32800 
+Arbuckle     46700 
+Ford         44700 
+Greene       41700 
+Rose         40200 
+Daniels      30500 
+Edwards      38500 
+ Johnson     30900 
+ 102             0
+      
+summernazari@Summers-Air ~ % cut -d: -f4 project|sor|uniq > t1
+cut: project: No such file or directory
+summernazari@Summers-Air ~ % cut -d: -f1 programmer|sort|uniq > t2
+summernazari@Summers-Air ~ % cat t2
+
+ 101
+ 102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+summernazari@Summers-Air ~ % comm -13 t1 t2 > t3
+summernazari@Summers-Air ~ % cat t3
+ 101
+ 102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+
+	 >>> 
+ <<< 
+cut: project: No such file or directory
+summernazari@Summers-Air ~ % less pnum 
+summernazari@Summers-Air ~ % sh pnn 
+sh: pnn: No such file or directory
+summernazari@Summers-Air ~ % sh pnumname
+sh: pnumname: No such file or directory
+summernazari@Summers-Air ~ % vi practivity 
+
+ # ======================================================
+# Script Name: practivity
+# By: Your initials
+# Date: November 2009
+# Purpose: Generate Programmer Activity Status Report
+# ======================================================
+ # =======================================================
+# Script Name: pact
+# By: Your initials
+# Date: November 2009
+# Purpose: Create temporary file, pnum, to hold the
+# count of the number of projects each
+# programmer is working on. The pnum file
+# consists of:
+# prog_num and count fields
+# =======================================================
+cut -d: -f4 project | sort | uniq -c | awk '\{printf "%s:
+%s\\n",$2,$1\}' > pnum
+# cut prog_num, pipe output to sort to remove duplicates
+# and get count for prog/projects.
+# output file with prog_number followed by count 
+summernazari@Summers-Air ~ % :r joinall
+zsh: command not found: :r
+summernazari@Summers-Air ~ % dd
+9dd
+9dd  
+0+1 records in
+0+1 records out
+4 bytes transferred in 33.177652 secs (0 bytes/sec)
+summernazari@Summers-Air ~ % sh practivity
+sh: practivity: No such file or directory
