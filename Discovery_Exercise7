@@ -1,0 +1,143 @@
+# Assignment: Discovery exercise 7
+# Course: CMSC250
+# Student: Yasmine Summer Nazari
+# Professor: Dr. Koorosh Azhandeh
+# Due Date: 04-07-2024
+[cmsc250109@tpaclinux1v ~]$ echo $?
+0
+[cmsc250109@tpaclinux1v ~]$ let mem_size=1024
+[cmsc250109@tpaclinux1v ~]$ test $mem_size -le 512
+[cmsc250109@tpaclinux1v ~]$ chsh -s /bin/bash
+Changing shell for cmsc250109.
+chsh: Shell not changed.
+[cmsc250109@tpaclinux1v ~]$ echo $mem_size
+1024
+[cmsc250109@tpaclinux1v ~]$ echo $mem_size?
+1024?
+[cmsc250109@tpaclinux1v ~]$ chsh -s /bin/bash
+Changing shell for cmsc250109.
+chsh: Shell not changed.
+[cmsc250109@tpaclinux1v ~]$ echo $my_var
+
+[cmsc250109@tpaclinux1v ~]$ echo $mem_size
+1024
+[cmsc250109@tpaclinux1v ~]$ ^C
+[cmsc250109@tpaclinux1v ~]$ ^C
+[cmsc250109@tpaclinux1v ~]$ echo $mem_size^C
+[cmsc250109@tpaclinux1v ~]$ ^C
+[cmsc250109@tpaclinux1v ~]$ ^C
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ test "$SHELL" = "/bin/bash"
+[cmsc250109@tpaclinux1v ~]$ if test "$SHELL" = "/bin/bash"; then
+> echo "Shell value has bash."
+> else
+> echo "Shell value dose not have a bash shell."
+> fi
+Shell value has bash.
+[cmsc250109@tpaclinux1v ~]$ cd ~
+[cmsc250109@tpaclinux1v ~]$ test -d <dource_directory> && echo "Src dose exists." || echo "No src."
+-bash: syntax error near unexpected token `&&'
+[cmsc250109@tpaclinux1v ~]$ cp corp_phones_bak
+cp: missing destination file operand after ‘corp_phones_bak’
+Try 'cp --help' for more information.
+[cmsc250109@tpaclinux1v ~]$ tr 'A-M' 'a-m' < corp_phones_bak
+-bash: corp_phones_bak: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ cd ~
+[cmsc250109@tpaclinux1v ~]$ vi veg_choice
+[cmsc250109@tpaclinux1v ~]$ chmod a+x veg_choice
+[cmsc250109@tpaclinux1v ~]$ ./veg_choice
+what is your favorite vegtable? corn
+ Don't forget to eat your broccoli also.
+[cmsc250109@tpaclinux1v ~]$ vi veg_choice
+[cmsc250109@tpaclinux1v ~]$ chmod a+x veg_choice
+[cmsc250109@tpaclinux1v ~]$ ./veg_choice
+what is your favorite vegtable? carrots
+Carrots is a healthy choice.
+
+[cmsc250109@tpaclinux1v ~]$ vi evaluate_jp
+[cmsc250109@tpaclinux1v ~]$ chmod +x evaluate_jp
+[cmsc250109@tpaclinux1v ~]$ ./evaluate_jp
+Enter the value of M: 24
+Enter the value of R: 25
+Enter the value of T: 26
+A is 2000 or less.
+[cmsc250109@tpaclinux1v ~]$ CALLNOW=$(cal)
+[cmsc250109@tpaclinux1v ~]$ echo "$CALNOW"
+
+[cmsc250109@tpaclinux1v ~]$ export CALLNOW=$(CAL)
+bash: CAL: command not found...
+Similar command is: 'cal'
+[cmsc250109@tpaclinux1v ~]$ source ~/.bashrc
+[cmsc250109@tpaclinux1v ~]$ cut -f4-6 -d: corp_phones1
+[cmsc250109@tpaclinux1v ~]$ cut -c14-25,26-35,36 corp_phones2
+[cmsc250109@tpaclinux1v ~]$ vi nameaddr
+[cmsc250109@tpaclinux1v ~]$ chmod a+x nameaddr
+[cmsc250109@tpaclinux1v ~]$ ./nameaddr
+Enter Name: Billie
+Enter City: santa cruz
+enter State: ./nameaddr: line 7: ewad: command not found
+Enter zip code; 20456
+Continue? (y)es or (n) o: n
+Enter Name: ^C
+[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ vi them
+[cmsc250109@tpaclinux1v ~]$ chmod a+x them
+[cmsc250109@tpaclinux1v ~]$ ./them
+Logged-In Users:
+-----------------
+NAME     LINE         TIME             COMMENT
+cmsc250107 pts/0        2024-03-31 14:49 (10.68.16.40)
+cmsc250109 pts/1        2024-03-31 14:52 (10.68.16.51)
+ee150102 pts/2        2024-03-31 15:14 (10.68.16.51)
+cmsc226307 pts/3        2024-03-31 15:19 (10.68.16.51)
+ee150110 pts/4        2024-03-31 15:45 (10.68.16.36)
+ee150110 pts/5        2024-03-31 15:45 (10.68.16.36)
+[cmsc250109@tpaclinux1v ~]$ vi whoisthere
+[cmsc250109@tpaclinux1v ~]$ chmod a+x whoisthere
+[cmsc250109@tpaclinux1v ~]$ ./whoisthere
+Harry StylesAmber MillerMicheal Scout
+Micheal Smith[cmsc250109@tpaclinux1v ~]$ clear
+[cmsc250109@tpaclinux1v ~]$ vi whoisthere
+[cmsc250109@tpaclinux1v ~]$ chmod a+x whoisthere
+[cmsc250109@tpaclinux1v ~]$ ./whoisthere
+Harry Styles
+Amber Miller
+Micheal Scout
+Micheal Smith
+[cmsc250109@tpaclinux1v ~]$ vi whoisthere
+[cmsc250109@tpaclinux1v ~]$ chmod a+x whoisthere
+[cmsc250109@tpaclinux1v ~]$ ./whoisthere
+These are the folks logged in:
+Harry Styles
+Amber Miller
+Micheal Scout
+Micheal Smith
+[cmsc250109@tpaclinux1v ~]$ vi whoisthere
+[cmsc250109@tpaclinux1v ~]$ chmod a+x whoisthere
+[cmsc250109@tpaclinux1v ~]$ ./whoisthere
+These are the folks logged in:
+Harry Styles
+Amber Miller
+Micheal Scout
+Micheal Smith
+./whoisthere: line 8: cd: /path/to/your/python/script/directory: No such file or directory
+./whoisthere: line 9: python3: command not found
+[cmsc250109@tpaclinux1v ~]$ sed 's/219-//; s/://g' corp_phones_bak > noprefix
+sed: can't read corp_phones_bak: No such file or directory
+[cmsc250109@tpaclinux1v ~]$ vi q20
+[cmsc250109@tpaclinux1v ~]$ cat q20
+ #!/bin/bash
+
+
+looptrack="y"
+
+while [[ "$looptrack" == "y" ]]
+do
+    echo -n "Type in the account number: "; read account
+    echo -n "Type the first and last name: "; read full_name
+    echo -n "Type the age: "; read age
+    echo -n "Enter another record? (y/n): "; read looptrack
+done
+
+exit 0
+  
